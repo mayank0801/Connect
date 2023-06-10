@@ -1,15 +1,25 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const SignUp=()=>{
     const {signupHandler}=useContext(AuthContext);
     const [signUpInfo,setSignUpInfo]=useState({Name:"",connectName:"",username:"", password:""})
-    console.log(signUpInfo);
-    const submitHandler=(e)=>{
+    const navigate=useNavigate();
+    const submitHandler=async(e)=>{
+        
+        try{
         e.preventDefault();
-        signupHandler(signUpInfo)
+        const response=await signupHandler(signUpInfo);
+        console.log(response);
+        console.log("hii");
+        navigate("/");
+       
+    }
+       catch{
 
+       }
     }
     return(<div>
         <form onSubmit={submitHandler}>
@@ -19,8 +29,6 @@ const SignUp=()=>{
             <input type="password" placeholder="***"  onChange={(e)=>setSignUpInfo({...signUpInfo,password:e.target.value})} required/>
             <input type="password" placeholder="****" required/>
             <button type="submit" value="submit">Sign Up</button>
-
-
         </form>
     </div>)
 }

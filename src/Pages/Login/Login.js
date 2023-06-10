@@ -10,11 +10,10 @@ const Login=()=>{
 
 
     const submitHandler=(e)=>{
-        console.log(e);
         e.preventDefault();
         loginHandler(loginInfo.email,loginInfo.password);
         setLoginInfo({email:"",password:""})
-        navigate("/signUp")
+        navigate("/");
 
     }
     console.log(loginInfo)
