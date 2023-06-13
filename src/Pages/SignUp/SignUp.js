@@ -12,8 +12,6 @@ const SignUp=()=>{
         try{
         e.preventDefault();
         const response=await signupHandler(signUpInfo);
-        console.log(response);
-        console.log("hii");
         navigate("/");
        
     }

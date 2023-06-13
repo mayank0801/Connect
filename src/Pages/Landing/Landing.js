@@ -7,12 +7,12 @@ const Landing=()=>{
     const {token}=useContext(AuthContext);
 
 
-    useEffect(()=>{
-        console.log(token,"Hii");
-        if(token){
-            navigate("/home");
-        }
-    },[])
+    // useEffect(()=>{
+    //     console.log(token,"Hii");
+    //     if(token){
+    //         navigate("/home");
+    //     }
+    // },[])
 
     
     return(
