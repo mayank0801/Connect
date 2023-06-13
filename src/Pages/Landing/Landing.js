@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+
 
 const Landing=()=>{
     const navigate=useNavigate();
-    const {token}=useContext(AuthContext);
+
 
 
     // useEffect(()=>{
