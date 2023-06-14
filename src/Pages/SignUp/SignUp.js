@@ -11,7 +11,7 @@ const SignUp=()=>{
         
         try{
         e.preventDefault();
-        await signupHandler(signUpInfo);
+        const response=await signupHandler(signUpInfo);
         navigate("/");
        
     }
