@@ -33,4 +33,17 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  {
+    _id: uuid(),
+    content:
+      "Hii Every One How All are u",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username:"Mayanksingh0801@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
 ];

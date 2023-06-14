@@ -5,6 +5,8 @@ import SignUp from './Pages/SignUp/SignUp';
 import Landing from './Pages/Landing/Landing';
 import Home from './Pages/Home/Home';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
+import { Explore } from './Pages/Explore/Explore';
+import { BookMark } from './Pages/BookMark/BookMark';
 
 function App() {
   return (
@@ -20,7 +22,17 @@ function App() {
           <RequireAuth>
             <Home/>
           </RequireAuth>}/>
-      </Routes>
+      
+      <Route path='/explore' element={
+          <RequireAuth>
+            <Explore/>
+          </RequireAuth>}/>
+          <Route path='/bookmark' element={
+          <RequireAuth>
+            <BookMark/>
+          </RequireAuth>}/>
+      
+          </Routes>
       
     </div>
   );
