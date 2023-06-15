@@ -2,10 +2,18 @@ import { useContext } from "react";
 import Aside from "../../Component/Aside/Aside";
 import { PostContext } from "../../context/PostContext";
 import { TweetCard } from "../../Component/TweetCard/TweetCard";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Home(){
     const {posts}=useContext(PostContext);
-    console.log(posts)
+    const {userInfo}=useContext(AuthContext);
+
+  
+    const userFollowing=userInfo.following.map((user)=>user.username);
+    console.log(posts,userFollowing);
+    const userFeed=posts.filter((post)=>userFollowing.includes(post.username)||post.username===userInfo.username);
+    console.log(userFeed,"userFeed");
+
     return(
         <div style={{display:"flex"}}>
             <aside>
@@ -14,7 +22,7 @@ export default function Home(){
 
             <div>
                 {
-                    posts.map((post)=><TweetCard key={post._id} post={post}/>)
+                    userFeed.map((post)=><TweetCard key={post._id} post={post}/>)
                 }
             </div>
         </div>

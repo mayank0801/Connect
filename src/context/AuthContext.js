@@ -9,7 +9,6 @@ export default function AuthContextProvider({children}){
     const user=JSON.parse(localStorage?.getItem("user"));
     const [token,setToken]=useState(user?.encodedToken);
     const [userInfo,setUserInfo]=useState(user?.userInfo)
-    console.log(token,"token");
     const loginHandler=async(username,password)=>{
         try {
             const response=await axios.post("/api/auth/login",{username,password})

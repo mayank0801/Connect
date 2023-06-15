@@ -1,11 +1,12 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import reducer, { IntialState } from "../Reducer/postReducer";
 import { loadPostHandler } from "../services/postServices";
+import { AuthContext } from "./AuthContext";
 
 export const PostContext=createContext();
 export default function PostContextProvider({children}){
-    
     const [state,dispatch]=useReducer(reducer,IntialState)
+    // const {userInfo}=useContext(AuthContext)
     useEffect(()=>{
         loadPostHandler(dispatch);
     },[])
