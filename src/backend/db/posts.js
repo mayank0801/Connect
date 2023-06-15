@@ -10,40 +10,111 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "Must try of this week: Vada Pao from SK Vadewale in Pune. The taste is absolutely mind-boggling and fresh.",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
     username: "adarshbalika",
-    createdAt: formatDate(),
+    firstName: "Adarsh",
+    createdAt: "2023-06-15",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
-    createdAt: formatDate(),
+    username: "Mayanksingh0801@gmail.com",
+    firstName: "Mayank",
+    createdAt: "2023-05-18",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content:
-      "Hii Every One How All are u",
+"Ordered Meghana's Special Chicken Biryani from Meghana's. Recommend 10/10. ✨  ",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username:"Mayanksingh0801@gmail.com",
-    createdAt: formatDate(),
+    username: "itsRam",
+    firstName:"Ram",
+    comments: [],
+    createdAt: "2023-04-20",
     updatedAt: formatDate(),
   },
+  {
+    _id: uuid(),
+    content:
+    "Went out for dinner at Chili's Hyderabad. The taste reminds me of back home in Autralia.",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    postImage:null,
+    username: "itsRam",
+    firstName: "Ram",
+    createdAt: "2023-05-01",
+    updatedAt: formatDate(),
+    comments: [
+    ],
+  },
+  {
+    _id: uuid(),
+    content:
+    "Went out for dinner at Chili's Hyderabad. The taste reminds me of back home in Autralia.",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    postImage:null,
+    username: "Spidy",
+    firstName: "Yuvraj",
+    createdAt: "2023-06-11",
+    updatedAt: formatDate(),
+    comments: [
+    ],
+  },
+  {
+    _id: uuid(),
+    content:
+    "Nairobi is such a great city with so many people going about their business. One thing that you need to know while there are the places where to find great food/meals. Best recommendation is @al_yusra Restaurant located along Banda Street just next to Nation Centre. #Kenya",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
+    username: "Spidy",
+    firstName: "Yuvraj",
+    createdAt: "2023-06-16",
+    updatedAt: formatDate(),
+    comments: [
+      
+    ],
+  },
+  {
+    _id: uuid(),
+    content:
+    "I met this street food seller in Gyeongju on a recommendation from a dating app. This man was adopted and grew up in US. He moved to Korea to find his birth mother. And he did! I often think back to our conversation #MondayMotivation",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: []
+    },
+    username: "Spidy",
+    firstName: "Yuvraj",
+    createdAt: "2023-06-01",
+    updatedAt: formatDate(),
+    comments: [ 
+    ],
+  }
 ];

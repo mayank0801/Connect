@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import Aside from "../../Component/Aside/Aside";
 import { PostContext } from "../../context/PostContext";
+import { TweetCard } from "../../Component/TweetCard/TweetCard";
 
 export default function Home(){
-    const {posts,x}=useContext(PostContext);
+    const {posts}=useContext(PostContext);
     console.log(posts)
     return(
         <div style={{display:"flex"}}>
@@ -13,10 +14,7 @@ export default function Home(){
 
             <div>
                 {
-                    posts.map((post)=>
-                    <>
-
-                    </>)
+                    posts.map((post)=><TweetCard key={post._id} post={post}/>)
                 }
             </div>
         </div>
