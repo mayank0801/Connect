@@ -9,3 +9,30 @@ export const loadPostHandler=async(dispatch)=>{
         console.error(error);
     }
 }
+
+export const likePostHandler=async(postId,encodedToken,dispatch)=>{
+    console.log("like",postId,"postyid",encodedToken);
+    try {
+        const response=await axios.post(`/api/posts/like/${postId}`,{},{
+            headers:{
+            authorization:encodedToken
+        }
+    })
+        console.log(response);
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const dislikeHandler=async(postId,encodedToken,dispatch)=>{
+    try {
+        const response=await axios.post(`/api/posts/dislike/${postId}`,{},{
+            headers:{authorization:encodedToken}
+        })
+        console.log(response);
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
+    } catch (error) {
+        console.error(error);
+    }
+}

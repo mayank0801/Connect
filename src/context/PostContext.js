@@ -13,7 +13,7 @@ export default function PostContextProvider({children}){
     
     return(
         <div>
-            <PostContext.Provider value={{posts:state.post}}>{children}</PostContext.Provider>
+            <PostContext.Provider value={{posts:state.post,dispatch}}>{children}</PostContext.Provider>
         </div>
     )
 }
