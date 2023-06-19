@@ -8,7 +8,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: uuid(),
+    _id: "p1",
     content:
     "Must try of this week: Vada Pao from SK Vadewale in Pune. The taste is absolutely mind-boggling and fresh.",
     likes: {
@@ -18,6 +18,7 @@ export const posts = [
     },
     username: "adarshbalika",
     firstName: "Adarsh",
+    postImage:"https://res.cloudinary.com/dwebygldw/image/upload/v1653066367/frittr/vada-pav_g0u58t.webp",
     createdAt: "2023-06-15",
     updatedAt: formatDate(),
   },

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getAllUserPostsHandler } from "../backend/controllers/PostController"
 
 export const loadPostHandler=async(dispatch)=>{
     try {
@@ -10,14 +9,17 @@ export const loadPostHandler=async(dispatch)=>{
     }
 }
 
-export const likePostHandler=async(postId,encodedToken,dispatch)=>{
-    console.log("like",postId,"postyid",encodedToken);
+
+
+export const likePostHandler=async(_id,encodedToken,dispatch)=>{
     try {
-        const response=await axios.post(`/api/posts/like/${postId}`,{},{
-            headers:{
-            authorization:encodedToken
-        }
-    })
+        const response=await axios.post(
+            `/api/posts/like/${_id}`,
+            {},
+            {
+            headers:{authorization:encodedToken,}
+    }
+    )
         console.log(response);
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
     } catch (error) {
@@ -34,5 +36,17 @@ export const dislikeHandler=async(postId,encodedToken,dispatch)=>{
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const createPosthandler=async(post,encodedToken,dispatch)=>{
+    console.log(typeof post,encodedToken)
+    try {
+        const response=await axios.post(`/api/posts/`,{postData:post},{headers:{authorization:encodedToken}})
+        if(response){
+            dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
+        }
+    } catch (error) {
+        console.error(error)
     }
 }

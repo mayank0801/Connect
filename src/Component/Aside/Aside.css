@@ -1,0 +1,22 @@
+.nav-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    overflow-y: scroll;
+    height: 100vh;
+    width: 50%;
+    margin-right: 0;
+}
+.nav-items{
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: 700;
+    padding: 0.5rem 1rem; 
+    cursor: pointer; 
+    color: black;
+    text-align: left;
+}
+.nav-items:hover{
+background-color: #f7f9f9;
+border-radius: 30%;
+}

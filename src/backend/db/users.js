@@ -16,6 +16,8 @@ export const users = [
     website: "https://twiiter.com",
     profileAvatar:
     "https://picsum.photos/id/1012/150",
+
+    likes:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [

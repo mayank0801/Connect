@@ -1,11 +1,31 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Normalize heading margins */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
 }
+
+/* Reset list styles */
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reset anchor text decoration */
+a {
+  text-decoration: none;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
