@@ -104,4 +104,8 @@ textarea:focus {
     right: 2%;
     cursor: pointer;
 }
+.filter-Tweet{
+    border-right: 1px solid #EFF3F4;
+    border-bottom:   1px solid #EFF3F4;
+}
 

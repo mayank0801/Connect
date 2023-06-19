@@ -9,15 +9,17 @@ import {RxCrossCircled} from "react-icons/rx"
 import {v4 as uuid} from "uuid"
 import  "./Home.css"
 import { createPosthandler } from "../../services/postServices";
+import { SortBar } from "../../Component/SortBar/SortBar";
+import { userFeed, userFeedPost } from "../../utlis/utlis";
 export default function Home(){
-    const {posts,dispatch}=useContext(PostContext);
+    const {posts,dispatch,state:{filterType}}=useContext(PostContext);
     const {userInfo,token}=useContext(AuthContext);
     const [postContent,setpostContent]=useState({
         content:"",
         postImage:"",
     });
     const userFollowing=userInfo.following.map((user)=>user.username);
-    const userFeed=posts.filter((post)=>userFollowing.includes(post.username)||post.username===userInfo.username);
+    const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo)
 
     const handleChange=(event)=>{
         const{name,value}=event.target;
@@ -76,6 +78,10 @@ export default function Home(){
 
 
 
+                </div>
+
+                <div className="filter-Tweet">
+                    <SortBar/>
                 </div>
 
 

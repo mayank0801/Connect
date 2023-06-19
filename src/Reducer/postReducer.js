@@ -1,7 +1,7 @@
 export const IntialState={
     post:[],
     users:[],
-
+    filterType:""
 }
 
 
@@ -11,6 +11,8 @@ export default function reducer(state,action){
             return {...state,post:action.payLoad};
         case "UPDATE_POST":
             return {...state,post:action.payLoad};
+        case "SET_FILTERTYPE":
+            return {...state,filterType:action.payLoad}
         default:
             return {...state}
     }
