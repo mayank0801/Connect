@@ -1,0 +1,12 @@
+.sort-modal {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .sort-option {
+    cursor: pointer;
+    margin: 5px 0;
+  }

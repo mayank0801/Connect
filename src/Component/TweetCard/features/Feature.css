@@ -1,0 +1,9 @@
+.post-option-container {
+    background-color: lightblue;
+    padding: 10px;
+  }
+  
+  .post-option-text {
+    cursor: pointer;
+  }
+  

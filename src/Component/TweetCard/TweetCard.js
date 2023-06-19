@@ -19,12 +19,15 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
     
   return (
     <div className='tweetCard'>
-      <div style={{display:'flex',alignItems:"center",justifyContent:'space-between'}}>
+      <div style={{display:'flex',alignItems:"center",justifyContent:'space-between',position:"relative"}}>
         <h4>{username}</h4>
         <FiMoreHorizontal onClick={()=>setIsOpen(!isOpenModal)}></FiMoreHorizontal>  
-        <div className='postOptions' style={{position:'absolute',top:"30%",bottom:0,right:0,backgroundColor:'white',color:'black',boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}}>
+        <div className='postOptions' style={{position:'absolute',top:"60%",bottom:0,right:0,backgroundColor:'white',color:'black',boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}}>
         {
-          isOpenModal&&<PostOption />
+          isOpenModal&&<PostOption 
+          post={post}
+          userInfo={userInfo}
+          />
         }
         </div>
         </div>

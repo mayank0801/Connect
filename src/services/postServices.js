@@ -50,3 +50,14 @@ export const createPosthandler=async(post,encodedToken,dispatch)=>{
         console.error(error)
     }
 }
+
+export const deletePosthandler=async(postId,encodedToken,dispatch)=>{
+    try {
+        const response=await axios.delete(`/api/posts/${postId}`,{headers:{authorization: encodedToken}});
+        console.log(response);
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
