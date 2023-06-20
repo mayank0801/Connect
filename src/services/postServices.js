@@ -8,6 +8,14 @@ export const loadPostHandler=async(dispatch)=>{
         console.error(error);
     }
 }
+export const loaduserHandler=async(dispatch)=>{
+    try {
+        const response=await axios.get(`/api/users`);
+        dispatch({TYPE:"LOAD_USER",payLoad:response.data.users});
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 
@@ -20,7 +28,6 @@ export const likePostHandler=async(_id,encodedToken,dispatch)=>{
             headers:{authorization:encodedToken,}
     }
     )
-        console.log(response);
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
     } catch (error) {
         console.error(error);
@@ -32,7 +39,6 @@ export const dislikeHandler=async(postId,encodedToken,dispatch)=>{
         const response=await axios.post(`/api/posts/dislike/${postId}`,{},{
             headers:{authorization:encodedToken}
         })
-        console.log(response);
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
     } catch (error) {
         console.error(error);
@@ -40,7 +46,6 @@ export const dislikeHandler=async(postId,encodedToken,dispatch)=>{
 }
 
 export const createPosthandler=async(post,encodedToken,dispatch)=>{
-    console.log(typeof post,encodedToken)
     try {
         const response=await axios.post(`/api/posts/`,{postData:post},{headers:{authorization:encodedToken}})
         if(response){
@@ -52,12 +57,35 @@ export const createPosthandler=async(post,encodedToken,dispatch)=>{
 }
 
 export const deletePosthandler=async(postId,encodedToken,dispatch)=>{
+    console.log("Delete",postId,encodedToken)
     try {
         const response=await axios.delete(`/api/posts/${postId}`,{headers:{authorization: encodedToken}});
-        console.log(response);
+        console.log(response,"delete");
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
     } catch (error) {
         console.log(error)
         
+    }
+}
+
+export const followUserHandler=async(followUserId,encodedToken,dipatch)=>{
+    try {
+        const response=await axios.post(`/api/users/follow/${followUserId}`,{},{headers:{authorization:encodedToken}});
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+
+
+export const unfollow=async(followUserId,encodedToken,updateUser,loaduserHandler)=>{
+    try {
+       const response=await axios.post(`/api/users/unfollow/${followUserId}`,{},{headers:{authorization:encodedToken}}) 
+       localStorage.setItem("userInfo",JSON.stringify(response.data.user));
+       updateUser(response.data.user);
+       await loaduserHandler();
+
+    } catch (error) {
+        console.log(error)
     }
 }

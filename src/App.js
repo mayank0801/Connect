@@ -8,6 +8,9 @@ import RequireAuth from './Component/RequireAuth/RequireAuth';
 import { Explore } from './Pages/Explore/Explore';
 import { BookMark } from './Pages/BookMark/BookMark';
 
+
+import Mockman from "mockman-js";
+
 function App() {
   
   return (
@@ -32,6 +35,9 @@ function App() {
           <RequireAuth>
             <BookMark/>
           </RequireAuth>}/>
+
+
+          <Route path="/mockman" element={<Mockman/>}/>
       
           </Routes>
       

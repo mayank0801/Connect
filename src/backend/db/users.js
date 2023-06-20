@@ -7,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
+    _id: 100,
     firstName: "Adarsh",
     lastName: "Balika",
     username: "adarshbalika",
@@ -21,19 +21,19 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [
-        {_id: uuid(),firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
+        {_id: 101,firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
         "https://picsum.photos/id/1009/150",
         },
     ],
     following: [
-      {_id: uuid(),firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
+      {_id: 101,firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
       "https://picsum.photos/id/1009/150", 
       },
     ],
     bookmarks: [],
   },
   {
-    _id: uuid(),
+    _id: 101,
     firstName: "Mayank",
     lastName: "Kumar",
     username: "Mayanksingh0801@gmail.com",
@@ -44,22 +44,22 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [
-      {_id: uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id: 100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150", 
       },
     ],
     following: [
-      {_id: uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id: 100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150",
     },
-    {_id: uuid(),firstName: "Yuvraj",username: "Spidy",profileAvatar:
+    {_id: 102,firstName: "Yuvraj",username: "Spidy",profileAvatar:
     "https://picsum.photos/id/100/150",
     },
     ],
     bookmarks: [],
   },
   {
-    _id: uuid(),
+    _id:102,
     firstName: "Yuvraj",
     lastName: "Thakur",
     username: "Spidy",
@@ -71,28 +71,25 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [
-        {_id: uuid(),firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
+        {_id: 101,firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
         "https://picsum.photos/id/1009/150",
         },
-        {_id: uuid(),firstName: "Ram",username: "itsRam",profileAvatar:
+        {_id: 103,firstName: "Ram",username: "itsRam",profileAvatar:
         "https://picsum.photos/id/1005/150",
         },
     ],
     following: [
-      {_id: uuid(),firstName: "Mayank",username: "Mayanksingh0801@gmail.com",profileAvatar:
-      "https://picsum.photos/id/1009/150", 
-      },
-      {_id: uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id: 100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150", 
       },
-      {_id: uuid(),firstName: "Ram",username: "itsRam",profileAvatar:
+      {_id: 103,firstName: "Ram",username: "itsRam",profileAvatar:
       "https://picsum.photos/id/1005/150", 
       },
     ],
     bookmarks: [],
   },
   {
-    _id: uuid(),
+    _id: 103,
     firstName: "Ram",
     lastName: "Kumar",
     username: "itsRam",
@@ -103,12 +100,12 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
-      {_id: uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id: 100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150",
     },
     ],
     followers: [
-      {_id: uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id: 100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150", 
       },
     ],

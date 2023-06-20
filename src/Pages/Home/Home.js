@@ -6,18 +6,19 @@ import { AuthContext } from "../../context/AuthContext";
 import {GrGallery} from "react-icons/gr"
 import {BsEmojiSmile} from "react-icons/bs"
 import {RxCrossCircled} from "react-icons/rx"
-import {v4 as uuid} from "uuid"
 import  "./Home.css"
 import { createPosthandler } from "../../services/postServices";
 import { SortBar } from "../../Component/SortBar/SortBar";
 import { userFeed, userFeedPost } from "../../utlis/utlis";
 export default function Home(){
-    const {posts,dispatch,state:{filterType}}=useContext(PostContext);
+    const {posts,dispatch,state:{filterType,users}}=useContext(PostContext);
     const {userInfo,token}=useContext(AuthContext);
     const [postContent,setpostContent]=useState({
         content:"",
         postImage:"",
     });
+
+    console.log(posts,"posts")
     const userFollowing=userInfo.following.map((user)=>user.username);
     const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo)
 

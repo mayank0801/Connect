@@ -7,7 +7,7 @@ export const SortBar = () => {
 
     // const [sortType,setSortType]=use
     const {state:{filterType}}=useContext(PostContext);
-    console.log(filterType,"filterType")
+    // console.log(filterType,"filterType")
     const [isOpenPostOptions,setPostOption]=useState(false);
 
   return (

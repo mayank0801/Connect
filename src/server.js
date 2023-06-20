@@ -43,9 +43,7 @@ export function makeServer({ environment = "development" } = {}) {
       server.logging = false;
       users.forEach((item) =>
         server.create("user", {
-          followers: [],
-          following: [],
-          bookmarks: [],
+          
           ...item,
          
         })
