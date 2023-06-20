@@ -19,7 +19,7 @@ export default function Home(){
     });
 
     console.log(posts,"posts")
-    const userFollowing=userInfo.following.map((user)=>user.username);
+    const userFollowing=userInfo?.following.map((user)=>user.username);
     const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo)
 
     const handleChange=(event)=>{

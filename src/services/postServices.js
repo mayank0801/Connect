@@ -89,3 +89,24 @@ export const unfollow=async(followUserId,encodedToken,updateUser,loaduserHandler
         console.log(error)
     }
 }
+
+
+export const bookmark=async(postId,encodedToken,updateBookMark)=>{
+    try {
+        const response=await axios.post(`/api/users/bookmark/${postId}`,{},{headers:{authorization:encodedToken}});
+        updateBookMark(response.data.bookmarks)
+        console.log(response);
+    } catch (error) {
+        
+    }
+}
+
+export const removeBookMark=async(postId,encodedToken,updateBookMark)=>{
+    try {
+      const response=await axios.post(`/api/users/remove-bookmark/${postId}`,{},{headers:{authorization:encodedToken}})  
+        updateBookMark(response.data.bookmarks);
+        console.log(response);
+    } catch (error) {
+        
+    }
+}

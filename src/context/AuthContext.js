@@ -13,7 +13,7 @@ export default function AuthContextProvider({children}){
 
     const [token,setToken]=useState(usertoken);
     const [userInfo,setUserInfo]=useState(userInfoo)
-
+    const [userBookMark,setuserBookMark]=useState([]);
 
 
 
@@ -22,6 +22,9 @@ export default function AuthContextProvider({children}){
     const updateUser=(updatedUser)=>{
         setUserInfo(updatedUser);
         console.log("checkpoint 2 user locally updated with",updateUser)
+    }
+    const updateBookMark=(updatedBookMark)=>{
+        setuserBookMark(updatedBookMark);
     }
     const loginHandler=async(username,password)=>{
         try {
@@ -51,19 +54,27 @@ export default function AuthContextProvider({children}){
     }
 
 
-
+    const getBookmark=async()=>{
+        try {
+            const response=await axios.get(`/api/users/bookmark`,{headers:{authorization:token}});
+            console.log(response,"bookmark");
+            setuserBookMark(response.data.bookmarks);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     // useEffect(()=>{
 
     // },[userInfo])
     
     useEffect(() => {
-        
+        getBookmark();
         console.log('User info updated:', userInfo);
       }, []);
 
 
     return(
-        <AuthContext.Provider value={{loginHandler,signupHandler,token,userInfo,updateUser,setUserInfo}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{loginHandler,signupHandler,token,userInfo,updateUser,setUserInfo,updateBookMark,userBookMark}}>{children}</AuthContext.Provider>
     )
 }
