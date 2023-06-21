@@ -1,4 +1,5 @@
 import axios from "axios";
+import { distance2D } from "framer-motion";
 
 export const loadPostHandler=async(dispatch)=>{
     try {
@@ -142,3 +143,24 @@ export const followUser=async(followUserId,encodedToken,updateUser,loaduserHandl
 }
 
 
+
+export const addComment=async(postId,commentData,encodedToken,dispatch)=>{
+    try {
+        const response=await axios.post(`/api/comments/add/${postId}`,{commentData},{headers:{authorization:encodedToken}});
+        console.log(response,"check1");
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteComment=async(postId,commentId,encodedToken,dispatch)=>{
+    console.log(postId,commentId,encodedToken,"check2")
+    try {
+        const response=await axios.delete(`/api/comments/delete/${postId}/${commentId}`,{},{headers:{authorization:encodedToken}});
+        console.log(response);
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts});
+    } catch (error) {
+        console.log(error,"check2")
+    }
+}

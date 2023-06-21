@@ -14,6 +14,8 @@ import { bookmark, dislikeHandler, likePostHandler, removeBookMark } from '../..
 import {AiOutlineHeart,AiFillHeart} from "react-icons/ai"
 import {BsBookmarks,BsBookmarksFill} from "react-icons/bs"
 import { AuthContext } from '../../context/AuthContext';
+import { Comment } from '../../features/Comment';
+import { CommentCard } from '../../Component/CommentCard/CommentCard';
 
 
 
@@ -30,10 +32,9 @@ export const PostDetail = () => {
     const {userBookMark,updateBookMark,userInfo}=useContext(AuthContext);
     const {dispatch}=useContext(PostContext);
     
-    console.log(isLiked(postDetail?.likes,userInfo?.username),post,postDetail,"PostDetail")
-    // console.log(users)
+    
     const postUserId=getUserId(postDetail?.username,users);
-    // console.log(postUserId)
+   
     const getPostUser=async()=>{
         try {
             const response=await axios.get(`/api/users/${postUserId}`);
@@ -87,7 +88,14 @@ export const PostDetail = () => {
        {postDetail?.content}  
         </p>
             </div>
-
+            <div>
+                <div>
+                    <Comment post={postDetail}/>
+                </div>
+                {
+                postDetail?.comments?.map((comment)=><CommentCard comment={comment} post={postDetail} dispatch={dispatch}/>)
+                }
+                </div>
 
         </div>
     </div>

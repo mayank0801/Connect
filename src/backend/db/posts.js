@@ -21,6 +21,7 @@ export const posts = [
     postImage:"https://res.cloudinary.com/dwebygldw/image/upload/v1653066367/frittr/vada-pav_g0u58t.webp",
     createdAt: "2023-06-15",
     updatedAt: formatDate(),
+    comments:[]
   },
   {
     _id: uuid(),
@@ -35,6 +36,7 @@ export const posts = [
     firstName: "Mayank",
     createdAt: "2023-05-18",
     updatedAt: formatDate(),
+    comments:[]
   },
   {
     _id: uuid(),
@@ -50,6 +52,7 @@ export const posts = [
     comments: [],
     createdAt: "2023-04-20",
     updatedAt: formatDate(),
+    comments:[]
   },
   {
     _id: uuid(),
@@ -65,8 +68,7 @@ export const posts = [
     firstName: "Ram",
     createdAt: "2023-05-01",
     updatedAt: formatDate(),
-    comments: [
-    ],
+    comments: [],
   },
   {
     _id: uuid(),
@@ -82,8 +84,7 @@ export const posts = [
     firstName: "Yuvraj",
     createdAt: "2023-06-11",
     updatedAt: formatDate(),
-    comments: [
-    ],
+    comments: [],
   },
   {
     _id: uuid(),
@@ -98,9 +99,7 @@ export const posts = [
     firstName: "Yuvraj",
     createdAt: "2023-06-16",
     updatedAt: formatDate(),
-    comments: [
-      
-    ],
+    comments: [],
   },
   {
     _id: uuid(),
@@ -115,7 +114,6 @@ export const posts = [
     firstName: "Yuvraj",
     createdAt: "2023-06-01",
     updatedAt: formatDate(),
-    comments: [ 
-    ],
+    comments: [],
   }
 ];
