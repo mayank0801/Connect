@@ -1,3 +1,6 @@
+.positionAbs{
+  position: relative;
+}
 .post-option-container {
     background-color: lightblue;
     padding: 10px;
@@ -7,3 +10,8 @@
     cursor: pointer;
   }
   
+  .editModal{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+  }

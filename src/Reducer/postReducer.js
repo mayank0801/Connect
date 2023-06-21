@@ -11,8 +11,10 @@ export default function reducer(state,action){
             return {...state,post:action.payLoad};
         case "LOAD_USER":
             return {...state,users:action.payLoad}
-        case "UPDATE_POST":
+        case "UPDATE_POST":{
+            console.log("Here")
             return {...state,post:action.payLoad};
+        }
         case "SET_FILTERTYPE":
             return {...state,filterType:action.payLoad}
         default:

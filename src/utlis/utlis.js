@@ -1,6 +1,6 @@
 export const isLiked=(likes,userNameToFind)=>{
-    // console.log(likes,userNameToFind)
-    return likes.likedBy.find((user)=>user.username===userNameToFind)
+    console.log(likes,userNameToFind,"postlike")
+    return likes?.likedBy.find((user)=>user.username===userNameToFind)
 }
 
 
@@ -16,9 +16,17 @@ export const userFeedPost=(posts,filterType,userFollowing,userInfo)=>{
 }
 
 export const isBookMark=(userBookMark,postId)=>{
-    console.log(userBookMark,postId)
+    // console.log(userBookMark,postId)
     const output= userBookMark?.find((_id)=>_id===postId);
-    console.log(output,"output");
+    // console.log(output,"output");
     return output;
+    return false;
+}
+
+
+export const getUserId=(usernameToFind,users)=>{
+    // console.log(users,usernameToFind);
+    const outputId=users?.find(({username})=>username===usernameToFind);
+    if(outputId)return outputId._id;
     return false;
 }

@@ -29,17 +29,20 @@ export const likePostHandler=async(_id,encodedToken,dispatch)=>{
     }
     )
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
+        console.log(response,"likePostHandler")
     } catch (error) {
         console.error(error);
     }
 }
 
 export const dislikeHandler=async(postId,encodedToken,dispatch)=>{
+    console.log(postId,encodedToken,dispatch,"didlike")
     try {
         const response=await axios.post(`/api/posts/dislike/${postId}`,{},{
             headers:{authorization:encodedToken}
         })
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts})
+        console.log(response,"dislikeres")
     } catch (error) {
         console.error(error);
     }
@@ -95,7 +98,7 @@ export const bookmark=async(postId,encodedToken,updateBookMark)=>{
     try {
         const response=await axios.post(`/api/users/bookmark/${postId}`,{},{headers:{authorization:encodedToken}});
         updateBookMark(response.data.bookmarks)
-        console.log(response);
+        // console.log(response);
     } catch (error) {
         
     }
@@ -105,8 +108,37 @@ export const removeBookMark=async(postId,encodedToken,updateBookMark)=>{
     try {
       const response=await axios.post(`/api/users/remove-bookmark/${postId}`,{},{headers:{authorization:encodedToken}})  
         updateBookMark(response.data.bookmarks);
-        console.log(response);
+        // console.log(response);
     } catch (error) {
         
     }
 }
+
+
+export const editPost=async(postId,postData,encodedToken,dispatch)=>{
+    try {
+        const response=await axios.post(`/api/posts/edit/${postId}`,{postData},{headers:{authorization:encodedToken}})
+        console.log(response);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+export const followUser=async(followUserId,encodedToken,updateUser,loaduserHandler)=>{
+    console.log(followUserId,encodedToken,updateUser,loaduserHandler)
+    try {
+        const response=await axios.post(`/api/users/follow/${followUserId}`,{},{headers:{authorization:encodedToken}});
+        // if(response)
+        console.log(response);
+        localStorage.setItem("userInfo",JSON.stringify(response.data.user));
+        updateUser(response.data.user);
+        await loaduserHandler();
+    } catch (error) {
+        
+        console.log(error)
+    }
+}
+
+
