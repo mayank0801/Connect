@@ -1,5 +1,5 @@
 import axios from "axios";
-import { distance2D } from "framer-motion";
+
 
 export const loadPostHandler=async(dispatch)=>{
     try {
@@ -157,10 +157,22 @@ export const addComment=async(postId,commentData,encodedToken,dispatch)=>{
 export const deleteComment=async(postId,commentId,encodedToken,dispatch)=>{
     console.log(postId,commentId,encodedToken,"check2")
     try {
-        const response=await axios.delete(`/api/comments/delete/${postId}/${commentId}`,{},{headers:{authorization:encodedToken}});
+        const response=await axios.post(`/api/comments/delete/${postId}/${commentId}`,{},{headers:{authorization:encodedToken}});
         console.log(response);
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts});
     } catch (error) {
         console.log(error,"check2")
+    }
+}
+
+
+export const editComment=async(postId,commentId,commentData,encodedToken,dispatch)=>{
+    console.log(postId,commentId,commentData,encodedToken,dispatch,"editComment")
+    try {
+        const response=await axios.post(`/api/comments/edit/${postId}/${commentId}`,{commentData},{headers:{authorization:encodedToken}})
+        console.log(response);
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts});
+    } catch (error) {
+        console.log(error)
     }
 }

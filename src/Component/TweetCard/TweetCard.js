@@ -9,6 +9,8 @@ import {BsBookmarks,BsBookmarksFill} from "react-icons/bs"
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
+import {FaRegComment} from "react-icons/fa";
+import { EditCommentModal } from '../../features/EditCommentModal';
 
 export const TweetCard = ({post,userInfo,token,dispatch}) => {
     const {
@@ -19,9 +21,10 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
     username
     }=post;
     const [isOpenModal,setIsOpen]=useState(false);
+    const [isOpenComment,setOpenComment]=useState(false);
     const {updateBookMark,userBookMark}=useContext(AuthContext);
     const navigate=useNavigate();
-    console.log(userBookMark,"userBookMark");
+    // console.log(userBookMark,"userBookMark");
   return (
     <div className='tweetCard'>
       <div style={{display:'flex',alignItems:"center",justifyContent:'space-between'}}>
@@ -40,12 +43,18 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
         <p style={{ cursor:"pointer",  overflow:"hidden",textOverflow: "ellipsis", whiteSpace: "nowrap", width: "200px" }} >
           
           {isLiked(likes,userInfo.username)?<AiFillHeart color='red' onClick={()=>dislikeHandler(_id,token,dispatch)}/>:<AiOutlineHeart onClick={()=>likePostHandler(_id,token,dispatch)}/>}
+          <span>
+          <FaRegComment onClick={()=>setOpenComment(true)}/>{post?.comments?.length}
+          </span>
           {isBookMark(userBookMark,post._id)?<BsBookmarksFill onClick={()=>removeBookMark(post._id,token,updateBookMark)}/>:<BsBookmarks onClick={()=>bookmark(post._id,token,updateBookMark)}/>}
        
         </p>
         <span onClick={()=>navigate(`/post/${_id}`)}>
        {content} 
        </span> 
+
+
+       {isOpenComment&&<EditCommentModal post={post}  initalCommentData={""}  setOpenComment={setOpenComment} addCommentModal={true}/>}
     </div>
   )
 }
