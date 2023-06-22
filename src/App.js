@@ -28,10 +28,8 @@ function App() {
             <Home/>
           </RequireAuth>}/>
       
-      <Route path='/explore' element={
-          <RequireAuth>
-            <Explore/>
-          </RequireAuth>}/>
+      <Route path='/explore' element={<Explore/>}
+          />
           <Route path='/bookmark' element={
           <RequireAuth>
             <BookMark/>
