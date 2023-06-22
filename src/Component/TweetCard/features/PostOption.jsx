@@ -3,14 +3,14 @@ import './Feature.css';
 import { PostContext } from '../../../context/PostContext';
 import { deletePosthandler, followUser, loaduserHandler, unfollow } from '../../../services/postServices';
 import { AuthContext } from '../../../context/AuthContext';
-import { EditPostModal } from './EditPostModal';
+import { CreatePostModal } from '../../../features/CreatePostModal';
 
 
 export const PostOption = ({ post, postUser }) => {
   const {state:{users},dispatch}=useContext(PostContext)
   const {token,updateUser,setUserInfo,userInfo}=useContext(AuthContext)
   const isUserPost = post.username === userInfo.username;
-  const [editModal,setEditModal]=useState(false);
+  const [isPostModal,setPostModal]=useState(false);
 
 
 
@@ -24,12 +24,12 @@ export const PostOption = ({ post, postUser }) => {
         <div className="post-option-container">
         {isUserPost && (
           <>
-            <p className="post-option-text" onClick={()=>setEditModal(!editModal)}>Edit</p>
+            <p className="post-option-text" onClick={()=>setPostModal(!isPostModal)}>Edit</p>
             <p className="post-option-text" onClick={()=>deletePosthandler(post._id,token,dispatch)}>Delete</p>
 
             <div className='editModal'>
             {
-              editModal&&<EditPostModal/>
+              isPostModal&&<CreatePostModal setPostModal={setPostModal} intialPostData={{content:post.content,postImage:post.postImage}} post={post}/>
             }
             </div>
 

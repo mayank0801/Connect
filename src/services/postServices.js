@@ -117,12 +117,13 @@ export const removeBookMark=async(postId,encodedToken,updateBookMark)=>{
 
 
 export const editPost=async(postId,postData,encodedToken,dispatch)=>{
+    console.log(postId,postData,encodedToken,dispatch,"checkout")
     try {
         const response=await axios.post(`/api/posts/edit/${postId}`,{postData},{headers:{authorization:encodedToken}})
-        console.log(response);
-
+        console.log(response,"checkout");
+        dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts});
     } catch (error) {
-        console.log(error);
+        console.log(error,"checkout");
     }
 }
 
@@ -176,3 +177,6 @@ export const editComment=async(postId,commentId,commentData,encodedToken,dispatc
         console.log(error)
     }
 }
+
+
+

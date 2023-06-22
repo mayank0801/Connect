@@ -22,6 +22,7 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
     }=post;
     const [isOpenModal,setIsOpen]=useState(false);
     const [isOpenComment,setOpenComment]=useState(false);
+ 
     const {updateBookMark,userBookMark}=useContext(AuthContext);
     const navigate=useNavigate();
     // console.log(userBookMark,"userBookMark");
@@ -52,9 +53,11 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
         <span onClick={()=>navigate(`/post/${_id}`)}>
        {content} 
        </span> 
+       <img src={post?.postImage}/>
 
 
        {isOpenComment&&<EditCommentModal post={post}  initalCommentData={""}  setOpenComment={setOpenComment} addCommentModal={true}/>}
+       
     </div>
   )
 }
