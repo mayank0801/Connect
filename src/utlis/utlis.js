@@ -18,7 +18,7 @@ export const userFeedPost=(posts,filterType,userFollowing,userInfo)=>{
 export const isBookMark=(userBookMark,postId)=>{
     // console.log(userBookMark,postId)
     const output= userBookMark?.find((_id)=>_id===postId);
-    // console.log(output,"output");
+    console.log(output,"AddBookMark");
     return output;
     return false;
 }

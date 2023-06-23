@@ -7,6 +7,7 @@ export const PostContext=createContext();
 export default function PostContextProvider({children}){
     const [state,dispatch]=useReducer(reducer,IntialState)
     const {userInfo}=useContext(AuthContext);
+    
     // const {userInfo}=useContext(AuthContext)
 
     useEffect(()=>{
