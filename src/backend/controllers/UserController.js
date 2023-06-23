@@ -149,6 +149,7 @@ export const bookmarkPostHandler = function (schema, request) {
     );
   }
 };
+
 /**
  * This handler handles adding a post to user's bookmarks in the db.
  * send POST Request at /api/users/remove-bookmark/:postId/
@@ -185,7 +186,6 @@ export const removePostFromBookmarkHandler = function (schema, request) {
     );
   }
 };
-
 
 /**
  * This handler handles follow action.
@@ -285,8 +285,6 @@ export const unfollowUserHandler = function (schema, request) {
     const isFollowing = user.following.some(
       (currUser) => currUser._id === followUser._id
     );
-    // console.log(followUserId,"followUserId");
-    // console.log(user,"user",user.following,"userFollowing",isFollowing,"isFollowing");
 
     if (!isFollowing) {
       return new Response(400, {}, { errors: ["User already not following"] });

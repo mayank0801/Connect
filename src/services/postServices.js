@@ -1,6 +1,7 @@
 import axios from "axios";
 
 
+
 export const loadPostHandler=async(dispatch)=>{
     try {
         const response=await axios.get(`/api/posts`);
@@ -95,13 +96,14 @@ export const unfollow=async(followUserId,encodedToken,updateUser,loaduserHandler
 }
 
 
-export const bookmark=async(postId,encodedToken,updateBookMark)=>{
+export const bookmark=async(postId,encodedToken,updateBookMark,dispatch)=>{
     try {
         const response=await axios.post(`/api/users/bookmark/${postId}`,{},{headers:{authorization:encodedToken}});
-        updateBookMark(response.data.bookmarks)
-        // console.log(response);
+        updateBookMark(response.data.bookmarks);
+        dispatch({type:"USERBOOKMARK_POST",payLoad:response.data.bookmarks})
+        console.log(response,"AddBookMark");
     } catch (error) {
-        
+        console.log(error,"AddBookMark")
     }
 }
 
