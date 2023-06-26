@@ -22,14 +22,18 @@ import { CommentCard } from '../../Component/CommentCard/CommentCard';
 
 export const PostDetail = () => {
 
+
+    const {postId}=useParams();
+    const navigate=useNavigate();
+
+
+
+    
     const [postDetail,setPosDetail]=useState(null);
     const [postUser,setPostUser]=useState(null);
     const [isOpenModal,setIsOpen]=useState(false);
     const {state:{users,post}}=useContext(PostContext);
-    const {postId}=useParams();
-    const navigate=useNavigate();
-    const {token}=useContext(AuthContext);
-    const {userBookMark,updateBookMark,userInfo}=useContext(AuthContext);
+    const {token,userBookMark,updateBookMark,userInfo}=useContext(AuthContext);
     const {dispatch}=useContext(PostContext);
     
     

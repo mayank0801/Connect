@@ -8,7 +8,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: "p1",
+    _id: "1",
     content:
     "Must try of this week: Vada Pao from SK Vadewale in Pune. The taste is absolutely mind-boggling and fresh.",
     likes: {

@@ -20,10 +20,12 @@ export default function AuthContextProvider({children}){
 
 
     const updateUser=(updatedUser)=>{
+        localStorage.setItem("userInfo",JSON.stringify(updatedUser));
         setUserInfo(updatedUser);
         console.log("checkpoint 2 user locally updated with",updateUser)
     }
     const updateBookMark=(updatedBookMark)=>{
+        // localStorage.setItem("user", JSON.stringify();
         setuserBookMark(updatedBookMark);
     }
     const loginHandler=async(username,password)=>{
