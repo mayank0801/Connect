@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { cloudinaryImageFetcher, updateUserhandler } from '../services/postServices';
 import { AuthContext } from '../context/AuthContext';
+import {AiOutlineCamera} from "react-icons/ai";
 
 const avatars = [
   "https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg",
@@ -14,28 +15,29 @@ export const EditProfileModal = ({intialState,setEditProfileModal}) => {
     const [userData,setuserData]=useState(intialState);
     const {token,userInfo,updateUser}=useContext(AuthContext);
     const [profileFileAvatar,setProfileAvatar]=useState(intialState.profileAvatar)
-    
+    const inputRef=useRef(null);
 
     const handleChange=(event)=>{
         const {name,value}=event.target;
         setuserData({...userData,[name]:value})
     }
 
-    const handleSubmit=()=>{
-      
-      updateUserhandler({...userData,profileAvatar:profileFileAvatar},token,updateUser)
+    const handleSubmit=async()=>{
+      let profileAvatarUrl=await cloudinaryImageFetcher(profileFileAvatar);
+      console.log(profileAvatarUrl.url);
+      if(!profileAvatarUrl)profileAvatarUrl=intialState?.profileAvatar;
+      updateUserhandler({...userData,profileAvatar:profileAvatarUrl.url},token,updateUser)
       setEditProfileModal(false);
     }
 
-    const fileUploadHandler=async(mediaNewPost)=>{
-      try {
-        const response=await cloudinaryImageFetcher(mediaNewPost);
-        console.log(response.url,"mediaNewPost");
-        setProfileAvatar(response.url);
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    
+
+
+      const performAction = () => {
+        inputRef.current.click()
+      };
+
+    
 
     
   return (
@@ -43,12 +45,13 @@ export const EditProfileModal = ({intialState,setEditProfileModal}) => {
 
       <div style={{display:"flex",flexWrap:"wrap"}}>
         {
-          avatars.map((avatar)=><div><img className='avtar-image' src={avatar} alt='avatar' onClick={()=>fileUploadHandler(avatar)}/></div>)
+          avatars.map((avatar)=><div><img className='avtar-image' src={avatar} alt='avatar' onClick={()=>setProfileAvatar(avatar)}/></div>)
         }
 
       </div>
             <img style={{width:"80px",height:"80px",borderRadius:"50%"}} src={profileFileAvatar}  alt='profileAvtar'/>
-
+            <AiOutlineCamera onClick={performAction}/>
+            <input type='file' ref={inputRef} style={{display:"none"}} onChange={(e)=>setProfileAvatar(URL.createObjectURL(e.target.files[0]))}/>
         <div>
             <input name='bio' type='text' value={userData?.bio} onChange={handleChange}/>
             <input name='website' type='text' value={userData?.website} onChange={handleChange}/>

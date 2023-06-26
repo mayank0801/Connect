@@ -7,18 +7,22 @@ import {BiArrowBack} from "react-icons/bi";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { EditProfileModal } from '../../features/EditProfileModal';
+import { followUser, unfollow } from '../../services/postServices';
+import {GrLogout} from "react-icons/gr"
+
 
 export const Profile = () => {
 const {profileId}=useParams();
-const {userInfo}=useContext(AuthContext);
+const {userInfo,token,updateUser,loaduserHandler,logoutHandler}=useContext(AuthContext);
 
 const [profileDetail,setProfileDetail]=useState(null);
 const [editProfileModal,setEditProfileModal]=useState(false);
 
 const currentLoggedInUser=profileDetail?.username===userInfo?.username;
+const isUserFollowing=userInfo?.following?.find(({username})=>username===profileDetail?.username);
 
 
-console.log(userInfo,"Rerend3er")
+console.log(isUserFollowing,"Rerend3er")
 
 const navigate=useNavigate();
 
@@ -50,7 +54,10 @@ useEffect(()=>{
       </div>
       <div>
         <div>
+    
         <img src={profileDetail?.profileAvatar} alt='profileAvtar'/>
+           
+        
           <h1>{profileDetail?.firstName}</h1>
           <p>{profileDetail?.username}</p>
           <p>{profileDetail?.bio}</p>
@@ -58,7 +65,15 @@ useEffect(()=>{
           {
             currentLoggedInUser?<div>
             <button onClick={()=>setEditProfileModal(!editProfileModal)}>Edit profile</button>
+              <GrLogout onClick={()=>logoutHandler()}/>
             </div>:null
+          }
+
+          {
+            !currentLoggedInUser&&isUserFollowing&&<p className='post-option-text' onClick={()=>unfollow(profileDetail?._id,token,updateUser,loaduserHandler)}>Unfollow</p>
+          }
+          {
+            !currentLoggedInUser&&!isUserFollowing&&<p className='post-option-text' onClick={()=>followUser(profileDetail?._id,token,updateUser,loaduserHandler)}>Follow</p>
           }
 
         </div>
