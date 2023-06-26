@@ -11,6 +11,7 @@ import { BookMark } from './Pages/BookMark/BookMark';
 
 import Mockman from "mockman-js";
 import { PostDetail } from './Pages/PostDetail/PostDetail';
+import { Profile } from './Pages/Profile/Profile';
 
 function App() {
   
@@ -35,7 +36,8 @@ function App() {
             <BookMark/>
           </RequireAuth>}/>
 
-<Route path="/post/:postId" element={<PostDetail/>}/>
+          <Route path="/post/:postId" element={<PostDetail/>}/>
+          <Route path="/profile/:profileId" element={<Profile/>}/>
           <Route path="/mockman" element={<Mockman/>}/>
       
           </Routes>

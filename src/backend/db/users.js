@@ -7,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: 100,
+    _id: 1,
     firstName: "Adarsh",
     lastName: "Balika",
     username: "adarshbalika",
@@ -16,7 +16,6 @@ export const users = [
     website: "https://twiiter.com",
     profileAvatar:
     "https://picsum.photos/id/1012/150",
-
     likes:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -49,7 +48,7 @@ export const users = [
       },
     ],
     following: [
-      {_id: 100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id:uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150",
     },
     {_id: 102,firstName: "Yuvraj",username: "Spidy",profileAvatar:

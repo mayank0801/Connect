@@ -1,6 +1,6 @@
 import { createContext,useEffect,useState } from "react";
 import axios from "axios"
-import { json } from "react-router-dom";
+import { Navigate, json, useNavigate } from "react-router-dom";
 import { useReducer } from "react";
 
 
@@ -14,16 +14,19 @@ export default function AuthContextProvider({children}){
     const [token,setToken]=useState(usertoken);
     const [userInfo,setUserInfo]=useState(userInfoo)
     const [userBookMark,setuserBookMark]=useState([]);
+    const navigate=useNavigate();
 
 
 
 
 
     const updateUser=(updatedUser)=>{
+        localStorage.setItem("userInfo",JSON.stringify(updatedUser));
         setUserInfo(updatedUser);
         console.log("checkpoint 2 user locally updated with",updateUser)
     }
     const updateBookMark=(updatedBookMark)=>{
+        // localStorage.setItem("user", JSON.stringify();
         setuserBookMark(updatedBookMark);
     }
     const loginHandler=async(username,password)=>{
@@ -64,6 +67,14 @@ export default function AuthContextProvider({children}){
         }
     }
 
+    const logoutHandler=()=>{
+        setToken(null);
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userInfo");
+        setuserBookMark([]);
+        navigate("/landing");
+    }
+
     // useEffect(()=>{
 
     // },[userInfo])
@@ -75,6 +86,6 @@ export default function AuthContextProvider({children}){
 
 
     return(
-        <AuthContext.Provider value={{loginHandler,signupHandler,token,userInfo,updateUser,setUserInfo,updateBookMark,userBookMark}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{loginHandler,signupHandler,token,userInfo,updateUser,setUserInfo,updateBookMark,userBookMark,logoutHandler}}>{children}</AuthContext.Provider>
     )
 }

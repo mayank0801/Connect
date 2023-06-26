@@ -20,9 +20,9 @@ export const getAllUsersHandler = function () {
  * */
 
 export const getUserHandler = function (schema, request) {
-  const userId = request.params.userId;
+  const username = request.params.username;
   try {
-    const user = schema.users.findBy({ _id: userId }).attrs;
+    const user = schema.users.findBy({ username }).attrs;
     return new Response(200, {}, { user });
   } catch (error) {
     return new Response(
@@ -73,6 +73,7 @@ export const editUserHandler = function (schema, request) {
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { user });
   } catch (error) {
+    console.log(error,"error")
     return new Response(
       500,
       {},

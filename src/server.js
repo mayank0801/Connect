@@ -54,6 +54,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
+
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
@@ -62,10 +63,10 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/posts", getAllpostsHandler.bind(this));
       this.get("/posts/:postId", getPostHandler.bind(this));
       this.get("/posts/user/:username", getAllUserPostsHandler.bind(this));
-
-
-
-
+      
+      
+      
+      
       this.post("/comments/add/:postId", addPostCommentHandler.bind(this));
       this.post(
         "/comments/edit/:postId/:commentId",
@@ -78,7 +79,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.post(
         "/comments/upvote/:postId/:commentId",
         upvotePostCommentHandler.bind(this)
-      );
+        );
       this.post(
         "/comments/downvote/:postId/:commentId",
         downvotePostCommentHandler.bind(this)
@@ -93,7 +94,7 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user routes (public)
       this.get("/users", getAllUsersHandler.bind(this));
-      this.get("/users/:userId", getUserHandler.bind(this));
+      this.get("/users/:username", getUserHandler.bind(this));
 
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));
@@ -107,7 +108,10 @@ export function makeServer({ environment = "development" } = {}) {
       this.post(
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
-      );
+        );
+        this.passthrough(
+          "https://api.cloudinary.com/v1_1/ditqnzlil/image/upload"
+        );
     },
   });
 }

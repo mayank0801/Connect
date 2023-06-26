@@ -61,6 +61,8 @@ export const createPosthandler=async(post,encodedToken,dispatch)=>{
     }
 }
 
+
+
 export const deletePosthandler=async(postId,encodedToken,dispatch)=>{
     console.log("Delete",postId,encodedToken)
     try {
@@ -173,12 +175,48 @@ export const editComment=async(postId,commentId,commentData,encodedToken,dispatc
     console.log(postId,commentId,commentData,encodedToken,dispatch,"editComment")
     try {
         const response=await axios.post(`/api/comments/edit/${postId}/${commentId}`,{commentData},{headers:{authorization:encodedToken}})
-        console.log(response);
+        console.log(response,"backendResponse");
         dispatch({TYPE:"UPDATE_POST",payLoad:response.data.posts});
     } catch (error) {
         console.log(error)
     }
 }
+
+
+export const updateUserhandler=async(userData,encodedToken,updateUser)=>{
+    console.log(userData,encodedToken,updateUser,"consoel")
+    try {
+        const response=await axios.post(`/api/users/edit`,{userData},{headers:{authorization:encodedToken}})
+        // console.log(response,"BackendResponseOF User Upad")
+        localStorage.setItem("userInfo",JSON.stringify(response.data.user));
+        updateUser(response.data.user);
+        // await loaduserHandler();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+export const cloudinaryImageFetcher = async (mediaNewPost) => {
+    const dataForCloudinary = new FormData();
+    dataForCloudinary.append("file", mediaNewPost);
+    dataForCloudinary.append("upload_preset", "connect");
+    dataForCloudinary.append("cloud_name", "ditqnzlil");
+    const urlToReturn = fetch(
+      "https://api.cloudinary.com/v1_1/ditqnzlil/image/upload",
+      {
+        method: "post",
+        body: dataForCloudinary,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((e) => console.log(e));
+      
+    return urlToReturn;
+  };
+
+
 
 
 

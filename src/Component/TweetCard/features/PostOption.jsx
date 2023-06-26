@@ -8,7 +8,7 @@ import { CreatePostModal } from '../../../features/CreatePostModal';
 
 export const PostOption = ({ post, postUser }) => {
   const {state:{users},dispatch}=useContext(PostContext)
-  const {token,updateUser,setUserInfo,userInfo}=useContext(AuthContext)
+  const {token,updateUser,userInfo}=useContext(AuthContext)
   const isUserPost = post.username === userInfo.username;
   const [isPostModal,setPostModal]=useState(false);
 

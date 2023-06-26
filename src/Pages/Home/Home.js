@@ -7,7 +7,7 @@ import {GrGallery} from "react-icons/gr"
 import {BsEmojiSmile} from "react-icons/bs"
 import {RxCrossCircled} from "react-icons/rx"
 import  "./Home.css"
-import { createPosthandler } from "../../services/postServices";
+import { cloudinaryImageFetcher, createPosthandler } from "../../services/postServices";
 import { SortBar } from "../../Component/SortBar/SortBar";
 import { userFeed, userFeedPost } from "../../utlis/utlis";
 export default function Home(){
@@ -18,7 +18,6 @@ export default function Home(){
         postImage:"",
     });
 
-    console.log(posts,"posts")
     const userFollowing=userInfo?.following.map((user)=>user.username);
     const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo)
 
@@ -33,7 +32,10 @@ export default function Home(){
         event.target.style.height = `${event.target.scrollHeight}px`
     }
     const postSubmitHandler=async()=>{
-        await createPosthandler(postContent,token,dispatch);
+        console.log(postContent.postImage,"pp")
+        let profileAvatarUrl=await cloudinaryImageFetcher(postContent.postImage);
+        console.log(profileAvatarUrl,"p")
+        await createPosthandler({...postContent,postImage:profileAvatarUrl.url},token,dispatch);
         setpostContent({ content:"",
         postImage:""});
     }
