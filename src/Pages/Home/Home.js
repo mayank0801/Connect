@@ -10,6 +10,8 @@ import  "./Home.css"
 import { cloudinaryImageFetcher, createPosthandler } from "../../services/postServices";
 import { SortBar } from "../../Component/SortBar/SortBar";
 import { userFeed, userFeedPost } from "../../utlis/utlis";
+import { SearchUser } from "../../Component/SearchUser/SearchUser";
+import { AsideRight } from "../../Component/AsideRight/AsideRIght";
 export default function Home(){
     const {posts,dispatch,state:{filterType,users}}=useContext(PostContext);
     const {userInfo,token}=useContext(AuthContext);
@@ -98,6 +100,7 @@ export default function Home(){
             </div>
             <div className="aside-right">
                 Suggested User
+                <AsideRight/>
             </div>
         </div>
     )

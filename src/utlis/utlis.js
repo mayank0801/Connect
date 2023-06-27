@@ -25,3 +25,17 @@ export const getUserId=(usernameToFind,users)=>{
     if(outputId)return outputId._id;
     return false;
 }
+
+export const searchUser=(users,searchedUser)=>{
+    if(searchedUser.length==0){
+        console.log("hii",searchedUser.length);
+        return [];
+    }
+    return users.filter(({username,firstName,lastName})=>username.includes(searchedUser)||firstName.includes(searchedUser)||lastName.includes(searchedUser));
+}
+
+
+export const suggestedUser=(users,userInfo)=>{
+    const {username,following}=userInfo;
+    return users.filter((user)=>user.username!==username&&!following.find((userFollow)=>userFollow.username===user.username));
+}
