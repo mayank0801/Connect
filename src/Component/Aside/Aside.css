@@ -1,22 +1,76 @@
-.nav-container{
+.aside-container{
     display: flex;
     flex-direction: column;
-    justify-content:start;
-    overflow-y: scroll;
+    width: 275px;
+    padding: 4px 12px;
     height: 100vh;
-    width: 50%;
-    margin-right: 0;
+    background: var(--black, #000);
+    color:"white";
+    justify-content: space-between;
+    
 }
-.nav-items{
-    text-decoration: none;
-    font-size: x-large;
+.aside-logo{
+    padding-left: 0.5rem;
+}
+.aside-logo-image{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.aside-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.aside-link{
+    padding: 13px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border-radius: 50px;
+}
+.aside-link:hover{
+background-color: red;
+}
+.aside-link-text{
+color: #D9D9D9;
+font-size: 19px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.aside-postBtn{
+    padding: 14px;
+    border-radius: 50px;
+    width: 90%;
+    font-size: 1.25rem;
     font-weight: 700;
-    padding: 0.5rem 1rem; 
-    cursor: pointer; 
-    color: black;
-    text-align: left;
+    color: white;
+    background-color:#1D9BF0 ;
+
 }
-.nav-items:hover{
-background-color: #f7f9f9;
-border-radius: 30%;
+.aside-footer{
+    width: 85%;
+    padding: 4px;
 }
+.aside-profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.aside-profile-image{
+    height: 40px;
+    width: 40px;
+    border-radius: 64%;
+}
+.aside-profile-info p:first-child{
+    font-weight: 700;
+}
+.aside-profile-info p:last-child{
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #6E767D;
+}
+/* .aside */
+
+

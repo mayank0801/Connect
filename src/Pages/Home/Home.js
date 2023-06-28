@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import {GrGallery} from "react-icons/gr"
 import {BsEmojiSmile} from "react-icons/bs"
 import {RxCrossCircled} from "react-icons/rx"
-import  "./Home.css"
+// import  "./Home.css"
 import { cloudinaryImageFetcher, createPosthandler } from "../../services/postServices";
 import { SortBar } from "../../Component/SortBar/SortBar";
 import { userFeed, userFeedPost } from "../../utlis/utlis";
