@@ -1,0 +1,39 @@
+.aside-Right{
+    padding: 1rem 2rem;
+    display:flex ;
+    flex-direction: column;
+    gap: 10rem;
+}
+.user-container{
+    padding: 0.4rem 0rem;
+    background-color: #16181C;
+    border-radius: 10px;
+}
+.user-container>h2{
+    padding-left: 1rem;
+}
+
+.suggestedUser{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.suggestedUserInfo{
+    display: flex;
+
+}
+.suggestedUser:hover{
+    background-color: #34373e;
+}
+.suggestedUser-image{
+    height: 40px;
+    width: 40px;
+    border-radius: 64%;
+    margin-right: 5px;
+}

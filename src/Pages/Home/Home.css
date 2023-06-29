@@ -19,7 +19,12 @@ justify-content: end;
     width: 20%;
 }
 .title{
-    text-align: center;
+    /* text-align: center; */
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+.page-Title{
+    padding: 1rem 0.5rem;
 }
 
 

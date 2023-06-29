@@ -6,6 +6,7 @@ import { suggestedUser } from '../../utlis/utlis';
 import { followUser, loaduserHandler } from '../../services/postServices';
 import {AiOutlinePlus} from "react-icons/ai";
 import { useEffect } from 'react';
+import "./AsideRight.css"
 
 export const  AsideRight= () => {
 
@@ -17,16 +18,21 @@ export const  AsideRight= () => {
 
     
   return (
-    <div>
+    <div className='aside-Right'>
         <SearchUser/>
+        <div className='user-container'>
+          <h2>Who To Follow</h2>
         {
-            suggestedInfo.map((user)=><div>
-                <img src={user.profileAvtar} alt='i'/>
-                <h2>{user.username}</h2>
-                <AiOutlinePlus onClick={()=>followUser(user._id,token,updateUser,loaduserHandler)}/>
-                
-                </div>)
+            suggestedInfo.map((user)=>
+            <div className='suggestedUser'>
+              <span className='suggestedUserInfo'>
+                <img className='suggestedUser-image' src={user.profileAvatar} alt='i'/>
+                <h3>{user.username}</h3>
+              </span>
+                <AiOutlinePlus size={20} onClick={()=>followUser(user._id,token,updateUser,loaduserHandler)}/>
+              </div>)
         }
+        </div>
     </div>
   )
 }

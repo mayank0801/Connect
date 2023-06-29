@@ -27,9 +27,9 @@ export default function Home(){
                 <Aside/>  
             </aside>
             <div className="main-content">
-                <div></div>
+                <div className="page-Title">
                 <h3 className="title">Home</h3>
-
+                </div>
                     <>
                     <CreatePost/>
                     </>
@@ -50,7 +50,7 @@ export default function Home(){
                 </div>
             </div>
             <div className="aside-right">
-                Suggested User
+               
                 <AsideRight/>
             </div>
         </div>
