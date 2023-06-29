@@ -6,11 +6,12 @@ width: 50%;
     display: flex;
     gap: 12px;
     width: 100%;
-    
+    cursor: pointer;
     padding: 0.5rem 0.5rem;
     border-top: 1px solid #2F3336;
 }
 .postCard-profileImage>img{
+    cursor: pointer;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -21,12 +22,12 @@ width: 50%;
     flex-direction: column;
 }
 .postCard-userDetail{
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
     gap: 5px;
-    
 }
 .postCard-userInfo{
     display: flex;
@@ -85,3 +86,22 @@ width: 50%;
     padding: 0.2rem 0.2rem;
     border-radius: 50%;
   } */
+
+
+
+
+  .fullscreen-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+  
+  

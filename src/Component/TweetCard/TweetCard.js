@@ -12,7 +12,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import {FaRegComment} from "react-icons/fa";
 import { EditCommentModal } from '../../features/EditCommentModal';
 import { PostContext } from '../../context/PostContext';
-import {FiShare} from "react-icons/fi"
+import {FiShare} from "react-icons/fi";
+import Modal from 'react-modal';
 import "./TweetCard.css"
 
 export const TweetCard = ({post,userInfo,token,dispatch}) => {
@@ -30,19 +31,28 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
     const {updateBookMark,userBookMark}=useContext(AuthContext);
     const {state:{users}}=useContext(PostContext);
     const navigate=useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
 
     const postUser=users?.find(({username})=>username===post.username);
-    console.log(postUser,users,"profileAvtar")
+
   return (
     <div className='PostCard'>
       <div className='postCard-profileImage'>
-        <img src={postUser?.profileAvatar} alt='postuserProfile'/>
+        <img onClick={()=>navigate(`/profile/${postUser?.username}`)} src={postUser?.profileAvatar} alt='postuserProfile'/>
       </div>
 
       <div className='postCard-Content' >
           <div className='postCard-userDetail'>
-            <div className='postCard-userInfo'>
+            <div className='postCard-userInfo' onClick={()=>navigate(`/profile/${postUser?.username}`)}>
               <p>{`${postUser?.firstName} ${postUser?.lastName}`}</p>
               <p>@{username}</p>
             </div>
@@ -54,7 +64,7 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
           </span> 
           <div className='postCard-image'>
 
-            {post?.postImage&&<img src={post?.postImage} className='postCard-image' alt='postImage'/>}
+            {post?.postImage&&<img src={post?.postImage} className='postCard-image' alt='postImage' onClick={openModal}/>}
             <div className='postCard-actions'>
               <div className='postCard-actions-item'>
                 <span>
