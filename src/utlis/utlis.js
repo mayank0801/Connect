@@ -39,3 +39,13 @@ export const suggestedUser=(users,userInfo)=>{
     const {username,following}=userInfo;
     return users.filter((user)=>user.username!==username&&!following.find((userFollow)=>userFollow.username===user.username));
 }
+
+
+export const getJoinedMonth=(datee)=>{
+const month = datee?.toLocaleString('default', { month: 'long' });
+const year = new Date(datee)?.getFullYear();
+
+console.log(typeof month,year,"hibi");
+return ` ${year}`;
+
+}
