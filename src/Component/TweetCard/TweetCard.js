@@ -16,7 +16,8 @@ import {FiShare} from "react-icons/fi";
 import Modal from 'react-modal';
 import "./TweetCard.css"
 
-export const TweetCard = ({post,userInfo,token,dispatch}) => {
+export const TweetCard = ({post,userInfo,token,dispatch,isPostDetail}) => {
+  console.log(post,userInfo,token,dispatch,"di");
     const {
     _id,
     content,
@@ -42,7 +43,7 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
   };
 
 
-    const postUser=users?.find(({username})=>username===post.username);
+    const postUser=users?.find(({username})=>username===post?.username);
 
   return (
     <div className='PostCard'>
@@ -64,7 +65,7 @@ export const TweetCard = ({post,userInfo,token,dispatch}) => {
           </span> 
           <div className='postCard-image'>
 
-            {post?.postImage&&<img src={post?.postImage} className='postCard-image' alt='postImage' onClick={openModal}/>}
+            {post?.postImage&&<img src={post?.postImage} className='postCard-image' alt='postImage' onClick={openModal} style={{height:isPostDetail?"500px":null}}/>}
             <div className='postCard-actions'>
               <div className='postCard-actions-item'>
                 <span>

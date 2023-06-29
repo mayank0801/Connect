@@ -5,11 +5,12 @@ import { useConst } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { PostContext } from '../context/PostContext';
 import { AuthContext } from '../context/AuthContext';
+import "./Feature.css";
 
 export const Comment = ({post}) => {
 
     const [commentContent,setcommentContent]=useState("");
-    const {token}=useContext(AuthContext)
+    const {token,userInfo}=useContext(AuthContext)
     const {dispatch}=useContext(PostContext)
     
     const handleChange=(event)=>{
@@ -24,24 +25,25 @@ export const Comment = ({post}) => {
     }
 
   return (
-
-    <div >
-                    <div >
-                        <img  alt="profile"/>
+<>
+    <div className='userComment-input' >
+                    <div className='comment-userProfile'>
+                        <img src={userInfo?.profileAvatar} alt="profile"/>
                     </div>
 
-                    <div >
-                    <textarea
-                    style={{border:"1px solid black"}}
-                    name="content"
-                    rows="1"
-                    value={commentContent}
-                    onChange={(e)=>handleChange(e)}
-                    placeholder="POst a Reply"
-                    />
-                    <button onClick={()=>handleSubmit()}>Post</button>
+                    <div className='comment-content'>
+                        <textarea
+                        style={{border:"1px solid black"}}
+                        name="content"
+                        rows="1"
+                        value={commentContent}
+                        onChange={(e)=>handleChange(e)}
+                        placeholder="Post a Comment"
+                        />
+                    <button className='commentbtn' onClick={()=>handleSubmit()}>Post</button>
             </div>
             
             </div>
+  </>
   )
 }

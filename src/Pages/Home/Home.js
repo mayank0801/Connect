@@ -14,6 +14,7 @@ import { SearchUser } from "../../Component/SearchUser/SearchUser";
 import { AsideRight } from "../../Component/AsideRight/AsideRIght";
 import CreatePost from "../../Component/CreatePost/CreatePost";
 export default function Home(){
+    
     const {posts,dispatch,state:{filterType,users}}=useContext(PostContext);
     const {userInfo,token}=useContext(AuthContext);
    
@@ -27,30 +28,22 @@ export default function Home(){
                 <Aside/>  
             </aside>
             <div className="main-content">
-                <div className="page-Title">
-                <h3 className="title">Home</h3>
-                </div>
-                    <>
-                    <CreatePost/>
-                    </>
 
-               
+                <div className="page-Title">
+                    <h3 className="title">Home</h3>
+                </div>
+                <CreatePost/>
                 <div className="filter-Tweet">
                     <SortBar/>
                 </div>
-
-
-
-
-
                 <div style={{width:"100%"}}>
                 {
                     userFeed.map((post)=><TweetCard key={post._id} post={post} userInfo={userInfo} token={token} dispatch={dispatch}/>)
                 }
                 </div>
             </div>
+
             <div className="aside-right">
-               
                 <AsideRight/>
             </div>
         </div>
