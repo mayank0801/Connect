@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import {GrGallery} from "react-icons/gr"
 import {BsEmojiSmile} from "react-icons/bs"
 import {RxCrossCircled} from "react-icons/rx"
-// import  "./Home.css"
+import  "./Home.css"
 import { cloudinaryImageFetcher, createPosthandler } from "../../services/postServices";
 import { SortBar } from "../../Component/SortBar/SortBar";
 import { userFeed, userFeedPost } from "../../utlis/utlis";
@@ -93,10 +93,11 @@ export default function Home(){
 
 
 
-
+                <div style={{width:"100%"}}>
                 {
                     userFeed.map((post)=><TweetCard key={post._id} post={post} userInfo={userInfo} token={token} dispatch={dispatch}/>)
                 }
+                </div>
             </div>
             <div className="aside-right">
                 Suggested User
