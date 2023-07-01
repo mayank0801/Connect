@@ -99,7 +99,7 @@ export const TweetCard = ({post,userInfo,token,dispatch,isPostDetail}) => {
                 <span>
                 <FaRegComment size={20} onClick={()=>setOpenComment(true)}/>
                 </span>
-                <span>{comments.length?comments.length:""}</span>
+                <span>{comments?.length?comments?.length:""}</span>
                 
               </div>
               <div className='postCard-actions-item'>

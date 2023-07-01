@@ -51,4 +51,4 @@ return ` ${year}`;
 }
 
 
-export const CreatePostEmpty=(PostContent)=>PostContent.content.length===0&&!PostContent.postImage
+export const CreatePostEmpty=(PostContent)=>PostContent?.content?.length===0&&!PostContent?.postImage

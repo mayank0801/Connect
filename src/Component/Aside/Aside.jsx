@@ -52,7 +52,7 @@ const Aside = () => {
           </span>
           <span className="aside-link-text">Profile</span>
         </NavLink>
-        <NavLink className="aside-link">
+        <NavLink onClick={logoutHandler} className="aside-link">
         <span className="aside-icon">
             <LuVerified color="white" size={20} />
           </span>
