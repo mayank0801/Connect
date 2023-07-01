@@ -28,7 +28,7 @@ export const getUserId=(usernameToFind,users)=>{
 
 export const searchUser=(users,searchedUser)=>{
     if(searchedUser.length==0){
-        console.log("hii",searchedUser.length);
+        // console.log("hii",searchedUser.length);
         return [];
     }
     return users.filter(({username,firstName,lastName})=>username.includes(searchedUser)||firstName.includes(searchedUser)||lastName.includes(searchedUser));
@@ -45,7 +45,7 @@ export const getJoinedMonth=(datee)=>{
 const month = datee?.toLocaleString('default', { month: 'long' });
 const year = new Date(datee)?.getFullYear();
 
-console.log(typeof month,year,"hibi");
+// console.log(typeof month,year,"hibi");
 return ` ${year}`;
 
 }

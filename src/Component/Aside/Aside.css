@@ -73,4 +73,11 @@ line-height: normal;
 }
 /* .aside */
 
-
+.createPostModal{
+    position: absolute;
+    width: 60%;
+    background-color: #0a0a0a;
+    top: 30%;
+    left: 20%;
+    z-index: 2;
+}

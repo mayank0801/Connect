@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { PostContext } from "../../context/PostContext";
 import { AuthContext } from "../../context/AuthContext";
 import {MdPermMedia} from "react-icons/md"
@@ -18,12 +18,17 @@ export default function CreatePost(){
         postImage:"",
     });
 
+    const [cloudnaryImage,setCloudnaryImage]=useState("");
+
+
+    const inputRef=useRef(null);
 
 
     const handleChange=(event)=>{
         const{name,value}=event.target;
         if(name==="postImage"){
         setpostContent({...postContent,postImage:URL.createObjectURL(event.target.files[0])});
+        setCloudnaryImage(event.target.files[0]);
         }
         else
         setpostContent({...postContent,[name]:value})
@@ -31,11 +36,17 @@ export default function CreatePost(){
         event.target.style.height = `${event.target.scrollHeight}px`
     }
     const postSubmitHandler=async()=>{
-        let profileAvatarUrl=await cloudinaryImageFetcher(postContent.postImage);
-        console.log(profileAvatarUrl,"p")
-        await createPosthandler({...postContent,postImage:profileAvatarUrl.url},token,dispatch);
+        let profileAvatarUrl="";
+        if(postContent.postImage)
+        profileAvatarUrl=await cloudinaryImageFetcher(cloudnaryImage);
+        await createPosthandler({...postContent,postImage:profileAvatarUrl?profileAvatarUrl?.url:""},token,dispatch);
         setpostContent({ content:"",
         postImage:""});
+    }
+
+
+    const openFile=()=>{
+        inputRef.current.click();
     }
 
 
@@ -66,14 +77,14 @@ export default function CreatePost(){
     <div className="post-icons">
         <div className="post-icons-item">
             <span>
-            <MdPermMedia size={30}  fill="white" className="post-icons_item"  onChange={handleChange}/>
-            <input type="file" name="postImage" style={{display:"none"}} onChange={handleChange} />
+            <MdPermMedia size={30}  fill="white" className="post-icons_item" onClick={openFile}/>
+            <input type="file" name="postImage" style={{display:"none"}} ref={inputRef} onChange={handleChange} />
             </span>
             <span>
         <BsEmojiSmile fill="white" size={30}className="post-icons_item"/>
         </span>
         </div>
-        <button className="postbtn" onClick={()=>postSubmitHandler()} disabled={!postContent?.content||!postContent?.postImage}>Post</button>
+        <button className="postbtn" onClick={()=>postSubmitHandler()} >Post</button>
     </div>
 </div>
 </div>

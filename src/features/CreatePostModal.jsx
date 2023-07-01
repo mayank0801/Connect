@@ -29,14 +29,17 @@ export const CreatePostModal = ({setPostModal,intialPostData,post}) => {
             await editPost(post._id,postData,token,dispatch)
             setPostModal(false);
     }
+
+
+
   return (
-    <div style={{position:"fixed",top:"10%",backgroundColor:"red",right:"50%"}}>
-        <div>
+    <div className='create-modal'>
+        <div className=''>
                     <div>
                         <img className="profile" src="" alt="profile"/>
                     </div>
 
-                    <div >
+                    <div className='createPost-modal-input'>
                     <textarea
                     value={postData?.content}
                     name="content"

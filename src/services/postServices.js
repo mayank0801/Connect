@@ -51,6 +51,7 @@ export const dislikeHandler=async(postId,encodedToken,dispatch)=>{
 }
 
 export const createPosthandler=async(post,encodedToken,dispatch)=>{
+    console.log("post",post);
     try {
         const response=await axios.post(`/api/posts/`,{postData:post},{headers:{authorization:encodedToken}})
         if(response){
@@ -198,6 +199,7 @@ export const updateUserhandler=async(userData,encodedToken,updateUser)=>{
 
 
 export const cloudinaryImageFetcher = async (mediaNewPost) => {
+    console.log(mediaNewPost,"mediapoat")
     const dataForCloudinary = new FormData();
     dataForCloudinary.append("file", mediaNewPost);
     dataForCloudinary.append("upload_preset", "connect");

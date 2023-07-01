@@ -13,11 +13,14 @@ import Aside from '../../Component/Aside/Aside';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
 import "./Profile.css"
 import { getJoinedMonth, getUserId } from '../../utlis/utlis';
+import { useClickOutside } from '../../hook/clickOutside';
+import { useRef } from 'react';
 
 export const Profile = () => {
 const {profileId}=useParams();
 const {userInfo,token,updateUser,loaduserHandler,logoutHandler}=useContext(AuthContext);
 
+const postRef=useRef(null);
 
 const [profileDetail,setProfileDetail]=useState(null);
 const [editProfileModal,setEditProfileModal]=useState(false);
@@ -25,7 +28,7 @@ const [editProfileModal,setEditProfileModal]=useState(false);
 const currentLoggedInUser=profileDetail?.username===userInfo?.username;
 const isUserFollowing=userInfo?.following?.find(({username})=>username===profileDetail?.username);
 
-const profileUserName=getUserId(profileDetail?.username,users)
+// const profileUserName=getUserId(profileDetail?.username,users)
 
 const navigate=useNavigate();
 
@@ -47,15 +50,18 @@ useEffect(()=>{
   getProfileData();
 },[userInfo])
 
+
+// useClickOutside(postRef,setEditProfileModal)
+
   return (
-<div style={{display:"flex",justifyContent:"center"}}>
+<div style={{display:"flex",justifyContent:"center"}} >
 
       <aside className="aside">
             <Aside/>  
       </aside>
 
 
-    <div className='main-content'>
+    <div className='main-content' >
       
         <div>
             <BiArrowBack size={30} onClick={()=>navigate("/")}/>
@@ -69,7 +75,7 @@ useEffect(()=>{
             <img src={"https://img.freepik.com/free-vector/blue-curve-background_53876-113112.jpg?w=2000"} alt='backgroundimage'/>
           </div>
           <div className='profile-detail'>
-            <div className='profile-Action'>
+            <div className='profile-Action' ref={postRef}>
               {
                   currentLoggedInUser?<>
                   <button className='editbtn' onClick={()=>setEditProfileModal(!editProfileModal)}>Edit profile</button>

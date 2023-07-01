@@ -9,6 +9,7 @@ width: 50%;
     cursor: pointer;
     padding: 0.5rem 0.5rem;
     border-top: 1px solid #2F3336;
+    position: relative;
 }
 .postCard-profileImage>img{
     cursor: pointer;

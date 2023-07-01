@@ -17,13 +17,15 @@ export const EditProfileModal = ({intialState,setEditProfileModal}) => {
     const [profileFileAvatar,setProfileAvatar]=useState(intialState.profileAvatar)
     const inputRef=useRef(null);
 
+    const [cloudnaryImage,setCloudnaryImage]=useState("");
+
     const handleChange=(event)=>{
         const {name,value}=event.target;
         setuserData({...userData,[name]:value})
     }
 
     const handleSubmit=async()=>{
-      let profileAvatarUrl=await cloudinaryImageFetcher(profileFileAvatar);
+      let profileAvatarUrl=await cloudinaryImageFetcher(cloudnaryImage);
       console.log(profileAvatarUrl.url);
       if(!profileAvatarUrl)profileAvatarUrl=intialState?.profileAvatar;
       updateUserhandler({...userData,profileAvatar:profileAvatarUrl.url},token,updateUser)
@@ -33,7 +35,8 @@ export const EditProfileModal = ({intialState,setEditProfileModal}) => {
     
 
 
-      const performAction = () => {
+      const performAction = (e) => {
+        e.stopPropagation();
         inputRef.current.click()
       };
 
@@ -41,22 +44,35 @@ export const EditProfileModal = ({intialState,setEditProfileModal}) => {
 
     
   return (
-    <div style={{border:"1px solid red"}}>
-
-      <div style={{display:"flex",flexWrap:"wrap"}}>
-        {
-          avatars.map((avatar)=><div><img className='avtar-image' src={avatar} alt='avatar' onClick={()=>setProfileAvatar(avatar)}/></div>)
-        }
-
+    <div className="edit-profile-modal">
+  <div className="chooseavatar-container">
+    {avatars.map((avatar) => (
+      <div key={avatar}>
+        <img className="avatar-image" src={avatar} alt="avatar" onClick={() => setProfileAvatar(avatar)} />
       </div>
-            <img style={{width:"80px",height:"80px",borderRadius:"50%"}} src={profileFileAvatar}  alt='profileAvtar'/>
-            <AiOutlineCamera onClick={performAction}/>
-            <input type='file' ref={inputRef} style={{display:"none"}} onChange={(e)=>setProfileAvatar(URL.createObjectURL(e.target.files[0]))}/>
-        <div>
-            <input name='bio' type='text' value={userData?.bio} onChange={handleChange}/>
-            <input name='website' type='text' value={userData?.website} onChange={handleChange}/>
-        </div>
-        <button onClick={()=>handleSubmit()}>Update</button>
-    </div>
+    ))}
+  </div>
+
+  <div className='edit-profile-image'>
+    <span>
+  <img className="edit-profile-avatar" src={profileFileAvatar} alt="profileAvatar" />
+  <AiOutlineCamera size={20} fill='black' stroke='black' className="camera-icon" onClick={performAction} />
+  <input type="file" ref={inputRef} style={{ display: "none" }} onChange={(e) =>{
+    setProfileAvatar(URL.createObjectURL(e.target.files[0]))
+    setCloudnaryImage(e.target.files[0]);
+    }} />
+
+  
+  </span>
+  </div>
+  <div className='editProfile-modal-input'>
+    <label>Name:</label>
+    <input name="bio" type="text" value={userData?.bio} onChange={handleChange} />
+    <label>Website:</label>
+    <input name="website" type="text" value={userData?.website} onChange={handleChange} />
+  </div>
+  <button className='updateBtn' onClick={() => handleSubmit()}>Update</button>
+</div>
+
   )
 }

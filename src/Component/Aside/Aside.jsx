@@ -9,9 +9,18 @@ import { BsBookmarkDash } from 'react-icons/bs';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import {FiMoreHorizontal} from "react-icons/fi";
 import {LuVerified} from "react-icons/lu"
+import { useState } from 'react';
+import { CreatePostModal } from '../../features/CreatePostModal';
+import CreatePost from '../CreatePost/CreatePost';
+import { useClickOutside } from '../../hook/clickOutside';
+import { useRef } from 'react';
 
 const Aside = () => {
   const { userInfo, logoutHandler } = useContext(AuthContext);
+  const [createPostModal,setCreatePostModal]=useState(false);
+  const postRef=useRef(null)
+
+  useClickOutside(postRef,setCreatePostModal);
 
   return (
     <aside className="aside-container">
@@ -50,7 +59,15 @@ const Aside = () => {
           <span className="aside-link-text">Verified Badge</span>
         </NavLink>
       </nav>
-      <button className='aside-postBtn'>Post</button>
+      <div>
+      <button className='aside-postBtn' onClick={()=>setCreatePostModal(!createPostModal)}>Post</button>
+      <div className='createPostModal' ref={postRef}>
+      {
+        createPostModal&&<CreatePost/>
+      }
+      </div>
+
+      </div>
       <div className='aside-footer'>
         <div className='aside-profile'>
           <img className='aside-profile-image' src={userInfo?.profileAvatar} alt='userProfile'/>

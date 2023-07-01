@@ -5,8 +5,9 @@ import { AuthContext } from '../context/AuthContext';
 import { PostContext } from '../context/PostContext';
 
 export const EditCommentModal = ({post,comment,initalCommentData,setOpenComment,addCommentModal}) => {
-const {token}=useContext(AuthContext);
+const {token,userInfo}=useContext(AuthContext);
 const {dispatch}=useContext(PostContext);
+
 console.log(initalCommentData,post,addCommentModal,"initail");
     const [commentData,setCommendata]=useState(initalCommentData);
     const submitHandler=async()=>{
@@ -16,16 +17,31 @@ console.log(initalCommentData,post,addCommentModal,"initail");
         setOpenComment(false);
     }
 
+    const handleChange=(event)=>{
+        setCommendata(event.target.value)
+        event.target.style.height = "auto";
+        event.target.style.height = `${event.target.scrollHeight}px`
+    }
+
   return (
-    <div style={{position:"absolute",top:"10%"}}>
-        <div>
-            <img alt="userProfile"/>
-            <input type="text" value={commentData} onChange={(e)=>setCommendata(e.target.value)}></input>
-            <div>
-                <button onClick={()=>setOpenComment(false)}>Cancel</button>
-                <button onClick={()=>submitHandler()}>Save</button>
-            </div>
-        </div>
+<div className="comment-modal-container">
+      <img src={userInfo?.profileAvatar} className="user-profile" alt="userProfile" />
+    <div className="comment-modal">
+    <textarea
+    className='comment-input'
+        value={commentData}
+        name="content"
+        rows="1"
+        placeholder="What is Happening?!"
+        onChange={(e)=>handleChange(e)}
+    />
+     
+      <div className="button-container">
+        <button className="cancel-button" onClick={() => setOpenComment(false)}>Cancel</button>
+        <button className="save-button" onClick={() => submitHandler()}>Save</button>
+      </div>
     </div>
+  </div>
+  
   )
 }
