@@ -13,13 +13,19 @@ import { userFeed, userFeedPost } from "../../utlis/utlis";
 import { SearchUser } from "../../Component/SearchUser/SearchUser";
 import { AsideRight } from "../../Component/AsideRight/AsideRIght";
 import CreatePost from "../../Component/CreatePost/CreatePost";
+import { useEffect } from "react";
 export default function Home(){
     
     const {posts,dispatch,state:{filterType,users}}=useContext(PostContext);
     const {userInfo,token}=useContext(AuthContext);
    
     const userFollowing=userInfo?.following.map((user)=>user.username);
-    const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo)
+    const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo);
+
+
+    useEffect(()=>{
+
+    },[userInfo]);
 
 
     return(

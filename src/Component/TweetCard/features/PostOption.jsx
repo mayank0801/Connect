@@ -4,8 +4,7 @@ import { PostContext } from '../../../context/PostContext';
 import { deletePosthandler, followUser, loaduserHandler, unfollow } from '../../../services/postServices';
 import { AuthContext } from '../../../context/AuthContext';
 import { CreatePostModal } from '../../../features/CreatePostModal';
-import { useClickOutside } from '../../../hook/clickOutside';
-import { useRef } from 'react';
+
 
 
 export const PostOption = ({ post, postUser }) => {
@@ -49,10 +48,11 @@ export const PostOption = ({ post, postUser }) => {
 
         
         {
-          isUserFollowing&&<p className='userPost-option-text' onClick={()=>unfollow(followuserId._id,token,updateUser,loaduserHandler)}>Unfollow</p>
+          isUserFollowing&&<p className='userPost-option-text' onClick={()=>
+            unfollow(followuserId._id,token,updateUser,loaduserHandler)}>Unfollow</p>
         }
 
-        {!isUserFollowing&&<p className='userPost-option-text' onClick={()=>followUser(followuserId?._id,token,updateUser,loaduserHandler)}>Follow</p>}
+        {!isUserFollowing&&!isUserPost&&<p className='userPost-option-text' onClick={()=>followUser(followuserId?._id,token,updateUser,loaduserHandler)}>Follow</p>}
 
         </div>
     </div>

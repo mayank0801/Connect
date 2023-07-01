@@ -87,14 +87,15 @@ export const followUserHandler=async(followUserId,encodedToken,dipatch)=>{
 
 
 export const unfollow=async(followUserId,encodedToken,updateUser,loaduserHandler)=>{
+
     try {
-       const response=await axios.post(`/api/users/unfollow/${followUserId}`,{},{headers:{authorization:encodedToken}}) 
-       localStorage.setItem("userInfo",JSON.stringify(response.data.user));
+       const response=await axios.post(`/api/users/unfollow/${followUserId}`,{},{headers:{authorization:encodedToken}});
+       console.log(response,"Clicked1") ;
        updateUser(response.data.user);
        await loaduserHandler();
 
     } catch (error) {
-        console.log(error)
+        console.log(error,"Clicked1");
     }
 }
 

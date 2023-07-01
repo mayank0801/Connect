@@ -48,7 +48,7 @@ export const users = [
       },
     ],
     following: [
-      {_id:uuid(),firstName: "Adarsh",username: "adarshbalika",profileAvatar:
+      {_id:100,firstName: "Adarsh",username: "adarshbalika",profileAvatar:
       "https://picsum.photos/id/1012/150",
     },
     {_id: 102,firstName: "Yuvraj",username: "Spidy",profileAvatar:

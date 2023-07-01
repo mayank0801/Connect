@@ -21,6 +21,7 @@ export default function AuthContextProvider({children}){
 
 
     const updateUser=(updatedUser)=>{
+        console.log("Clicked1",updateUser)
         localStorage.setItem("userInfo",JSON.stringify(updatedUser));
         setUserInfo(updatedUser);
         console.log("checkpoint 2 user locally updated with",updateUser)
