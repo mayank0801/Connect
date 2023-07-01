@@ -1,0 +1,32 @@
+.comment-card{
+    padding: 0.5rem;
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+.user-profile{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+.comment-header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+}
+.comment-detail{
+    display: flex;
+    align-items: center;
+  
+}
+
+
+.comment-detail p:first-child{
+    font-weight: 700;
+}
+.comment-detail p:last-child{
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #6E767D;
+}

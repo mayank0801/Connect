@@ -95,6 +95,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: []
     },
+    postImage:"https://res.cloudinary.com/ditqnzlil/image/upload/v1683716038/cld-sample-2.jpg",
     username: "Spidy",
     firstName: "Yuvraj",
     createdAt: "2023-06-16",

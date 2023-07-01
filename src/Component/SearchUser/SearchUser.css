@@ -1,0 +1,35 @@
+.searchContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.searchUser-input{
+background-color: #202327;
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 50px;
+}
+.searchUser-input>input{
+    border: none;
+    outline: none;
+    background-color: #202327;
+    color: white;
+    font-size: 1rem;
+}
+.searchedUser{
+    position: absolute;
+    top: 100%;
+    padding: 0.5rem 0.9rem;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    z-index: 99;
+    height: 150px;
+    cursor: pointer;
+    background-color: #202327;
+}
+.searchUsercontainer{
+    display: flex;
+    margin-bottom: 10px;
+}

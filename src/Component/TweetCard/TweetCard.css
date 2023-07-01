@@ -1,3 +1,107 @@
 .tweetCard{
 width: 50%;
 }
+
+.PostCard{
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    cursor: pointer;
+    padding: 0.5rem 0.5rem;
+    border-top: 1px solid #2F3336;
+}
+.postCard-profileImage>img{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.postCard-Content{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.postCard-userDetail{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+.postCard-userInfo{
+    display: flex;
+    justify-content: start;
+}
+.postCard-userInfo p:first-child{
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.postCard-userInfo p:nth-child(2){
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #6E767D;
+    line-height: normal;
+}
+.postCard-content{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+    color: #D9D9D9;
+   
+}
+.postCard-image{
+    width: 100%;
+    margin-top: 5px   
+}
+.postCard-image>img{
+    border-radius: 36px;
+    height: 300px;
+}
+.postCard-actions{
+    display: flex;
+    justify-content: space-between;
+}
+.postCard-actions-item{
+    width: 25%;
+    padding: 0.5rem;
+    display: flex;
+    /* align-items: center; */
+}
+.postCard-actions-item>span{
+    cursor: pointer;
+    padding: 0.2rem 0.2rem;
+    color: gray;
+    font-size: 14px;
+    font-weight: 700;
+
+}
+.postCard-actions-item:hover span{
+    color: white;
+}
+/* .postCard-actions-item:hover span:nth-child(1) {
+    background-color:gray;
+    padding: 0.2rem 0.2rem;
+    border-radius: 50%;
+  } */
+
+
+
+
+  .fullscreen-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+  
+  

@@ -1,0 +1,43 @@
+.userComment-input{
+display: flex;
+width: 100%;
+align-items: start;
+padding: 0.4rem 0.5rem;
+border-bottom:1px solid #2F3336 ;
+gap: 5px;
+}
+.comment-userProfile{
+
+}
+.comment-userProfile>img{
+    height: 40px;
+    width: 40px;
+    border-radius: 64%;
+}
+.comment-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.comment-content>textarea{
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 50px;
+    font-size: 1.5rem;
+    padding: 0.4rem 0.5rem;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+}
+.commentbtn{
+    align-self: end;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+    border-radius:50px ;
+    background-color: blue;
+    color: white;
+    
+}

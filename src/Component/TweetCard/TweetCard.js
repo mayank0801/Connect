@@ -11,54 +11,100 @@ import { AuthContext } from '../../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 import {FaRegComment} from "react-icons/fa";
 import { EditCommentModal } from '../../features/EditCommentModal';
+import { PostContext } from '../../context/PostContext';
+import {FiShare} from "react-icons/fi";
+import Modal from 'react-modal';
+import "./TweetCard.css"
 
-export const TweetCard = ({post,userInfo,token,dispatch}) => {
+export const TweetCard = ({post,userInfo,token,dispatch,isPostDetail}) => {
+  console.log(post,userInfo,token,dispatch,"di");
     const {
     _id,
     content,
     createdAt,
     likes,
-    username
+    username,
+    profileAvatar
     }=post;
     const [isOpenModal,setIsOpen]=useState(false);
     const [isOpenComment,setOpenComment]=useState(false);
  
     const {updateBookMark,userBookMark}=useContext(AuthContext);
+    const {state:{users}}=useContext(PostContext);
     const navigate=useNavigate();
-    // console.log(userBookMark,"userBookMark");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+
+    const postUser=users?.find(({username})=>username===post?.username);
+
   return (
-    <div className='tweetCard'>
-      <div style={{display:'flex',alignItems:"center",justifyContent:'space-between'}}>
-        <div style={{cursor:"pointer"}} onClick={()=>navigate(`/profile/${post?.username}`)}>
-        <h4>{username}</h4>
-        </div>
-        <FiMoreHorizontal onClick={()=>setIsOpen(!isOpenModal)}></FiMoreHorizontal>  
-        <div className='postOptions' style={{position:'absolute',zIndex:"2",backgroundColor:'white',color:'black',boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}}>
-        {
-          isOpenModal&&<PostOption 
-          post={post}
-          userInfo={userInfo}
-          />
-        }
-        </div>
-        </div>    
+    <div className='PostCard'>
+      <div className='postCard-profileImage'>
+        <img onClick={()=>navigate(`/profile/${postUser?.username}`)} src={postUser?.profileAvatar} alt='postuserProfile'/>
+      </div>
 
-        <p style={{ cursor:"pointer",  overflow:"hidden",textOverflow: "ellipsis", whiteSpace: "nowrap", width: "200px" }} >
+      <div className='postCard-Content' >
+          <div className='postCard-userDetail'>
+            <div className='postCard-userInfo' onClick={()=>navigate(`/profile/${postUser?.username}`)}>
+              <p>{`${postUser?.firstName} ${postUser?.lastName}`}</p>
+              <p>@{username}</p>
+            </div>
+              <FiMoreHorizontal size={20} className='postCard-moreIcon' onClick={()=>setIsOpen(!isOpenModal)}></FiMoreHorizontal>  
           
-          {isLiked(likes,userInfo.username)?<AiFillHeart color='red' onClick={()=>dislikeHandler(_id,token,dispatch)}/>:<AiOutlineHeart onClick={()=>likePostHandler(_id,token,dispatch)}/>}
-          <span>
-          <FaRegComment onClick={()=>setOpenComment(true)}/>{post?.comments?.length}
-          </span>
-          {isBookMark(userBookMark,post._id)?<BsBookmarksFill onClick={()=>removeBookMark(post._id,token,updateBookMark)}/>:<BsBookmarks onClick={()=>bookmark(post._id,token,updateBookMark)}/>}
-       
-        </p>
-        <span onClick={()=>navigate(`/post/${_id}`)}>
-       {content} 
-       </span> 
-       <img src={post?.postImage}/>
+          </div>  
+          <span className='postCard-content' onClick={()=>navigate(`/post/${_id}`)}>
+            {content} 
+          </span> 
+          <div className='postCard-image'>
 
-
+            {post?.postImage&&<img src={post?.postImage} className='postCard-image' alt='postImage' onClick={openModal} style={{height:isPostDetail?"500px":null}}/>}
+            <div className='postCard-actions'>
+              <div className='postCard-actions-item'>
+                <span>
+                  {isLiked(likes,userInfo.username)?<AiFillHeart color='red' size={20} onClick={()=>dislikeHandler(_id,token,dispatch)}/>:<AiOutlineHeart size={20} onClick={()=>likePostHandler(_id,token,dispatch)}/>}
+                </span>
+                <span>36</span>
+              </div>
+              <div className='postCard-actions-item'>
+                
+                <span>
+                <FaRegComment size={20} onClick={()=>setOpenComment(true)}/>
+                </span>
+                <span>36</span>
+                
+              </div>
+              <div className='postCard-actions-item'>
+                <span>
+              {isBookMark(userBookMark,post._id)?<BsBookmarksFill size={20} onClick={()=>removeBookMark(post._id,token,updateBookMark)}/>:<BsBookmarks size={20} onClick={()=>bookmark(post._id,token,updateBookMark)}/>}
+              </span>
+              <span>36</span>
+              </div>
+              <div className='postCard-actions-item'>
+                <span>
+              <FiShare size={20}/>
+              </span>
+              </div>
+          </div>
+          </div>
+            
+        </div>
        {isOpenComment&&<EditCommentModal post={post}  initalCommentData={""}  setOpenComment={setOpenComment} addCommentModal={true}/>}
+       <div className='postCard-postOptions'>
+              {
+                isOpenModal&&<PostOption 
+                post={post}
+                userInfo={userInfo}
+                />
+              }
+            </div>
        
     </div>
   )

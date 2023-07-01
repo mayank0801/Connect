@@ -22,7 +22,7 @@ export const isBookMark=(userBookMark,postId)=>{
 
 export const getUserId=(usernameToFind,users)=>{
     const outputId=users?.find(({username})=>username===usernameToFind);
-    if(outputId)return outputId._id;
+    if(outputId)return outputId.username;
     return false;
 }
 

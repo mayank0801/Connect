@@ -12,94 +12,38 @@ import { SortBar } from "../../Component/SortBar/SortBar";
 import { userFeed, userFeedPost } from "../../utlis/utlis";
 import { SearchUser } from "../../Component/SearchUser/SearchUser";
 import { AsideRight } from "../../Component/AsideRight/AsideRIght";
+import CreatePost from "../../Component/CreatePost/CreatePost";
 export default function Home(){
+    
     const {posts,dispatch,state:{filterType,users}}=useContext(PostContext);
     const {userInfo,token}=useContext(AuthContext);
-    const [postContent,setpostContent]=useState({
-        content:"",
-        postImage:"",
-    });
-
+   
     const userFollowing=userInfo?.following.map((user)=>user.username);
     const userFeed=userFeedPost(posts,filterType,userFollowing,userInfo)
 
-    const handleChange=(event)=>{
-        const{name,value}=event.target;
-        if(name==="postImage"){
-        setpostContent({...postContent,postImage:URL.createObjectURL(event.target.files[0])});
-        }
-        else
-        setpostContent({...postContent,[name]:value})
-        event.target.style.height = "auto";
-        event.target.style.height = `${event.target.scrollHeight}px`
-    }
-    const postSubmitHandler=async()=>{
-        console.log(postContent.postImage,"pp")
-        let profileAvatarUrl=await cloudinaryImageFetcher(postContent.postImage);
-        console.log(profileAvatarUrl,"p")
-        await createPosthandler({...postContent,postImage:profileAvatarUrl.url},token,dispatch);
-        setpostContent({ content:"",
-        postImage:""});
-    }
+
     return(
         <div className="home-Container">
             <aside className="aside">
                 <Aside/>  
             </aside>
             <div className="main-content">
-                <h3 className="title">Home</h3>
-                <div className="createPost">
-                    <div className="userImage">
-                        <img className="profile" src={userInfo?.profileAvatar} alt="profile"/>
-                    </div>
 
-                    <div className="postContent">
-
-                    <textarea
-                    className={postContent.content?"postContent":"placeholder"} 
-                    name="content"
-                    rows="1"
-                    value={postContent?.content}
-                    onChange={handleChange}
-                    placeholder="What is Happening?!"
-                    />
-                    <div className="post-img">
-                    {postContent?.postImage&&<>
-                    <img width={"100%"} height={"100%"} src={postContent?.postImage} alt="postimage"/>
-                    <RxCrossCircled size={30} color="red" className="cross-icon" onClick={()=>setpostContent({...postContent,postImage:""})}/>
-                    </>
-}
-                    </div>
-                    <div className="post-icons">
-                        <label>
-                        <GrGallery size={30} className="post-icons_item"  onChange={handleChange}/>
-                        <input type="file" name="postImage" style={{display:"none"}} onChange={handleChange} />
-                        </label>
-                        <BsEmojiSmile size={30}className="post-icons_item"/>
-                        <button className="postbtn" onClick={()=>postSubmitHandler()}>Post</button>
-                    </div>
-                    </div>
-
-
-
-
+                <div className="page-Title">
+                    <h3 className="title">Home</h3>
                 </div>
-
+                <CreatePost/>
                 <div className="filter-Tweet">
                     <SortBar/>
                 </div>
-
-
-
-
-
-
+                <div style={{width:"100%"}}>
                 {
                     userFeed.map((post)=><TweetCard key={post._id} post={post} userInfo={userInfo} token={token} dispatch={dispatch}/>)
                 }
+                </div>
             </div>
+
             <div className="aside-right">
-                Suggested User
                 <AsideRight/>
             </div>
         </div>

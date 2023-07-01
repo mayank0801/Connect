@@ -1,19 +1,68 @@
-import React, { useContext } from 'react'
-import "./Aside.css"
-import {NavLink} from "react-router-dom";
+import React, { useContext } from 'react';
+import './Aside.css';
+import ConnectLogo from '../../asset/ConnectLogo1.png';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-const Aside = () => {
-  const {userInfo,logoutHandler}=useContext(AuthContext);
-  return (
-    <nav className='nav-container'>
-        <NavLink className="nav-items" to="/">Home</NavLink>
-        <NavLink className="nav-items" to="/explore">Explore</NavLink>
-        <NavLink className="nav-items" to="/bookmark">BookMark</NavLink>
-        <NavLink className="nav-items" to={`/profile/${userInfo?.username}`}>Profile</NavLink>
-        <NavLink className="nav-items" onClick={logoutHandler}>Logout</NavLink>
-    </nav>
-  )
-}
+import { AiOutlineHome } from 'react-icons/ai';
+import { BsSearch } from 'react-icons/bs';
+import { BsBookmarkDash } from 'react-icons/bs';
+import { MdOutlineAccountCircle } from 'react-icons/md';
+import {FiMoreHorizontal} from "react-icons/fi";
+import {LuVerified} from "react-icons/lu"
 
+const Aside = () => {
+  const { userInfo, logoutHandler } = useContext(AuthContext);
+
+  return (
+    <aside className="aside-container">
+      <nav className="aside-nav">
+        <NavLink to="/" className="aside-logo">
+          <img src={ConnectLogo} className='aside-logo-image' alt="ConnectLogo" />
+        </NavLink>
+        <NavLink to="/" className="aside-link">
+          <span className="aside-icon">
+            <AiOutlineHome color="white" size={20} />
+          </span>
+          <span className="aside-link-text">Home</span>
+        </NavLink>
+        <NavLink to="/explore" className="aside-link">
+          <span className="aside-icon">
+            <BsSearch color="white" size={20} />
+          </span>
+          <span className="aside-link-text">Explore</span>
+        </NavLink>
+        <NavLink to="/bookmark" className="aside-link">
+          <span className="aside-icon">
+            <BsBookmarkDash color="white" size={20} />
+          </span>
+          <span className="aside-link-text">Bookmarks</span>
+        </NavLink>
+        <NavLink to={`/profile/${userInfo?.username}`} className="aside-link">
+          <span className="aside-icon">
+            <MdOutlineAccountCircle color="white" size={20} />
+          </span>
+          <span className="aside-link-text">Profile</span>
+        </NavLink>
+        <NavLink onClick={logoutHandler} className="aside-link">
+        <span className="aside-icon">
+            <LuVerified color="white" size={20} />
+          </span>
+          <span className="aside-link-text">Verified Badge</span>
+        </NavLink>
+      </nav>
+      <button className='aside-postBtn'>Post</button>
+      <div className='aside-footer'>
+        <div className='aside-profile'>
+          <img className='aside-profile-image' src={userInfo?.profileAvatar} alt='userProfile'/>
+          <div className='aside-profile-info'>
+            <p>Mayank Kumar</p>
+            <p>@mayank0801</p>
+          </div>
+          <FiMoreHorizontal size={20}/>
+        </div>
+      </div>
+    </aside>
+  );
+};
 
 export default Aside;

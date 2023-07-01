@@ -5,6 +5,7 @@ import { bookmark } from '../../services/postServices'
 import { AuthContext } from '../../context/AuthContext'
 import { TweetCard } from '../../Component/TweetCard/TweetCard'
 import { PostContext } from '../../context/PostContext'
+import { AsideRight } from '../../Component/AsideRight/AsideRIght'
 
 export const BookMark = () => {
     
@@ -25,11 +26,19 @@ console.log(userBookMarkPost,"userBookMark")
         <Aside/>  
     </aside>
     <div className='main-content'>
-      {
-        userBookMarkPost.map(post=><TweetCard post={post} userInfo={userInfo} token={token} dispatch={dispatch}/>)
+    <div className="page-Title">
+                    <h3 className="title">BookMark</h3>
+    </div>
+
+    {
+      userBookMark.length===0?<h3 className="mainTitle">No BookMark Post</h3>:
+        userBookMarkPost.map(post=><TweetCard key={post?._id} post={post} userInfo={userInfo} token={token} dispatch={dispatch}/>)
       }
 
     </div>
+    <div className="aside-right">
+                <AsideRight/>
+            </div>
     </div>
   )
 }

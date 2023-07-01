@@ -16,7 +16,9 @@ import {BsBookmarks,BsBookmarksFill} from "react-icons/bs"
 import { AuthContext } from '../../context/AuthContext';
 import { Comment } from '../../features/Comment';
 import { CommentCard } from '../../Component/CommentCard/CommentCard';
-
+import { AsideRight } from '../../Component/AsideRight/AsideRIght';
+import "./PostDetail.css"
+import { TweetCard } from '../../Component/TweetCard/TweetCard';
 
 
 
@@ -26,8 +28,7 @@ export const PostDetail = () => {
     const {postId}=useParams();
     const navigate=useNavigate();
 
-
-
+ 
     
     const [postDetail,setPosDetail]=useState(null);
     const [postUser,setPostUser]=useState(null);
@@ -38,14 +39,15 @@ export const PostDetail = () => {
     
     
     const postUserId=getUserId(postDetail?.username,users);
+  
    
     const getPostUser=async()=>{
         try {
             const response=await axios.get(`/api/users/${postUserId}`);
             setPostUser(response.data.user);
-            // console.log(response.data.user);
+            console.log(response.data.user,"res");
         } catch (error) {
-            
+            console.log(error,"res")
         }
     }
     const getPost=async()=>{
@@ -64,44 +66,40 @@ export const PostDetail = () => {
         getPostUser();
     },[postUserId])
 
-
+console.log(postUser,"postUser")
 
   return (
+   
     <div className="home-Container">
       <aside className="aside">
                 <Aside/>  
         </aside>  
         <div className="main-content">
-            <div style={{display:"flex",alignItems:"center"}}>
+            <div className='page-Title page-TitleContainer'>
                 <BiArrowBack  onClick={()=>navigate(-1)}/>
                 <h3 className="title">Post</h3>
             </div>
 
             <div>
-                <img src={postUser?.profileAvatar} alt="postuserprofile"/>
-                <p>{postUser?.firstName}</p>
-                <p>{postUser?.username}</p>
-                <div>
-                    <IoMdMore size={30} onClick={()=>setIsOpen(!isOpenModal)}/>
-                   {isOpenModal&&<PostOption post={postDetail} userInfo={postUser}/>}
-                </div>
-                <p style={{ cursor:"pointer",  overflow:"hidden",textOverflow: "ellipsis", whiteSpace: "nowrap", width: "200px" }}>
-          
-          {isLiked(postDetail?.likes,userInfo?.username)?<AiFillHeart color='red' onClick={()=>dislikeHandler(postDetail?._id,token,dispatch)}/>:<AiOutlineHeart onClick={()=>likePostHandler(postDetail?._id,token,dispatch)}/>}
-          {isBookMark(userBookMark,postDetail?._id)?<BsBookmarksFill onClick={()=>removeBookMark(postDetail?._id,token,updateBookMark)}/>:<BsBookmarks onClick={()=>bookmark(postDetail?._id,token,updateBookMark)}/>}
-       {postDetail?.content}  
-        </p>
+               {postDetail&&postUser&&<TweetCard post={postDetail} userInfo={postUser} token={token} dispatch={dispatch} isPostDetail={true}/>}
             </div>
-            <div>
+            <div className="comment-section">
                 <div>
                     <Comment post={postDetail}/>
                 </div>
-                {
-                postDetail?.comments?.map((comment)=><CommentCard comment={comment} post={postDetail} dispatch={dispatch}/>)
-                }
-                </div>
+                {postDetail?.comments?.map((comment) => (
+                    <CommentCard comment={comment} post={postDetail} dispatch={dispatch}/>
+                ))}
+            </div>
+
 
         </div>
+
+        <div className="aside-right">
+                <AsideRight/>
+            </div>
     </div>
+
+ 
   )
 }
