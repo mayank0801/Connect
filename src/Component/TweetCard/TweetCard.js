@@ -25,8 +25,12 @@ export const TweetCard = ({post,userInfo,token,dispatch,isPostDetail}) => {
     createdAt,
     likes,
     username,
-    profileAvatar
+    profileAvatar,
+    comments
     }=post;
+
+
+    const {likeCount}=likes;
     const [isOpenModal,setIsOpen]=useState(false);
     const [isOpenComment,setOpenComment]=useState(false);
  
@@ -88,14 +92,14 @@ export const TweetCard = ({post,userInfo,token,dispatch,isPostDetail}) => {
                 <span>
                   {isLiked(likes,userInfo.username)?<AiFillHeart color='red' size={20} onClick={()=>dislikeHandler(_id,token,dispatch)}/>:<AiOutlineHeart size={20} onClick={()=>likePostHandler(_id,token,dispatch)}/>}
                 </span>
-                <span>36</span>
+                <span>{likeCount?likeCount:""}</span>
               </div>
               <div className='postCard-actions-item'>
                 
                 <span>
                 <FaRegComment size={20} onClick={()=>setOpenComment(true)}/>
                 </span>
-                <span>36</span>
+                <span>{comments.length?comments.length:""}</span>
                 
               </div>
               <div className='postCard-actions-item'>

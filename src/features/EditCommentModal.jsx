@@ -3,6 +3,8 @@ import { addComment, editComment } from '../services/postServices';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { PostContext } from '../context/PostContext';
+import { useRef } from 'react';
+import { useClickOutside } from '../hook/clickOutside';
 
 export const EditCommentModal = ({post,comment,initalCommentData,setOpenComment,addCommentModal}) => {
 const {token,userInfo}=useContext(AuthContext);
@@ -23,8 +25,11 @@ console.log(initalCommentData,post,addCommentModal,"initail");
         event.target.style.height = `${event.target.scrollHeight}px`
     }
 
+    const postRef=useRef(null);
+    useClickOutside(postRef,setOpenComment)
+
   return (
-<div className="comment-modal-container">
+<div className="comment-modal-container" ref={postRef}>
       <img src={userInfo?.profileAvatar} className="user-profile" alt="userProfile" />
     <div className="comment-modal">
     <textarea

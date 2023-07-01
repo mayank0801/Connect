@@ -49,3 +49,6 @@ const year = new Date(datee)?.getFullYear();
 return ` ${year}`;
 
 }
+
+
+export const CreatePostEmpty=(PostContent)=>PostContent.content.length===0&&!PostContent.postImage

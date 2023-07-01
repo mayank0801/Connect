@@ -7,6 +7,7 @@ import { followUser, loaduserHandler } from '../../services/postServices';
 import {AiOutlinePlus} from "react-icons/ai";
 import { useEffect } from 'react';
 import "./AsideRight.css"
+import { useNavigate } from 'react-router-dom';
 
 export const  AsideRight= () => {
 
@@ -15,16 +16,20 @@ export const  AsideRight= () => {
 
     const suggestedInfo=suggestedUser(users,userInfo);
     const {token,updateUser}=useContext(AuthContext);
+    const navigate=useNavigate();
 
     
   return (
     <div className='aside-Right'>
         <SearchUser/>
+
+
+        {suggestedInfo.length?
         <div className='user-container'>
-          <h2>Who To Follow</h2>
+        <h2>Who To Follow</h2>
         {
             suggestedInfo.map((user)=>
-            <div className='suggestedUser'>
+            <div className='suggestedUser' onClick={()=>navigate(`/profile/${user?.username}`)}>
               <span className='suggestedUserInfo'>
                 <img className='suggestedUser-image' src={user.profileAvatar} alt='i'/>
                 <h3>{user.username}</h3>
@@ -33,6 +38,8 @@ export const  AsideRight= () => {
               </div>)
         }
         </div>
+:null
+      }
     </div>
   )
 }

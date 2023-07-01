@@ -52,7 +52,7 @@ const Aside = () => {
           </span>
           <span className="aside-link-text">Profile</span>
         </NavLink>
-        <NavLink onClick={logoutHandler} className="aside-link">
+        <NavLink className="aside-link">
         <span className="aside-icon">
             <LuVerified color="white" size={20} />
           </span>
@@ -72,10 +72,10 @@ const Aside = () => {
         <div className='aside-profile'>
           <img className='aside-profile-image' src={userInfo?.profileAvatar} alt='userProfile'/>
           <div className='aside-profile-info'>
-            <p>Mayank Kumar</p>
-            <p>@mayank0801</p>
+            <p>{`${userInfo?.firstName} ${userInfo?.lastName}`}</p>
+            <p>@{userInfo?.username}</p>
           </div>
-          <FiMoreHorizontal size={20}/>
+          <FiMoreHorizontal fill='white' stroke='white' size={20}/>
         </div>
       </div>
     </aside>

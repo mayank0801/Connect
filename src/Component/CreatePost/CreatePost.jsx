@@ -6,6 +6,7 @@ import {BsEmojiSmile} from "react-icons/bs"
 import {RxCrossCircled} from "react-icons/rx"
 import "./CreatePost.css";
 import { cloudinaryImageFetcher, createPosthandler } from "../../services/postServices";
+import { CreatePostEmpty } from "../../utlis/utlis";
 
 
 
@@ -84,7 +85,7 @@ export default function CreatePost(){
         <BsEmojiSmile fill="white" size={30}className="post-icons_item"/>
         </span>
         </div>
-        <button className="postbtn" onClick={()=>postSubmitHandler()} >Post</button>
+        <button className="postbtn" onClick={()=>postSubmitHandler()} disabled={CreatePostEmpty(postContent)}>Post</button>
     </div>
 </div>
 </div>

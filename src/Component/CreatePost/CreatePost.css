@@ -55,3 +55,6 @@ border-radius: 64%;
     color: white;
     border-radius: 64px;
 }
+.postbtn:disabled{
+    opacity: 0.5;
+}
