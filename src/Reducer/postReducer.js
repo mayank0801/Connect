@@ -14,6 +14,7 @@ export default function reducer(state,action){
         case "UPDATE_POST":
             return {...state,post:action.payLoad};
         case "SET_FILTERTYPE":
+            console.log(action.payLoad,"action")
             return {...state,filterType:action.payLoad};
         default:
             return {...state}

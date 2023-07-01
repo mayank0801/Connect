@@ -9,7 +9,7 @@ export const SortBar = () => {
     // const [sortType,setSortType]=use
     const {state:{filterType}}=useContext(PostContext);
     const postRef=useRef(null);
-    // console.log(filterType,"filterType")
+    console.log(filterType,"filterType")
     const [isOpenPostOptions,setPostOption]=useState(false);
 
 
@@ -18,8 +18,8 @@ export const SortBar = () => {
   return (
     <div className='sortFilter' >
         <h3>{filterType?filterType:"Filter"}</h3>
-        <div className='pointer' onClick={()=>setPostOption(!isOpenPostOptions)} ref={postRef}><MdTune/></div>
-        <div className='post-option'>
+        <div className='pointer' onClick={()=>setPostOption(!isOpenPostOptions)}><MdTune/></div>
+        <div className='post-option' ref={postRef}>
         {
             isOpenPostOptions&&<SortModal/>
         }
