@@ -95,10 +95,10 @@ export const TweetCard = ({
           </div>
         </div>
 
-        <div onClick={() => navigate(`/post/${_id}`)}>
+      
         
-         <p className='post-content-text' style={{wordWrap:"break-word"}}>{content}</p>
-        <div className='postCard-image'>
+         <p className='post-content-text' style={{wordWrap:"break-word"}} onClick={() => navigate(`/post/${_id}`)}>{content}</p>
+        <div className='postCard-image' onClick={() => navigate(`/post/${_id}`)}>
           {post?.postImage && (
             <img
               src={post?.postImage}
@@ -159,7 +159,7 @@ export const TweetCard = ({
             </div>
           </div>
         </div>
-      </div>
+      
       {isOpenComment && (
         <EditCommentModal
           post={post}
