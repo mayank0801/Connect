@@ -94,12 +94,10 @@ export const TweetCard = ({
             </div>
           </div>
         </div>
-        <span
-          className='postCard-content'
-          onClick={() => navigate(`/post/${_id}`)}
-        >
-          {content}
-        </span>
+
+        <div onClick={() => navigate(`/post/${_id}`)}>
+        
+         <p className='post-content-text' style={{wordWrap:"break-word"}}>{content}</p>
         <div className='postCard-image'>
           {post?.postImage && (
             <img
@@ -110,6 +108,8 @@ export const TweetCard = ({
               style={{ height: isPostDetail ? '500px' : null }}
             />
           )}
+
+</div>
           <div className='postCard-actions'>
             <div className='postCard-actions-item'>
               <span>
