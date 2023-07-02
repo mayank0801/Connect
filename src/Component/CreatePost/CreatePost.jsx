@@ -105,7 +105,7 @@ export default function CreatePost() {
               <MdPermMedia
                 size={30}
                 fill='white'
-                className='post-icons_item'
+                className='icon'
                 onClick={openFile}
               />
               <input
@@ -120,7 +120,7 @@ export default function CreatePost() {
               <BsEmojiSmile
                 fill='white'
                 size={30}
-                className='post-icons_item'
+                className='icon'
                 onClick={() => setEmojiModal(!emojiModal)}
                 />
                 <div

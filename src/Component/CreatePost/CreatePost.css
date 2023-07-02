@@ -44,7 +44,7 @@ border-radius: 64%;
     position: relative;
     cursor: pointer;
 }
-.post-icons_item{
+.post-icons-item{
     display: flex;
     gap: 8px;
     cursor: pointer;

@@ -15,6 +15,9 @@ import './Profile.css';
 import { getJoinedMonth, getUserId } from '../../utlis/utlis';
 import { useClickOutside } from '../../hook/clickOutside';
 import { useRef } from 'react';
+import { posts } from '../../backend/db/posts';
+import { getPostHandler } from '../../backend/controllers/PostController';
+import ProfilePost from '../../Component/ProfilePost/ProfilePost';
 
 export const Profile = () => {
   const { profileId } = useParams();
@@ -45,12 +48,17 @@ export const Profile = () => {
     }
   };
 
+
+
+
   // useEffect(()=>{
   // getProfileData();
   // },[])
   useEffect(() => {
     getProfileData();
   }, [userInfo]);
+
+
 
   // useClickOutside(postRef,setEditProfileModal)
 
@@ -153,6 +161,7 @@ export const Profile = () => {
             setEditProfileModal={setEditProfileModal}
           />
         )}
+      <ProfilePost username={profileId}/>
       </div>
 
       <div className='aside-right'>

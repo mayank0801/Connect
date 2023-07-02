@@ -52,6 +52,7 @@ export const PostOption = ({ post, postUser }) => {
                     content: post.content,
                     postImage: post.postImage,
                   }}
+                  post={post}
                 />
               )}
             </div>

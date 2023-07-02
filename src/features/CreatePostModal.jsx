@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { BsEmojiSmile } from 'react-icons/bs';
 import { GrGallery } from 'react-icons/gr';
 import { RxCrossCircled } from 'react-icons/rx';
-import { editPost } from '../services/postServices';
+import { cloudinaryImageFetcher, editPost } from '../services/postServices';
 import { PostContext } from '../context/PostContext';
 import { AuthContext } from '../context/AuthContext';
 import EmojiPicker from 'emoji-picker-react';
@@ -22,18 +22,23 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
     event.stopPropagation();
     const { name, value } = event.target;
     if (name === 'postImage') {
+      setCloudnaryImage(event.target.files[0]);
       setPostData({
         ...postData,
         postImage: URL.createObjectURL(event.target.files[0]),
       });
-      setCloudnaryImage(event.target.files[0]);
     } else setPostData({ ...postData, [name]: value });
     event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
 
   const submitPostHandler = async () => {
-    await editPost(post._id, postData, token, dispatch);
+    console.log(post?.id,"pppp")
+    let profileAvatarUrl = '';
+    if (postData?.postImage)
+      profileAvatarUrl = await cloudinaryImageFetcher(cloudnaryImage);
+    console.log(profileAvatarUrl,"pppp")
+    await editPost(post?._id, {...postData,postImage:profileAvatarUrl.url}, token, dispatch);
     setPostModal(false);
   };
   const inputRef = useRef(null);
@@ -70,7 +75,11 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                   height={'100%'}
                   alt='postimage'
                 />
-                <RxCrossCircled size={30} color='red' />
+                <RxCrossCircled size={30} color='red' onClick={()=>{
+                  setPostData({...postData,postImage:""})
+                  setCloudnaryImage("");
+                }
+                }/>
               </>
             )}
           </div>
