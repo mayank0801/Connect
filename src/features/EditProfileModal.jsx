@@ -5,6 +5,7 @@ import {
 } from '../services/postServices';
 import { AuthContext } from '../context/AuthContext';
 import { AiOutlineCamera } from 'react-icons/ai';
+import { useClickOutside } from '../hook/clickOutside';
 
 const avatars = [
   'https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg',
@@ -45,9 +46,11 @@ export const EditProfileModal = ({ intialState, setEditProfileModal }) => {
     e.stopPropagation();
     inputRef.current.click();
   };
+const containerRef=useRef(null);
+useClickOutside(containerRef,setEditProfileModal);
 
   return (
-    <div className='edit-profile-modal'>
+    <div className='edit-profile-modal' ref={containerRef}>
       <div className='chooseavatar-container'>
         {avatars.map((avatar) => (
           <div key={avatar}>
@@ -109,6 +112,7 @@ export const EditProfileModal = ({ intialState, setEditProfileModal }) => {
       <button className='updateBtn' onClick={() => handleSubmit()}>
         Update
       </button>
+      <button className='updateBtn' onClick={()=>setEditProfileModal(false)}>Discard</button>
     </div>
   );
 };
