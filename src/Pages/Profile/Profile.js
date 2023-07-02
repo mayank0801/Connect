@@ -53,7 +53,7 @@ export const Profile = () => {
   // },[])
   useEffect(() => {
     getProfileData();
-  }, [userInfo]);
+  }, [userInfo,profileId]);
 
   // useClickOutside(postRef,setEditProfileModal)
 
@@ -149,7 +149,7 @@ export const Profile = () => {
           </div>
         </div>
 
-        {}
+       
         {editProfileModal && (
           <EditProfileModal
             intialState={profileDetail}
