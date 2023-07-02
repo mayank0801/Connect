@@ -7,7 +7,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { EditProfileModal } from '../../features/EditProfileModal';
-import { followUser, unfollow } from '../../services/postServices';
+import { followUser, loaduserHandler, unfollow } from '../../services/postServices';
 import { FiLogOut } from 'react-icons/fi';
 import Aside from '../../Component/Aside/Aside';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
@@ -18,11 +18,13 @@ import { useRef } from 'react';
 import { posts } from '../../backend/db/posts';
 import { getPostHandler } from '../../backend/controllers/PostController';
 import ProfilePost from '../../Component/ProfilePost/ProfilePost';
+import { PostContext } from '../../context/PostContext';
 
 export const Profile = () => {
   const { profileId } = useParams();
-  const { userInfo, token, updateUser, loaduserHandler, logoutHandler } =
+  const { userInfo, token, updateUser, logoutHandler } =
     useContext(AuthContext);
+    
 
   const postRef = useRef(null);
 

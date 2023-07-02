@@ -55,7 +55,11 @@ export const EditProfileModal = ({ intialState, setEditProfileModal }) => {
               className='avatar-image'
               src={avatar}
               alt='avatar'
-              onClick={() => setProfileAvatar(avatar)}
+              onClick={() =>{
+                setCloudnaryImage(avatar);
+                setProfileAvatar(avatar)
+              } 
+            }
             />
           </div>
         ))}
