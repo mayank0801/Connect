@@ -1,38 +1,55 @@
-import React, { useContext } from 'react'
-import { SearchUser } from '../SearchUser/SearchUser'
-import { PostContext } from '../../context/PostContext'
+import React, { useContext } from 'react';
+import { SearchUser } from '../SearchUser/SearchUser';
+import { PostContext } from '../../context/PostContext';
 import { AuthContext } from '../../context/AuthContext';
 import { suggestedUser } from '../../utlis/utlis';
 import { followUser, loaduserHandler } from '../../services/postServices';
-import {AiOutlinePlus} from "react-icons/ai";
+import { AiOutlinePlus } from 'react-icons/ai';
 import { useEffect } from 'react';
-import "./AsideRight.css"
+import './AsideRight.css';
+import { useNavigate } from 'react-router-dom';
 
-export const  AsideRight= () => {
+export const AsideRight = () => {
+  const {
+    state: { users },
+  } = useContext(PostContext);
+  const { userInfo } = useContext(AuthContext);
 
-    const {state:{users}}=useContext(PostContext);
-    const {userInfo}=useContext(AuthContext);
+  const suggestedInfo = suggestedUser(users, userInfo);
+  const { token, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const suggestedInfo=suggestedUser(users,userInfo);
-    const {token,updateUser}=useContext(AuthContext);
-
-    
   return (
     <div className='aside-Right'>
-        <SearchUser/>
+      <SearchUser />
+
+      {suggestedInfo.length ? (
         <div className='user-container'>
           <h2>Who To Follow</h2>
-        {
-            suggestedInfo.map((user)=>
-            <div className='suggestedUser'>
+          {suggestedInfo.map((user) => (
+            <div
+              className='suggestedUser'
+              onClick={() => navigate(`/profile/${user?.username}`)}
+            >
               <span className='suggestedUserInfo'>
-                <img className='suggestedUser-image' src={user.profileAvatar} alt='i'/>
+                <img
+                  className='suggestedUser-image'
+                  src={user.profileAvatar}
+                  alt='i'
+                />
                 <h3>{user.username}</h3>
               </span>
-                <AiOutlinePlus size={20} onClick={()=>followUser(user._id,token,updateUser,loaduserHandler)}/>
-              </div>)
-        }
+              <AiOutlinePlus
+                size={20}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  followUser(user._id, token, updateUser, loaduserHandler);
+                }}
+              />
+            </div>
+          ))}
         </div>
+      ) : null}
     </div>
-  )
-}
+  );
+};

@@ -63,6 +63,8 @@ line-height: normal;
     width: 40px;
     border-radius: 64%;
 }
+
+
 .aside-profile-info p:first-child{
     font-weight: 700;
 }
@@ -73,4 +75,11 @@ line-height: normal;
 }
 /* .aside */
 
-
+.createPostModal{
+    position: absolute;
+    width: 60%;
+    background-color: #0a0a0a;
+    top: 30%;
+    left: 20%;
+    z-index: 2;
+}

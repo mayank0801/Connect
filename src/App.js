@@ -1,47 +1,66 @@
 import './App.css';
-import {Routes,Route} from "react-router-dom";
-import Login from "./Pages/Login/Login"
+import { Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+
+import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
-import Landing from './Pages/Landing/Landing';
+
 import Home from './Pages/Home/Home';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
 import { Explore } from './Pages/Explore/Explore';
 import { BookMark } from './Pages/BookMark/BookMark';
 
-
-import Mockman from "mockman-js";
+import Mockman from 'mockman-js';
 import { PostDetail } from './Pages/PostDetail/PostDetail';
 import { Profile } from './Pages/Profile/Profile';
+import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-  
   return (
-    <div className="App">
-
-      
-
+    <div className='App'>
       <Routes>
-        <Route path="/landing" element={<Landing/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signUp" element={<SignUp/>}/>
-        <Route path='/' element={
-          <RequireAuth>
-            <Home/>
-          </RequireAuth>}/>
-      
-      <Route path='/explore' element={<Explore/>}
-          />
-          <Route path='/bookmark' element={
-          <RequireAuth>
-            <BookMark/>
-          </RequireAuth>}/>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signUp' element={<SignUp />} />
+        <Route
+          path='/'
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
 
-          <Route path="/post/:postId" element={<PostDetail/>}/>
-          <Route path="/profile/:profileId" element={<Profile/>}/>
-          <Route path="/mockman" element={<Mockman/>}/>
-      
-          </Routes>
-      
+        <Route
+          path='/explore'
+          element={
+            <RequireAuth>
+              <Explore />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/bookmark'
+          element={
+            <RequireAuth>
+              <BookMark />
+            </RequireAuth>
+          }
+        />
+
+        <Route path='/post/:postId' element={<PostDetail />} />
+        <Route path='/profile/:profileId' element={<Profile />} />
+        <Route path='/mockman' element={<Mockman />} />
+      </Routes>
+      <Toaster
+        position='bottom-left'
+        reverseOrder={false}
+        containerStyle={{
+          bottom: '4rem',
+          right: '1rem',
+          fontSize: '0.9rem',
+        }}
+      />
     </div>
   );
 }

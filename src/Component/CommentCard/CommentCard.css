@@ -3,11 +3,13 @@
     display: flex;
     gap: 5px;
     width: 100%;
+    position: relative;
 }
 .user-profile{
     height: 40px;
     width: 40px;
     border-radius: 50px;
+    cursor: pointer;
 }
 .comment-header{
 display: flex;
@@ -29,4 +31,11 @@ width: 100%;
     font-weight: 400;
     font-size: 0.8rem;
     color: #6E767D;
+}
+.dropdown-menu{
+    position: absolute;
+    right: 0%;
+    z-index: 999;
+    top: 40%;
+    background-color: #6E767D;
 }

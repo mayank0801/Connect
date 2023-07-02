@@ -41,10 +41,13 @@ border-radius: 64%;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0rem;
+    position: relative;
+    cursor: pointer;
 }
 .post-icons-item{
     display: flex;
     gap: 8px;
+    cursor: pointer;
 }
 .postbtn{
     /* justify-self: end; */
@@ -54,4 +57,7 @@ border-radius: 64%;
     background-color: blue;
     color: white;
     border-radius: 64px;
+}
+.postbtn:disabled{
+    opacity: 0.5;
 }

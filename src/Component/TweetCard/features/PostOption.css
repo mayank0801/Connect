@@ -1,0 +1,30 @@
+.userPost-optionConatiner{
+  background-color: rgb(33, 31, 31);
+  padding: 0.3rem 1rem;
+  position: absolute;
+  top: 15%;
+  right: 0%;
+
+}
+
+.userPost-option{
+  
+
+}
+.userPost-option-text:hover{
+  color: red;
+
+}
+.editModal{
+  position: fixed;
+  top: 20%;
+  left: 17%;
+  width: 70%;
+
+}
+.userPost-option-text{
+
+}
+.userPost{
+
+}
