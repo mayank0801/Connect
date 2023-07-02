@@ -73,3 +73,22 @@
     cursor: pointer;
     color: blue;
 }
+.signup-action{
+    align-self: flex-end;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+}
+.signup-action>button{
+    padding: 0.5rem;
+    border-radius: 20px;
+    margin-top:5px ;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: blue;
+}
+.signup-action>button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
