@@ -10,7 +10,6 @@ export const SortBar = () => {
     state: { filterType },
   } = useContext(PostContext);
   const postRef = useRef(null);
-  console.log(filterType, 'filterType');
   const [isOpenPostOptions, setPostOption] = useState(false);
 
   useClickOutside(postRef, setPostOption);

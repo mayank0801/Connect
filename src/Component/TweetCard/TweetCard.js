@@ -140,13 +140,13 @@ export const TweetCard = ({
                   <BsBookmarksFill
                     size={20}
                     onClick={() =>
-                      removeBookMark(post._id, token, updateBookMark)
+                      removeBookMark(post._id, token, updateBookMark,dispatch)
                     }
                   />
                 ) : (
                   <BsBookmarks
                     size={20}
-                    onClick={() => bookmark(post._id, token, updateBookMark)}
+                    onClick={() => bookmark(post._id, token, updateBookMark,dispatch)}
                   />
                 )}
               </span>
