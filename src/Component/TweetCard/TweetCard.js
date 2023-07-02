@@ -79,15 +79,18 @@ export const TweetCard = ({
             <p>@{username}</p>
           </div>
           <div style={{ position: 'relative' }}>
-            {!isPostDetail&&<FiMoreHorizontal
-              size={20}
-              className='postCard-moreIcon'
-              onClick={() => setIsOpen(!isOpenModal)}
-              style={{ position: 'relative' }}
-            ></FiMoreHorizontal>
-}
+            {!isPostDetail && (
+              <FiMoreHorizontal
+                size={20}
+                className='postCard-moreIcon'
+                onClick={() => setIsOpen(!isOpenModal)}
+                style={{ position: 'relative' }}
+              ></FiMoreHorizontal>
+            )}
             <div className='postCard-postOptions'>
-              {isOpenModal && !isPostDetail&& <PostOption post={post} userInfo={userInfo} />}
+              {isOpenModal && !isPostDetail && (
+                <PostOption post={post} userInfo={userInfo} />
+              )}
             </div>
           </div>
         </div>

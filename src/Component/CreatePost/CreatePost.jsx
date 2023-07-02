@@ -61,8 +61,7 @@ export default function CreatePost() {
     inputRef.current.click();
   };
   const emojiRef = useRef(null);
-  useClickOutside(emojiRef,setEmojiModal);
-
+  useClickOutside(emojiRef, setEmojiModal);
 
   return (
     <div className='createPost'>
@@ -122,12 +121,9 @@ export default function CreatePost() {
                 size={30}
                 className='icon'
                 onClick={() => setEmojiModal(!emojiModal)}
-                />
-                <div
-                  ref={emojiRef}
-                  style={{ position: 'absolute', zIndex: '5' }}
-                >
-              {emojiModal && (
+              />
+              <div ref={emojiRef} style={{ position: 'absolute', zIndex: '5' }}>
+                {emojiModal && (
                   <EmojiPicker
                     theme='dark'
                     onEmojiClick={(emoji, event) => {
@@ -138,8 +134,8 @@ export default function CreatePost() {
                       });
                     }}
                   />
-                  )}
-                  </div>
+                )}
+              </div>
             </span>
           </div>
           <button

@@ -40,7 +40,7 @@ export const users = [
     _id: 101,
     firstName: 'Mayank',
     lastName: 'Kumar',
-    username: 'Mayanksingh0801@gmail.com',
+    username: 'Mayank0801',
     password: 'mayank123',
     bio: 'Hey, Mayank Here',
     website: 'https://google.com',

@@ -43,23 +43,20 @@ export default function AuthContextProvider({ children }) {
     }
   };
 
-  const signupHandler = async (Name, connectName, username, password) => {
+  const signupHandler = async (signUpInfo) => {
     try {
       const response = await axios.post('/api/auth/signup', {
-        Name,
-        connectName,
-        username,
-        password,
+        ...signUpInfo
       });
+
+
       localStorage.setItem(
-        'user',
-        JSON.stringify({
-          encodedToken: response.data.encodedToken,
-          userInfo: response.data.createdUser,
-        })
+        'userToken',
+        JSON.stringify(response.data.encodedToken)
       );
+      localStorage.setItem('userInfo', JSON.stringify(response.data.createdUser));
       setToken(response.data.encodedToken);
-      setUserInfo(response.data.userInfo);
+      setUserInfo(response.data.createdUser);
       return response;
     } catch (error) {
       console.error(error);

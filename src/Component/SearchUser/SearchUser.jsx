@@ -22,9 +22,9 @@ export const SearchUser = () => {
     setIsInputFocused(false);
   };
 
-  const navigate=useNavigate();
-  const inputRef=useRef(null);
-  useClickOutside(inputRef,setIsInputFocused);
+  const navigate = useNavigate();
+  const inputRef = useRef(null);
+  useClickOutside(inputRef, setIsInputFocused);
   return (
     <div className='searchContainer'>
       <div className='searchUser-input'>
@@ -33,7 +33,6 @@ export const SearchUser = () => {
           value={searchUserText}
           onChange={(e) => setSearchUserText(e.target.value.trim())}
           onFocus={handleInputFocus}
-          
           placeholder='Search Connect'
         />
       </div>
@@ -43,15 +42,17 @@ export const SearchUser = () => {
             <div>Search People Across</div>
           ) : (
             searchSuggestedUser.map((user) => (
-              <div className='searchUsercontainer' onClick={(e)=>{
-                e.stopPropagation();
-                navigate(`/profile/${user?.username}`)}
-              }>
+              <div
+                className='searchUsercontainer'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/profile/${user?.username}`);
+                }}
+              >
                 <img
                   className='aside-profile-image'
                   src={user?.profileAvatar}
                   alt='userProfile'
-
                 />
                 <div>
                   <p>{`${user.firstName} ${user.lastName}`}</p>

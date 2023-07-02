@@ -33,12 +33,17 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
   };
 
   const submitPostHandler = async () => {
-    console.log(post?.id,"pppp")
+    console.log(post?.id, 'pppp');
     let profileAvatarUrl = '';
     if (postData?.postImage)
       profileAvatarUrl = await cloudinaryImageFetcher(cloudnaryImage);
-    console.log(profileAvatarUrl,"pppp")
-    await editPost(post?._id, {...postData,postImage:profileAvatarUrl.url}, token, dispatch);
+    console.log(profileAvatarUrl, 'pppp');
+    await editPost(
+      post?._id,
+      { ...postData, postImage: profileAvatarUrl.url },
+      token,
+      dispatch
+    );
     setPostModal(false);
   };
   const inputRef = useRef(null);
@@ -75,11 +80,14 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                   height={'100%'}
                   alt='postimage'
                 />
-                <RxCrossCircled size={30} color='red' onClick={()=>{
-                  setPostData({...postData,postImage:""})
-                  setCloudnaryImage("");
-                }
-                }/>
+                <RxCrossCircled
+                  size={30}
+                  color='red'
+                  onClick={() => {
+                    setPostData({ ...postData, postImage: '' });
+                    setCloudnaryImage('');
+                  }}
+                />
               </>
             )}
           </div>
@@ -91,8 +99,9 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
             }}
           >
             <label>
-              <GrGallery size={30} 
-            //   onClick={handleClick} 
+              <GrGallery
+                size={30}
+                //   onClick={handleClick}
               />
               <input
                 type='file'

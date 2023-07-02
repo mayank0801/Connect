@@ -48,17 +48,12 @@ export const Profile = () => {
     }
   };
 
-
-
-
   // useEffect(()=>{
   // getProfileData();
   // },[])
   useEffect(() => {
     getProfileData();
   }, [userInfo]);
-
-
 
   // useClickOutside(postRef,setEditProfileModal)
 
@@ -161,7 +156,7 @@ export const Profile = () => {
             setEditProfileModal={setEditProfileModal}
           />
         )}
-      <ProfilePost username={profileId}/>
+        <ProfilePost username={profileId} />
       </div>
 
       <div className='aside-right'>
