@@ -57,7 +57,10 @@ border-radius: 64%;
     background-color: blue;
     color: white;
     border-radius: 64px;
+    border: none;
+    cursor: pointer;
 }
 .postbtn:disabled{
     opacity: 0.5;
+    cursor: not-allowed;
 }

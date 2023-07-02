@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './Aside.css';
 import ConnectLogo from '../../asset/ConnectLogo1.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { AiOutlineHome } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
@@ -20,7 +20,7 @@ const Aside = () => {
   const { userInfo, logoutHandler } = useContext(AuthContext);
   const [createPostModal, setCreatePostModal] = useState(false);
   const postRef = useRef(null);
-
+  const navigate=useNavigate();
   useClickOutside(postRef, setCreatePostModal);
 
   return (
@@ -76,7 +76,7 @@ const Aside = () => {
         </div>
       </div>
       <div className='aside-footer'>
-        <div className='aside-profile'>
+        <div className='aside-profile' onClick={()=>navigate(`/profile/${userInfo?.username}`)}>
           <img
             className='aside-profile-image'
             src={userInfo?.profileAvatar}

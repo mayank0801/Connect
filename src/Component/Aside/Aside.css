@@ -47,6 +47,8 @@ line-height: normal;
     font-weight: 700;
     color: white;
     background-color:#1D9BF0 ;
+    cursor: pointer;
+    border: none;
 
 }
 .aside-footer{
@@ -57,6 +59,7 @@ line-height: normal;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 }
 .aside-profile-image{
     height: 40px;

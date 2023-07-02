@@ -34,12 +34,20 @@ gap: 5px;
 }
 .commentbtn{
     align-self: end;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 2rem;
     font-weight: 600;
     border-radius:50px ;
     background-color: blue;
     color: white;
+    border: none;
+    margin-right: 5px;
+    cursor: pointer;
     
+}
+
+.commentbtn:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 

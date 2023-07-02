@@ -93,6 +93,7 @@ export const Profile = () => {
                     Edit profile
                   </button>
                   <FiLogOut
+                  style={{cursor:"pointer"}}
                     size={30}
                     color='white'
                     onClick={() => logoutHandler()}

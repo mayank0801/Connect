@@ -32,14 +32,13 @@ export const Comment = ({ post }) => {
 
         <div className='comment-content'>
           <textarea
-            style={{ border: '1px solid black' }}
             name='content'
             rows='1'
             value={commentContent}
             onChange={(e) => handleChange(e)}
             placeholder='Post a Comment'
           />
-          <button className='commentbtn' onClick={() => handleSubmit()}>
+          <button className='commentbtn' onClick={() => handleSubmit()} disabled={commentContent.length===0}>
             Post
           </button>
         </div>
