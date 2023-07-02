@@ -16,6 +16,10 @@
 
 }
 .editModal{
+  position: fixed;
+  top: 20%;
+  left: 17%;
+  width: 70%;
 
 }
 .userPost-option-text{

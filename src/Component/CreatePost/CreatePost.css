@@ -41,10 +41,13 @@ border-radius: 64%;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0rem;
+    position: relative;
+    cursor: pointer;
 }
-.post-icons-item{
+.post-icons_item{
     display: flex;
     gap: 8px;
+    cursor: pointer;
 }
 .postbtn{
     /* justify-self: end; */

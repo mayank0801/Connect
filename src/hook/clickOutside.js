@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useClickOutside = (ref, setState) => {
   useEffect(() => {
@@ -7,8 +7,8 @@ export const useClickOutside = (ref, setState) => {
         setState(false);
       }
     };
-    document.addEventListener("mousedown", closeOptionsModal);
+    document.addEventListener('mousedown', closeOptionsModal);
 
-    return () => document.removeEventListener("mousedown", closeOptionsModal);
+    return () => document.removeEventListener('mousedown', closeOptionsModal);
   }, [setState, ref]);
 };

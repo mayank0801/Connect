@@ -124,6 +124,11 @@ gap: 5px;
     width: 100%;
 
 }
+.profileAvatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
 
 
 

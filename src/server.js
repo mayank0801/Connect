@@ -1,10 +1,10 @@
-import { Server, Model, RestSerializer } from "miragejs";
-import { posts } from "./backend/db/posts";
-import { users } from "./backend/db/users";
+import { Server, Model, RestSerializer } from 'miragejs';
+import { posts } from './backend/db/posts';
+import { users } from './backend/db/users';
 import {
   loginHandler,
   signupHandler,
-} from "./backend/controllers/AuthController";
+} from './backend/controllers/AuthController';
 import {
   createPostHandler,
   getAllpostsHandler,
@@ -14,7 +14,7 @@ import {
   likePostHandler,
   dislikePostHandler,
   getAllUserPostsHandler,
-} from "./backend/controllers/PostController";
+} from './backend/controllers/PostController';
 import {
   followUserHandler,
   getAllUsersHandler,
@@ -24,10 +24,16 @@ import {
   removePostFromBookmarkHandler,
   unfollowUserHandler,
   editUserHandler,
-} from "./backend/controllers/UserController";
-import { addPostCommentHandler, deletePostCommentHandler, downvotePostCommentHandler, editPostCommentHandler, upvotePostCommentHandler } from "./backend/controllers/CommentController";
+} from './backend/controllers/UserController';
+import {
+  addPostCommentHandler,
+  deletePostCommentHandler,
+  downvotePostCommentHandler,
+  editPostCommentHandler,
+  upvotePostCommentHandler,
+} from './backend/controllers/CommentController';
 
-export function makeServer({ environment = "development" } = {}) {
+export function makeServer({ environment = 'development' } = {}) {
   return new Server({
     serializers: {
       application: RestSerializer,
@@ -43,78 +49,71 @@ export function makeServer({ environment = "development" } = {}) {
     seeds(server) {
       server.logging = false;
       users.forEach((item) =>
-        server.create("user", {
-          
+        server.create('user', {
           ...item,
-         
         })
       );
-      posts.forEach((item) => server.create("post", { ...item }));
+      posts.forEach((item) => server.create('post', { ...item }));
     },
 
     routes() {
-      this.namespace = "api";
+      this.namespace = 'api';
 
       // auth routes (public)
-      this.post("/auth/signup", signupHandler.bind(this));
-      this.post("/auth/login", loginHandler.bind(this));
+      this.post('/auth/signup', signupHandler.bind(this));
+      this.post('/auth/login', loginHandler.bind(this));
 
       // post routes (public)
-      this.get("/posts", getAllpostsHandler.bind(this));
-      this.get("/posts/:postId", getPostHandler.bind(this));
-      this.get("/posts/user/:username", getAllUserPostsHandler.bind(this));
-      
-      
-      
-      
-      this.post("/comments/add/:postId", addPostCommentHandler.bind(this));
+      this.get('/posts', getAllpostsHandler.bind(this));
+      this.get('/posts/:postId', getPostHandler.bind(this));
+      this.get('/posts/user/:username', getAllUserPostsHandler.bind(this));
+
+      this.post('/comments/add/:postId', addPostCommentHandler.bind(this));
       this.post(
-        "/comments/edit/:postId/:commentId",
+        '/comments/edit/:postId/:commentId',
         editPostCommentHandler.bind(this)
       );
       this.post(
-        "/comments/delete/:postId/:commentId",
+        '/comments/delete/:postId/:commentId',
         deletePostCommentHandler.bind(this)
       );
       this.post(
-        "/comments/upvote/:postId/:commentId",
+        '/comments/upvote/:postId/:commentId',
         upvotePostCommentHandler.bind(this)
-        );
+      );
       this.post(
-        "/comments/downvote/:postId/:commentId",
+        '/comments/downvote/:postId/:commentId',
         downvotePostCommentHandler.bind(this)
       );
 
       // post routes (private)
-      this.post("/posts", createPostHandler.bind(this));
-      this.delete("/posts/:postId", deletePostHandler.bind(this));
-      this.post("/posts/edit/:postId", editPostHandler.bind(this));
-      this.post("/posts/like/:postId", likePostHandler.bind(this));
-      this.post("/posts/dislike/:postId", dislikePostHandler.bind(this));
+      this.post('/posts', createPostHandler.bind(this));
+      this.delete('/posts/:postId', deletePostHandler.bind(this));
+      this.post('/posts/edit/:postId', editPostHandler.bind(this));
+      this.post('/posts/like/:postId', likePostHandler.bind(this));
+      this.post('/posts/dislike/:postId', dislikePostHandler.bind(this));
 
       // user routes (public)
-      this.get("/users", getAllUsersHandler.bind(this));
-      this.get("/users/:username", getUserHandler.bind(this));
+      this.get('/users', getAllUsersHandler.bind(this));
+      this.get('/users/:username', getUserHandler.bind(this));
 
       // user routes (private)
-      this.post("users/edit", editUserHandler.bind(this));
-      this.get("/users/bookmark", getBookmarkPostsHandler.bind(this));
-      this.post("/users/bookmark/:postId/", bookmarkPostHandler.bind(this));
+      this.post('users/edit', editUserHandler.bind(this));
+      this.get('/users/bookmark', getBookmarkPostsHandler.bind(this));
+      this.post('/users/bookmark/:postId/', bookmarkPostHandler.bind(this));
       this.post(
-        "/users/remove-bookmark/:postId/",
+        '/users/remove-bookmark/:postId/',
         removePostFromBookmarkHandler.bind(this)
       );
-      this.post("/users/follow/:followUserId/", followUserHandler.bind(this));
+      this.post('/users/follow/:followUserId/', followUserHandler.bind(this));
       this.post(
-        "/users/unfollow/:followUserId/",
+        '/users/unfollow/:followUserId/',
         unfollowUserHandler.bind(this)
-        );
+      );
 
-
-        
-        this.passthrough(
-          "https://api.cloudinary.com/v1_1/ditqnzlil/image/upload"
-        );
+      this.passthrough(
+        'https://api.cloudinary.com/v1_1/ditqnzlil/image/upload'
+      );
     },
   });
 }
