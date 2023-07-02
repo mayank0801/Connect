@@ -53,6 +53,8 @@
 .login-action>button{
     padding: 0.5rem;
     border-radius: 20px;
+    outline: none;
+    border: none;
     margin-top:5px ;
     color: white;
     font-weight: 600;
@@ -87,6 +89,7 @@
     font-weight: 600;
     cursor: pointer;
     background-color: blue;
+    border: none;
 }
 .signup-action>button:disabled{
     opacity: 0.5;

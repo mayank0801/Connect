@@ -66,7 +66,7 @@ const Login = () => {
             </label>
             <div className='login-action'>
               <button type='submit' value='Submit'>
-                Login In
+                Log In
               </button>
               <button
                 onClick={(e) => {

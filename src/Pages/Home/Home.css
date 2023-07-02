@@ -12,8 +12,9 @@ top: 0%;
 }
 .main-content{
     width: 45%;
-    border-right: 1px solid #2F3336;
-    border-left:1px solid #2F3336 ;
+    border-right: 4px solid #2F3336;
+    border-left:4px solid #2F3336 ;
+    background-color: #001527;
 }
 .aside-right{
     width: 20%;
@@ -24,6 +25,8 @@ top: 0%;
 .title{
     font-size: 1.5rem;
     font-weight: 900;
+   
+   
 }
 .page-Title{
     padding: 1rem 0.5rem;
@@ -33,6 +36,9 @@ top: 0%;
     margin-top: 2rem;
     margin-left: 1rem;
     font-size: 1.5rem;
+}
+.filter-Tweet{
+    background-color: #102B3F;
 }
 
 

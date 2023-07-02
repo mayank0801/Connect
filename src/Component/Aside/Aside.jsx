@@ -9,6 +9,7 @@ import { BsBookmarkDash } from 'react-icons/bs';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { LuVerified } from 'react-icons/lu';
+import {BiLogOut} from "react-icons/bi"
 import { useState } from 'react';
 import { CreatePostModal } from '../../features/CreatePostModal';
 import CreatePost from '../CreatePost/CreatePost';
@@ -34,31 +35,31 @@ const Aside = () => {
         </NavLink>
         <NavLink to='/' className='aside-link'>
           <span className='aside-icon'>
-            <AiOutlineHome color='white' size={20} />
+            <AiOutlineHome color='white' size={25} />
           </span>
           <span className='aside-link-text'>Home</span>
         </NavLink>
         <NavLink to='/explore' className='aside-link'>
           <span className='aside-icon'>
-            <BsSearch color='white' size={20} />
+            <BsSearch color='white' size={25} />
           </span>
           <span className='aside-link-text'>Explore</span>
         </NavLink>
         <NavLink to='/bookmark' className='aside-link'>
           <span className='aside-icon'>
-            <BsBookmarkDash color='white' size={20} />
+            <BsBookmarkDash color='white' size={25} />
           </span>
           <span className='aside-link-text'>Bookmarks</span>
         </NavLink>
         <NavLink to={`/profile/${userInfo?.username}`} className='aside-link'>
           <span className='aside-icon'>
-            <MdOutlineAccountCircle color='white' size={20} />
+            <MdOutlineAccountCircle color='white' size={25} />
           </span>
           <span className='aside-link-text'>Profile</span>
         </NavLink>
         <NavLink onClick={() => logoutHandler()} className='aside-link'>
           <span className='aside-icon'>
-            <LuVerified color='white' size={20} />
+            <BiLogOut color='white' size={25} />
           </span>
           <span className='aside-link-text'>Logout</span>
         </NavLink>

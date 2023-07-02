@@ -16,10 +16,10 @@
     gap: 8px;
 }
 .postContent>textarea{
-    background-color: black;
+    background-color:  #001527;
     color: white;
     height: 50px;
-    font-size: 1rem;
+    font-size: 1.25rem;
     padding: 1rem 0.5rem;
     border: none;
     resize: none;

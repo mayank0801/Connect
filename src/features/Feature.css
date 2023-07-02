@@ -22,7 +22,7 @@ gap: 5px;
 }
 .comment-content>textarea{
     width: 100%;
-    background-color: black;
+    background-color: #001527;
     color: white;
     height: 50px;
     font-size: 1.5rem;
