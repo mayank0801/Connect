@@ -43,9 +43,9 @@ export const searchUser = (users, searchedUser) => {
   }
   return users.filter(
     ({ username, firstName, lastName }) =>
-      username.includes(searchedUser) ||
-      firstName.includes(searchedUser) ||
-      lastName.includes(searchedUser)
+      username.toLowerCase().includes(searchedUser.toLowerCase()) ||
+      firstName.toLowerCase().includes(searchedUser) ||
+      lastName.toLowerCase().includes(searchedUser)
   );
 };
 

@@ -41,8 +41,11 @@ export const AsideRight = () => {
               </span>
               <AiOutlinePlus
                 size={20}
-                onClick={() =>
+                onClick={(e) =>{
+
+                e.stopPropagation();
                   followUser(user._id, token, updateUser, loaduserHandler)
+                }
                 }
               />
             </div>

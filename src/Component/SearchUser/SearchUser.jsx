@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useState } from 'react';
 import { PostContext } from '../../context/PostContext';
 import { searchUser } from '../../utlis/utlis';
 import './SearchUser.css';
+import { useNavigate } from 'react-router-dom';
+import { useClickOutside } from '../../hook/clickOutside';
 export const SearchUser = () => {
   const {
     state: { users },
@@ -20,8 +22,9 @@ export const SearchUser = () => {
     setIsInputFocused(false);
   };
 
-  console.log(users, 'search', searchSuggestedUser);
-
+  const navigate=useNavigate();
+  const inputRef=useRef(null);
+  useClickOutside(inputRef,setIsInputFocused);
   return (
     <div className='searchContainer'>
       <div className='searchUser-input'>
@@ -30,25 +33,29 @@ export const SearchUser = () => {
           value={searchUserText}
           onChange={(e) => setSearchUserText(e.target.value.trim())}
           onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
+          
           placeholder='Search Connect'
         />
       </div>
       {isInputFocused && (
-        <div className='searchedUser'>
+        <div className='searchedUser' ref={inputRef}>
           {searchSuggestedUser.length === 0 ? (
             <div>Search People Across</div>
           ) : (
             searchSuggestedUser.map((user) => (
-              <div className='searchUsercontainer'>
+              <div className='searchUsercontainer' onClick={(e)=>{
+                e.stopPropagation();
+                navigate(`/profile/${user?.username}`)}
+              }>
                 <img
                   className='aside-profile-image'
                   src={user?.profileAvatar}
                   alt='userProfile'
+
                 />
                 <div>
                   <p>{`${user.firstName} ${user.lastName}`}</p>
-                  <p>@mayank0801</p>
+                  <p>{user?.username}</p>
                 </div>
               </div>
             ))

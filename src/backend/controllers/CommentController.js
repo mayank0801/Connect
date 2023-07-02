@@ -48,7 +48,7 @@ export const getPostCommentsHandler = function (schema, request) {
 
 export const addPostCommentHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
-
+  console.log(user);
   try {
     if (!user) {
       return new Response(

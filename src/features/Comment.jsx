@@ -17,9 +17,9 @@ export const Comment = ({ post }) => {
     event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     console.log(post._id, commentContent, token, dispatch, 'check1');
-    addComment(post._id, commentContent, token, dispatch);
+    await addComment(post._id, commentContent, token, dispatch);
     setcommentContent('');
   };
 

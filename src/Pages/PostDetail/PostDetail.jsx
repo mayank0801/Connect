@@ -83,7 +83,7 @@ export const PostDetail = () => {
           {postDetail && postUser && (
             <TweetCard
               post={postDetail}
-              userInfo={postUser}
+              userInfo={userInfo}
               token={token}
               dispatch={dispatch}
               isPostDetail={true}
