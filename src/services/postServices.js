@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export const loadPostHandler = async (dispatch) => {
   try {
@@ -27,8 +28,10 @@ export const likePostHandler = async (_id, encodedToken, dispatch) => {
       }
     );
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
+    toast.success('Post Liked');
     console.log(response, 'likePostHandler');
   } catch (error) {
+    toast.error('SomeThing Went Wrong');
     console.error(error);
   }
 };
@@ -44,14 +47,13 @@ export const dislikeHandler = async (postId, encodedToken, dispatch) => {
       }
     );
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
-    console.log(response, 'dislikeres');
+    toast.success('Post Disliked');
   } catch (error) {
-    console.error(error);
+    toast.error('SomeThing Went Wrong');
   }
 };
 
 export const createPosthandler = async (post, encodedToken, dispatch) => {
-  console.log('post', post);
   try {
     const response = await axios.post(
       `/api/posts/`,
@@ -61,39 +63,40 @@ export const createPosthandler = async (post, encodedToken, dispatch) => {
     if (response) {
       dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
     }
+    toast.success('Post Added SuccessFully');
   } catch (error) {
-    console.error(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
 export const deletePosthandler = async (postId, encodedToken, dispatch) => {
-  console.log('Delete', postId, encodedToken);
   try {
     const response = await axios.delete(`/api/posts/${postId}`, {
       headers: { authorization: encodedToken },
     });
     console.log(response, 'delete');
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
+    toast.success('Post Deleted');
   } catch (error) {
-    console.log(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
-export const followUserHandler = async (
-  followUserId,
-  encodedToken,
-  dipatch
-) => {
-  try {
-    const response = await axios.post(
-      `/api/users/follow/${followUserId}`,
-      {},
-      { headers: { authorization: encodedToken } }
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const followUserHandler = async (
+//   followUserId,
+//   encodedToken,
+//   dipatch
+// ) => {
+//   try {
+//     const response = await axios.post(
+//       `/api/users/follow/${followUserId}`,
+//       {},
+//       { headers: { authorization: encodedToken } }
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export const unfollow = async (
   followUserId,
@@ -110,8 +113,10 @@ export const unfollow = async (
     console.log(response, 'Clicked1');
     updateUser(response.data.user);
     await loaduserHandler();
+    toast.success('User Unfollowed');
   } catch (error) {
-    console.log(error, 'Clicked1');
+    console.log(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -129,9 +134,9 @@ export const bookmark = async (
     );
     updateBookMark(response.data.bookmarks);
     dispatch({ type: 'USERBOOKMARK_POST', payLoad: response.data.bookmarks });
-    console.log(response, 'AddBookMark');
+    toast.success('Added to BookMark');
   } catch (error) {
-    console.log(error, 'AddBookMark');
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -143,8 +148,10 @@ export const removeBookMark = async (postId, encodedToken, updateBookMark) => {
       { headers: { authorization: encodedToken } }
     );
     updateBookMark(response.data.bookmarks);
-    // console.log(response);
-  } catch (error) {}
+    toast.success('Remove From BookMark');
+  } catch (error) {
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
+  }
 };
 
 export const editPost = async (postId, postData, encodedToken, dispatch) => {
@@ -155,10 +162,10 @@ export const editPost = async (postId, postData, encodedToken, dispatch) => {
       { postData },
       { headers: { authorization: encodedToken } }
     );
-    console.log(response, 'checkout');
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
+    toast.success('Post Updated');
   } catch (error) {
-    console.log(error, 'checkout');
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -175,13 +182,12 @@ export const followUser = async (
       {},
       { headers: { authorization: encodedToken } }
     );
-    // if(response)
-    console.log(response);
     localStorage.setItem('userInfo', JSON.stringify(response.data.user));
     updateUser(response.data.user);
     await loaduserHandler();
+    toast.success('User Followed');
   } catch (error) {
-    console.log(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -197,10 +203,10 @@ export const addComment = async (
       { commentData },
       { headers: { authorization: encodedToken } }
     );
-    console.log(response, 'check1');
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
+    toast.success('Comment Added');
   } catch (error) {
-    console.log(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -217,10 +223,10 @@ export const deleteComment = async (
       {},
       { headers: { authorization: encodedToken } }
     );
-    console.log(response);
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
+    toast.success('Comment Deleted');
   } catch (error) {
-    console.log(error, 'check2');
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -245,10 +251,10 @@ export const editComment = async (
       { commentData },
       { headers: { authorization: encodedToken } }
     );
-    console.log(response, 'backendResponse');
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
+    toast.success('Edited Comment SuccessFully');
   } catch (error) {
-    console.log(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 
@@ -260,12 +266,12 @@ export const updateUserhandler = async (userData, encodedToken, updateUser) => {
       { userData },
       { headers: { authorization: encodedToken } }
     );
-    // console.log(response,"BackendResponseOF User Upad")
     localStorage.setItem('userInfo', JSON.stringify(response.data.user));
     updateUser(response.data.user);
-    // await loaduserHandler();
+    await loaduserHandler();
+    toast.success('Update Profile SuccessFully');
   } catch (error) {
-    console.error(error);
+    toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
 

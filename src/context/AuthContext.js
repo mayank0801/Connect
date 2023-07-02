@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Navigate, json, useNavigate } from 'react-router-dom';
-import { useReducer } from 'react';
+import { toast } from 'react-hot-toast';
 
 export const AuthContext = createContext();
 
@@ -38,28 +38,35 @@ export default function AuthContextProvider({ children }) {
       localStorage.setItem('userInfo', JSON.stringify(response.data.foundUser));
       setToken(response.data.encodedToken);
       setUserInfo(response.data.foundUser);
+      toast.success(`Welcome Back ${response.data.foundUser.firstName}`);
+      return response;
     } catch (e) {
-      console.log(e);
+      toast.error('SomeThing Went Wrong');
     }
   };
 
   const signupHandler = async (signUpInfo) => {
     try {
       const response = await axios.post('/api/auth/signup', {
-        ...signUpInfo
+        ...signUpInfo,
       });
-
 
       localStorage.setItem(
         'userToken',
         JSON.stringify(response.data.encodedToken)
       );
-      localStorage.setItem('userInfo', JSON.stringify(response.data.createdUser));
+      localStorage.setItem(
+        'userInfo',
+        JSON.stringify(response.data.createdUser)
+      );
       setToken(response.data.encodedToken);
       setUserInfo(response.data.createdUser);
+      toast.success(
+        `Welcome To Connect ${response?.data?.createdUser?.firstName}`
+      );
       return response;
     } catch (error) {
-      console.error(error);
+      toast.error('Something Went Wrong');
     }
   };
 
@@ -80,12 +87,9 @@ export default function AuthContextProvider({ children }) {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userInfo');
     setuserBookMark([]);
-    navigate('/landing');
+    navigate('/');
+    toast.success('Logout SuccesFull');
   };
-
-  // useEffect(()=>{
-
-  // },[userInfo])
 
   useEffect(() => {
     getBookmark();

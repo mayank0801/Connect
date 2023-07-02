@@ -10,7 +10,8 @@ const SignUp = () => {
     lastName: '',
     username: '',
     password: '',
-    profileAvatar:"https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg"
+    profileAvatar:
+      'https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg',
   });
   const navigate = useNavigate();
   const submitHandler = async (e) => {
@@ -26,7 +27,7 @@ const SignUp = () => {
       <div className='login-container'>
         <div className='logo'>
           <span className='logo-item'>
-            <img height={'50px'} width={'50px'} src={ConnectLogo} alt='logo'/>
+            <img height={'50px'} width={'50px'} src={ConnectLogo} alt='logo' />
             <span className='logo-text'>Connecting People</span>
           </span>
         </div>

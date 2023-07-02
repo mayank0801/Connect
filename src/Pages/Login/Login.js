@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 import ConnectLogo from '../../asset/ConnectLogo1.png';
 import './Login.css';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const { loginHandler } = useContext(AuthContext);
@@ -11,11 +12,19 @@ const Login = () => {
 
   const guestUser = { username: 'Spidy', password: 'Spidy123' };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    loginHandler(loginInfo.username, loginInfo.password);
-    setLoginInfo({ username: '', password: '' });
-    navigate('/');
+  const submitHandler = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await loginHandler(
+        loginInfo.username,
+        loginInfo.password
+      );
+      setLoginInfo({ username: '', password: '' });
+      navigate('/');
+      toast.success(`Welcome back, ${response.data.firstName.split}!`, {
+        icon: '👋',
+      });
+    } catch (error) {}
   };
   console.log(loginInfo);
   return (
@@ -59,7 +68,12 @@ const Login = () => {
               <button type='submit' value='Submit'>
                 Login In
               </button>
-              <button onClick={() => setLoginInfo(guestUser)}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLoginInfo(guestUser);
+                }}
+              >
                 Guest Mode
               </button>
             </div>
