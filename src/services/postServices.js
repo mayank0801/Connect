@@ -132,9 +132,9 @@ export const bookmark = async (
       {},
       { headers: { authorization: encodedToken } }
     );
+    toast.success('Added to BookMark');
     updateBookMark(response.data.bookmarks);
     dispatch({ type: 'USERBOOKMARK_POST', payLoad: response.data.bookmarks });
-    toast.success('Added to BookMark');
   } catch (error) {
     toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }

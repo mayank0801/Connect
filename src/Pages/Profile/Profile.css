@@ -48,6 +48,9 @@
     font-weight: 700;
     background-color: #2F3336;
     color: white;
+    cursor: pointer;
+    border: none;
+    
 }
 .post-option-text{
     padding: 0.5rem 1rem;

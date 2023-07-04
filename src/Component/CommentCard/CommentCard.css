@@ -22,7 +22,12 @@ width: 100%;
     align-items: center;
   
 }
-
+.more-icon{
+    cursor: pointer;
+}
+.dropdown-menu{
+    cursor: pointer;
+}
 
 .comment-detail p:first-child{
     font-weight: 700;

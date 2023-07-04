@@ -5,6 +5,7 @@ import '../Login/Login.css';
 import ConnectLogo from '../../asset/ConnectLogo1.png';
 const SignUp = () => {
   const { signupHandler } = useContext(AuthContext);
+  const[confirmPassWord,setConfirmPassWord]=useState("");
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
     lastName: '',
@@ -32,7 +33,7 @@ const SignUp = () => {
           </span>
         </div>
         <h1 style={{ textAlign: 'center', color: 'blue' }}>Signup</h1>
-        <div>
+      
           <form onSubmit={submitHandler}>
             <label className='input-lable'>
               <span className='label-text'>FirstName*</span>
@@ -83,18 +84,27 @@ const SignUp = () => {
 
             <label className='input-lable'>
               <span className='label-text'>Confirm-PassWord*</span>
-              <input type='password' placeholder='****' required />
+              <input type='password' value={confirmPassWord} placeholder='****' onChange={(e)=>setConfirmPassWord(e.target.value)} required />
+              <span>{signUpInfo.password!==confirmPassWord&&<p style={{fontSize:"0.9rem",color:"red",margin:"0",padding:"0"}}>Password does not match</p>}</span>
             </label>
 
-            <div className='login-action'>
-              <button type='submit' value='submit'>
+            <div className='signup-action'>
+              <button type='submit' value='submit'
+              disabled={confirmPassWord!=signUpInfo?.password}
+              >
                 Sign Up
               </button>
             </div>
           </form>
+          <p className='redirect'>
+          Already have an account?
+          <span className='signup-page' onClick={() => navigate('/login')}>
+            SignIn
+          </span>
+        </p>
         </div>
       </div>
-    </div>
+   
   );
 };
 

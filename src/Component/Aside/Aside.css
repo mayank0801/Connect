@@ -4,7 +4,7 @@
     width: 275px;
     padding: 4px 12px;
     height: 100vh;
-    background: var(--black, #000);
+    background:  #102B3F;
     color:"white";
     justify-content: space-between;
     
@@ -26,7 +26,7 @@
     padding: 13px;
     display: flex;
     gap: 20px;
-    align-items: flex-start;
+    align-items: center;
     border-radius: 50px;
 }
 .aside-link:hover{
@@ -47,6 +47,8 @@ line-height: normal;
     font-weight: 700;
     color: white;
     background-color:#1D9BF0 ;
+    cursor: pointer;
+    border: none;
 
 }
 .aside-footer{
@@ -57,6 +59,7 @@ line-height: normal;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 }
 .aside-profile-image{
     height: 40px;
@@ -78,8 +81,8 @@ line-height: normal;
 .createPostModal{
     position: absolute;
     width: 60%;
-    background-color: #0a0a0a;
+    /* background-color: #0a0a0a; */
     top: 30%;
     left: 20%;
-    z-index: 2;
+    z-index: 99999;
 }

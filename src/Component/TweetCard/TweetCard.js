@@ -94,13 +94,11 @@ export const TweetCard = ({
             </div>
           </div>
         </div>
-        <span
-          className='postCard-content'
-          onClick={() => navigate(`/post/${_id}`)}
-        >
-          {content}
-        </span>
-        <div className='postCard-image'>
+
+      
+        
+         <p className='post-content-text' style={{wordWrap:"break-word"}} onClick={() => navigate(`/post/${_id}`)}>{content}</p>
+        <div className='postCard-image' onClick={() => navigate(`/post/${_id}`)}>
           {post?.postImage && (
             <img
               src={post?.postImage}
@@ -110,6 +108,8 @@ export const TweetCard = ({
               style={{ height: isPostDetail ? '500px' : null }}
             />
           )}
+
+</div>
           <div className='postCard-actions'>
             <div className='postCard-actions-item'>
               <span>
@@ -140,13 +140,13 @@ export const TweetCard = ({
                   <BsBookmarksFill
                     size={20}
                     onClick={() =>
-                      removeBookMark(post._id, token, updateBookMark)
+                      removeBookMark(post._id, token, updateBookMark,dispatch)
                     }
                   />
                 ) : (
                   <BsBookmarks
                     size={20}
-                    onClick={() => bookmark(post._id, token, updateBookMark)}
+                    onClick={() => bookmark(post._id, token, updateBookMark,dispatch)}
                   />
                 )}
               </span>
@@ -159,7 +159,7 @@ export const TweetCard = ({
             </div>
           </div>
         </div>
-      </div>
+      
       {isOpenComment && (
         <EditCommentModal
           post={post}
