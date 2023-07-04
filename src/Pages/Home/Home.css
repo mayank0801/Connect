@@ -1,44 +1,43 @@
-.home-Container{
-    display: flex;
-    justify-content: center;
+.home-Container {
+  display: flex;
+  justify-content: center;
 }
-.aside{
-width: 25%;
-display: flex;
-justify-content: end;
-height: 100vh;
-position:sticky;
-top: 0%;
+.aside {
+  width: 25%;
+  display: flex;
+  justify-content: end;
+  height: 100vh;
+  position: sticky;
+  top: 0%;
+  z-index: 1;
 }
-.main-content{
-    width: 45%;
-    border-right: 4px solid #2F3336;
-    border-left:4px solid #2F3336 ;
-    background-color: #001527;
+.main-content {
+  width: 45%;
+  border-right: 4px solid #2f3336;
+  border-left: 4px solid #2f3336;
+  background-color: #001527;
+  z-index: 0;
 }
-.aside-right{
-    width: 20%;
-    height: 100vh;
-position:sticky;
-top: 0%;
+.aside-right {
+  width: 20%;
+  height: 100vh;
+  position: sticky;
+  top: 0%;
+  z-index: 0;
 }
-.title{
-    font-size: 1.5rem;
-    font-weight: 900;
-   
-   
+.title {
+  font-size: 1.5rem;
+  font-weight: 900;
 }
-.page-Title{
-    padding: 1rem 0.5rem;
-    border-bottom:1px solid #2F3336 ;
+.page-Title {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid #2f3336;
 }
-.mainTitle{
-    margin-top: 2rem;
-    margin-left: 1rem;
-    font-size: 1.5rem;
+.mainTitle {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-size: 1.5rem;
 }
-.filter-Tweet{
-    background-color: #102B3F;
+.filter-Tweet {
+  background-color: #102b3f;
 }
-
-

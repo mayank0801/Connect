@@ -1,5 +1,7 @@
 import axios from 'axios';
+import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { PostContext } from '../context/PostContext';
 
 export const loadPostHandler = async (dispatch) => {
   try {
@@ -53,8 +55,14 @@ export const dislikeHandler = async (postId, encodedToken, dispatch) => {
   }
 };
 
-export const createPosthandler = async (post, encodedToken, dispatch) => {
+export const createPosthandler = async (
+  post,
+  encodedToken,
+  dispatch,
+  setLoading
+) => {
   try {
+    setLoading(true);
     const response = await axios.post(
       `/api/posts/`,
       { postData: post },
@@ -64,6 +72,7 @@ export const createPosthandler = async (post, encodedToken, dispatch) => {
       dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
     }
     toast.success('Post Added SuccessFully');
+    setLoading(false);
   } catch (error) {
     toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
@@ -173,10 +182,12 @@ export const followUser = async (
   followUserId,
   encodedToken,
   updateUser,
-  loaduserHandler
+  loaduserHandler,
+  setLoading
 ) => {
   console.log(followUserId, encodedToken, updateUser, loaduserHandler);
   try {
+    setLoading(true);
     const response = await axios.post(
       `/api/users/follow/${followUserId}`,
       {},
@@ -188,6 +199,8 @@ export const followUser = async (
     toast.success('User Followed');
   } catch (error) {
     toast.error('SomeThing Went Wrong!.Try Again After Some Time');
+  } finally {
+    setLoading(false);
   }
 };
 

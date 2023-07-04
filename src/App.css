@@ -1,8 +1,7 @@
 .App {
   /* text-align: center; */
-  color: #D9D9D9;
-  background-color: #102B3F;
-  
+  color: #d9d9d9;
+  background-color: #102b3f;
 }
 *,
 *::before,
@@ -13,12 +12,19 @@
 }
 
 /* Normalize heading margins */
-h1, h2, h3, h4, h5, h6,textarea {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+textarea {
   margin: 0;
 }
 
 /* Reset list styles */
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -28,10 +34,9 @@ ul, ol {
 a {
   text-decoration: none;
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -63,8 +68,7 @@ a {
   }
 }
 
-
-.avtar-image{
+.avtar-image {
   width: 50px;
   height: 50px;
   border-radius: 50%;

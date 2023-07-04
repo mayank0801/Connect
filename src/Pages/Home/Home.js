@@ -17,11 +17,14 @@ import { SearchUser } from '../../Component/SearchUser/SearchUser';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
 import CreatePost from '../../Component/CreatePost/CreatePost';
 import { useEffect } from 'react';
+import Loader from '../../Component/Loader/Loader';
 export default function Home() {
   const {
     posts,
     dispatch,
     state: { filterType, users },
+    setLoading,
+    loading,
   } = useContext(PostContext);
   const { userInfo, token } = useContext(AuthContext);
 
@@ -43,17 +46,22 @@ export default function Home() {
         <div className='filter-Tweet'>
           <SortBar />
         </div>
-        <div style={{ width: '100%' }}>
-          {userFeed.map((post) => (
-            <TweetCard
-              key={post._id}
-              post={post}
-              userInfo={userInfo}
-              token={token}
-              dispatch={dispatch}
-            />
-          ))}
-        </div>
+
+        {loading ? (
+          <Loader />
+        ) : (
+          <div style={{ width: '100%' }}>
+            {userFeed.map((post) => (
+              <TweetCard
+                key={post._id}
+                post={post}
+                userInfo={userInfo}
+                token={token}
+                dispatch={dispatch}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       <div className='aside-right'>

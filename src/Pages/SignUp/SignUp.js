@@ -5,7 +5,7 @@ import '../Login/Login.css';
 import ConnectLogo from '../../asset/ConnectLogo1.png';
 const SignUp = () => {
   const { signupHandler } = useContext(AuthContext);
-  const[confirmPassWord,setConfirmPassWord]=useState("");
+  const [confirmPassWord, setConfirmPassWord] = useState('');
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
     lastName: '',
@@ -33,78 +33,98 @@ const SignUp = () => {
           </span>
         </div>
         <h1 style={{ textAlign: 'center', color: 'blue' }}>Signup</h1>
-      
-          <form onSubmit={submitHandler}>
-            <label className='input-lable'>
-              <span className='label-text'>FirstName*</span>
-              <input
-                type='text'
-                placeholder='Mayank Kumar'
-                onChange={(e) =>
-                  setSignUpInfo({ ...signUpInfo, firstName: e.target.value })
-                }
-                required
-              />
-            </label>
 
-            <label className='input-lable'>
-              <span className='label-text'>LastName</span>
-              <input
-                type='text'
-                placeholder='mayankkumar'
-                onChange={(e) =>
-                  setSignUpInfo({ ...signUpInfo, lastName: e.target.value })
-                }
-              />
-            </label>
+        <form onSubmit={submitHandler}>
+          <label className='input-lable'>
+            <span className='label-text'>FirstName*</span>
+            <input
+              type='text'
+              placeholder='Mayank Kumar'
+              onChange={(e) =>
+                setSignUpInfo({ ...signUpInfo, firstName: e.target.value })
+              }
+              required
+            />
+          </label>
 
-            <label className='input-lable'>
-              <span className='label-text'>UserName*</span>
-              <input
-                type='text'
-                placeholder='mayank@gmail.com'
-                onChange={(e) =>
-                  setSignUpInfo({ ...signUpInfo, username: e.target.value })
-                }
-                required
-              />
-            </label>
+          <label className='input-lable'>
+            <span className='label-text'>LastName</span>
+            <input
+              type='text'
+              placeholder='mayankkumar'
+              onChange={(e) =>
+                setSignUpInfo({ ...signUpInfo, lastName: e.target.value })
+              }
+            />
+          </label>
 
-            <label className='input-lable'>
-              <span className='label-text'>PassWord*</span>
-              <input
-                type='password'
-                placeholder='***'
-                onChange={(e) =>
-                  setSignUpInfo({ ...signUpInfo, password: e.target.value })
-                }
-                required
-              />
-            </label>
+          <label className='input-lable'>
+            <span className='label-text'>UserName*</span>
+            <input
+              type='text'
+              placeholder='mayank@gmail.com'
+              onChange={(e) =>
+                setSignUpInfo({ ...signUpInfo, username: e.target.value })
+              }
+              required
+            />
+          </label>
 
-            <label className='input-lable'>
-              <span className='label-text'>Confirm-PassWord*</span>
-              <input type='password' value={confirmPassWord} placeholder='****' onChange={(e)=>setConfirmPassWord(e.target.value)} required />
-              <span>{signUpInfo.password!==confirmPassWord&&<p style={{fontSize:"0.9rem",color:"red",margin:"0",padding:"0"}}>Password does not match</p>}</span>
-            </label>
+          <label className='input-lable'>
+            <span className='label-text'>PassWord*</span>
+            <input
+              type='password'
+              placeholder='***'
+              onChange={(e) =>
+                setSignUpInfo({ ...signUpInfo, password: e.target.value })
+              }
+              required
+            />
+          </label>
 
-            <div className='signup-action'>
-              <button type='submit' value='submit'
-              disabled={confirmPassWord!=signUpInfo?.password}
-              >
-                Sign Up
-              </button>
-            </div>
-          </form>
-          <p className='redirect'>
+          <label className='input-lable'>
+            <span className='label-text'>Confirm-PassWord*</span>
+            <input
+              type='password'
+              value={confirmPassWord}
+              placeholder='****'
+              onChange={(e) => setConfirmPassWord(e.target.value)}
+              required
+            />
+            <span>
+              {signUpInfo.password !== confirmPassWord && (
+                <p
+                  style={{
+                    fontSize: '0.9rem',
+                    color: 'red',
+                    margin: '0',
+                    padding: '0',
+                  }}
+                >
+                  Password does not match
+                </p>
+              )}
+            </span>
+          </label>
+
+          <div className='signup-action'>
+            <button
+              type='submit'
+              value='submit'
+              disabled={confirmPassWord != signUpInfo?.password}
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+        <p className='redirect'>
           Already have an account?
           <span className='signup-page' onClick={() => navigate('/login')}>
             SignIn
           </span>
         </p>
-        </div>
       </div>
-   
+    </div>
   );
 };
 

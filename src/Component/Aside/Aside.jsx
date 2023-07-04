@@ -9,7 +9,7 @@ import { BsBookmarkDash } from 'react-icons/bs';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { LuVerified } from 'react-icons/lu';
-import {BiLogOut} from "react-icons/bi"
+import { BiLogOut } from 'react-icons/bi';
 import { useState } from 'react';
 import { CreatePostModal } from '../../features/CreatePostModal';
 import CreatePost from '../CreatePost/CreatePost';
@@ -20,7 +20,7 @@ const Aside = () => {
   const { userInfo, logoutHandler } = useContext(AuthContext);
   const [createPostModal, setCreatePostModal] = useState(false);
   const postRef = useRef(null);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   useClickOutside(postRef, setCreatePostModal);
 
   return (
@@ -71,12 +71,12 @@ const Aside = () => {
         >
           Post
         </button>
-        <div className='createPostModal' ref={postRef}>
-          {createPostModal && <CreatePost />}
-        </div>
       </div>
       <div className='aside-footer'>
-        <div className='aside-profile' onClick={()=>navigate(`/profile/${userInfo?.username}`)}>
+        <div
+          className='aside-profile'
+          onClick={() => navigate(`/profile/${userInfo?.username}`)}
+        >
           <img
             className='aside-profile-image'
             src={userInfo?.profileAvatar}
@@ -88,6 +88,12 @@ const Aside = () => {
           </div>
           <FiMoreHorizontal fill='white' stroke='white' size={20} />
         </div>
+      </div>
+
+      <div className='createPostModal' ref={postRef}>
+        {createPostModal && (
+          <CreatePost setCreatePostModal={setCreatePostModal} />
+        )}
       </div>
     </aside>
   );

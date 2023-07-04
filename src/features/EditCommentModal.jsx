@@ -29,7 +29,7 @@ export const EditCommentModal = ({
 
   const handleChange = (event) => {
     setCommendata(event.target.value);
-    event.target.style.height = 'auto';
+    // event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
 
@@ -48,7 +48,7 @@ export const EditCommentModal = ({
           className='comment-input'
           value={commentData}
           name='content'
-          rows='1'
+          row='1'
           placeholder='What is Happening?!'
           onChange={(e) => handleChange(e)}
         />

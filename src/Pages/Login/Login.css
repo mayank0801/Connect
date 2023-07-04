@@ -1,97 +1,96 @@
-.login-page{
-    height: 100vh;
-    width: 100%;
-    background-color: #102B3F;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-page {
+  height: 100vh;
+  width: 100%;
+  background-color: #102b3f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-container{
-    width: 300px;
-    /* height: 400px; */
-    border: 1px solid blue;
-    border-radius: 12px;
-    padding: 1rem;
-    background-color: #001527;
+.login-container {
+  width: 300px;
+  /* height: 400px; */
+  border: 1px solid blue;
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: #001527;
 }
-.logo{
-    display: flex;
-    justify-content: center;
-
+.logo {
+  display: flex;
+  justify-content: center;
 }
-.logo-item{
-    display: flex;
-    align-items: center;
+.logo-item {
+  display: flex;
+  align-items: center;
 }
-.logo-text{
-    font-weight: 700;
-    /* color: blue; */
+.logo-text {
+  font-weight: 700;
+  /* color: blue; */
 }
-.input-lable{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.input-lable {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.input-lable>input{
-    background-color: #001527;
-    padding: 0.6rem 0.3rem 0.5rem;
-    border: 1px solid #7f8182;
-    border-radius: 5px;
-    color: white;
+.input-lable > input {
+  background-color: #001527;
+  padding: 0.6rem 0.3rem 0.5rem;
+  border: 1px solid #7f8182;
+  border-radius: 5px;
+  color: white;
 }
-.label-text{
-    color: #86888a;
-    font-weight: 500;
-    font-size: 1rem;
+.label-text {
+  color: #86888a;
+  font-weight: 500;
+  font-size: 1rem;
 }
-.login-action{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
+.login-action {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
 }
-.login-action>button{
-    padding: 0.5rem;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    margin-top:5px ;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
+.login-action > button {
+  padding: 0.5rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  margin-top: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
 }
-.login-action>:first-child{
-    background-color: blue;
+.login-action > :first-child {
+  background-color: blue;
 }
-.login-action>:last-child{
-    background-color: #102B3F;
+.login-action > :last-child {
+  background-color: #102b3f;
 }
-.redirect{
-    margin-top:10px ;
-    text-align: center;
-    font-size: 0.9rem;
+.redirect {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem;
 }
-.signup-page{
-    cursor: pointer;
-    color: blue;
+.signup-page {
+  cursor: pointer;
+  color: blue;
 }
-.signup-action{
-    align-self: flex-end;
-    margin-bottom: 0px;
-    display: flex;
-    flex-direction: column;
+.signup-action {
+  align-self: flex-end;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
 }
-.signup-action>button{
-    padding: 0.5rem;
-    border-radius: 20px;
-    margin-top:5px ;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    background-color: blue;
-    border: none;
+.signup-action > button {
+  padding: 0.5rem;
+  border-radius: 20px;
+  margin-top: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: blue;
+  border: none;
 }
-.signup-action>button:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
+.signup-action > button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

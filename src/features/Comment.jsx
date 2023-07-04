@@ -38,7 +38,11 @@ export const Comment = ({ post }) => {
             onChange={(e) => handleChange(e)}
             placeholder='Post a Comment'
           />
-          <button className='commentbtn' onClick={() => handleSubmit()} disabled={commentContent.length===0}>
+          <button
+            className='commentbtn'
+            onClick={() => handleSubmit()}
+            disabled={commentContent.length === 0}
+          >
             Post
           </button>
         </div>

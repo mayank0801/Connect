@@ -13,11 +13,12 @@ import { CreatePostEmpty } from '../../utlis/utlis';
 import EmojiPicker from 'emoji-picker-react';
 import { useClickOutside } from '../../hook/clickOutside';
 
-export default function CreatePost() {
+export default function CreatePost({ setCreatePostModal }) {
   const {
     posts,
     dispatch,
     state: { filterType, users },
+    setLoading,
   } = useContext(PostContext);
   const { userInfo, token } = useContext(AuthContext);
 
@@ -52,9 +53,11 @@ export default function CreatePost() {
         postImage: profileAvatarUrl ? profileAvatarUrl?.url : '',
       },
       token,
-      dispatch
+      dispatch,
+      setLoading
     );
     setpostContent({ content: '', postImage: '' });
+    setCreatePostModal && setCreatePostModal(false);
   };
 
   const openFile = () => {
