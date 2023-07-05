@@ -95,10 +95,17 @@ export const TweetCard = ({
           </div>
         </div>
 
-      
-        
-         <p className='post-content-text' style={{wordWrap:"break-word"}} onClick={() => navigate(`/post/${_id}`)}>{content}</p>
-        <div className='postCard-image' onClick={() => navigate(`/post/${_id}`)}>
+        <p
+          className='post-content-text'
+          style={{ wordWrap: 'break-word' }}
+          onClick={() => navigate(`/post/${_id}`)}
+        >
+          {content}
+        </p>
+        <div
+          className='postCard-image'
+          onClick={() => navigate(`/post/${_id}`)}
+        >
           {post?.postImage && (
             <img
               src={post?.postImage}
@@ -108,58 +115,59 @@ export const TweetCard = ({
               style={{ height: isPostDetail ? '500px' : null }}
             />
           )}
-
-</div>
-          <div className='postCard-actions'>
-            <div className='postCard-actions-item'>
-              <span>
-                {isLiked(likes, userInfo.username) ? (
-                  <AiFillHeart
-                    color='red'
-                    size={20}
-                    onClick={() => dislikeHandler(_id, token, dispatch)}
-                  />
-                ) : (
-                  <AiOutlineHeart
-                    size={20}
-                    onClick={() => likePostHandler(_id, token, dispatch)}
-                  />
-                )}
-              </span>
-              <span>{likeCount ? likeCount : ''}</span>
-            </div>
-            <div className='postCard-actions-item'>
-              <span>
-                <FaRegComment size={20} onClick={() => setOpenComment(true)} />
-              </span>
-              <span>{comments?.length ? comments?.length : ''}</span>
-            </div>
-            <div className='postCard-actions-item'>
-              <span>
-                {isBookMark(userBookMark, post._id) ? (
-                  <BsBookmarksFill
-                    size={20}
-                    onClick={() =>
-                      removeBookMark(post._id, token, updateBookMark,dispatch)
-                    }
-                  />
-                ) : (
-                  <BsBookmarks
-                    size={20}
-                    onClick={() => bookmark(post._id, token, updateBookMark,dispatch)}
-                  />
-                )}
-              </span>
-              <span>36</span>
-            </div>
-            <div className='postCard-actions-item'>
-              <span>
-                <FiShare size={20} />
-              </span>
-            </div>
+        </div>
+        <div className='postCard-actions'>
+          <div className='postCard-actions-item'>
+            <span>
+              {isLiked(likes, userInfo.username) ? (
+                <AiFillHeart
+                  color='red'
+                  size={20}
+                  onClick={() => dislikeHandler(_id, token, dispatch)}
+                />
+              ) : (
+                <AiOutlineHeart
+                  size={20}
+                  onClick={() => likePostHandler(_id, token, dispatch)}
+                />
+              )}
+            </span>
+            <span>{likeCount ? likeCount : ''}</span>
+          </div>
+          <div className='postCard-actions-item'>
+            <span>
+              <FaRegComment size={20} onClick={() => setOpenComment(true)} />
+            </span>
+            <span>{comments?.length ? comments?.length : ''}</span>
+          </div>
+          <div className='postCard-actions-item'>
+            <span>
+              {isBookMark(userBookMark, post._id) ? (
+                <BsBookmarksFill
+                  size={20}
+                  onClick={() =>
+                    removeBookMark(post._id, token, updateBookMark, dispatch)
+                  }
+                />
+              ) : (
+                <BsBookmarks
+                  size={20}
+                  onClick={() =>
+                    bookmark(post._id, token, updateBookMark, dispatch)
+                  }
+                />
+              )}
+            </span>
+            <span>36</span>
+          </div>
+          <div className='postCard-actions-item'>
+            <span>
+              <FiShare size={20} />
+            </span>
           </div>
         </div>
-      
+      </div>
+
       {isOpenComment && (
         <EditCommentModal
           post={post}

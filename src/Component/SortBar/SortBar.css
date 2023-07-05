@@ -1,19 +1,14 @@
-.sortFilter{
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
-    position: relative;
-    
+.sortFilter {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  position: relative;
 }
-.post-option{
-    position: absolute;
-    right: 0%;
-    top:50%;
-    z-index: 9999;
-
+.post-option {
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  z-index: 9999;
 }
-
-
-  

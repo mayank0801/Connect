@@ -25,7 +25,7 @@ export const CommentCard = ({ comment, post, dispatch }) => {
         alt='commentUserProfile'
         onClick={() => navigate(`/profile/${comment?.username}`)}
       />
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '92%' }}>
         <div className='comment-header'>
           <span className='comment-detail'>
             <p>{`${comment?.firstName} ${comment?.lastName}`}</p>
@@ -53,15 +53,18 @@ export const CommentCard = ({ comment, post, dispatch }) => {
           </div>
         </div>
         <p className='comment-text'>{comment.comment}</p>
-
-        {isOpenComment && (
-          <EditCommentModal
-            post={post}
-            comment={comment}
-            initalCommentData={comment.comment}
-            setOpenComment={setOpenComment}
-          />
-        )}
+        <div
+          style={{ position: 'fixed', top: '30%', left: '33%', width: '600px' }}
+        >
+          {isOpenComment && (
+            <EditCommentModal
+              post={post}
+              comment={comment}
+              initalCommentData={comment.comment}
+              setOpenComment={setOpenComment}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

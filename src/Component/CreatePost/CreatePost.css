@@ -1,66 +1,66 @@
-.createPost{
-    width: 100%;
-    padding: 0.3rem;
-    padding-top: 0.5rem;
-    display: flex;
-    align-items: start;
-    gap: 8px;
-    border-top: 1px solid #2F3336;
-    border-bottom: 1px solid #2F3336;
+.createPost {
+  width: 100%;
+  padding: 0.3rem;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  border-top: 1px solid #2f3336;
+  border-bottom: 1px solid #2f3336;
 }
-.postContent{
-    align-self: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.postContent {
+  align-self: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.postContent>textarea{
-    background-color:  #001527;
-    color: white;
-    height: 50px;
-    font-size: 1.25rem;
-    padding: 1rem 0.5rem;
-    border: none;
-    resize: none;
-    overflow: hidden;
+.postContent > textarea {
+  background-color: #001527;
+  color: white;
+  height: 50px;
+  font-size: 1.25rem;
+  padding: 1rem 0.5rem;
+  border: none;
+  resize: none;
+  overflow: hidden;
 }
-.postContent>textarea:focus{
-    outline: none;
-    border: none;
-    border: none;
+.postContent > textarea:focus {
+  outline: none;
+  border: none;
+  border: none;
 }
-.profileImage>img{ 
-height: 48px;
-width: 48px;
-border-radius: 64%;
+.profileImage > img {
+  height: 48px;
+  width: 48px;
+  border-radius: 64%;
 }
 
-.post-icons{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0rem;
-    position: relative;
-    cursor: pointer;
+.post-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+  position: relative;
+  cursor: pointer;
 }
-.post-icons-item{
-    display: flex;
-    gap: 8px;
-    cursor: pointer;
+.post-icons-item {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
 }
-.postbtn{
-    /* justify-self: end; */
-    padding: 0.5rem 1.5rem;
-    font-size: 14px;
-    font-weight: 700;
-    background-color: blue;
-    color: white;
-    border-radius: 64px;
-    border: none;
-    cursor: pointer;
+.postbtn {
+  /* justify-self: end; */
+  padding: 0.5rem 1.5rem;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: blue;
+  color: white;
+  border-radius: 64px;
+  border: none;
+  cursor: pointer;
 }
-.postbtn:disabled{
-    opacity: 0.5;
-    cursor: not-allowed;
+.postbtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

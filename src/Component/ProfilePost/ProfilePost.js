@@ -24,7 +24,7 @@ export default function ProfilePost({ username }) {
 
   useEffect(() => {
     getUserPost();
-  }, [posts,username]);
+  }, [posts, username]);
   return (
     <div>
       {userPost.map((post) => (

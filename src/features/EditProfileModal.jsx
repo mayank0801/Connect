@@ -46,8 +46,8 @@ export const EditProfileModal = ({ intialState, setEditProfileModal }) => {
     e.stopPropagation();
     inputRef.current.click();
   };
-const containerRef=useRef(null);
-useClickOutside(containerRef,setEditProfileModal);
+  const containerRef = useRef(null);
+  useClickOutside(containerRef, setEditProfileModal);
 
   return (
     <div className='edit-profile-modal' ref={containerRef}>
@@ -58,11 +58,10 @@ useClickOutside(containerRef,setEditProfileModal);
               className='avatar-image'
               src={avatar}
               alt='avatar'
-              onClick={() =>{
+              onClick={() => {
                 setCloudnaryImage(avatar);
-                setProfileAvatar(avatar)
-              } 
-            }
+                setProfileAvatar(avatar);
+              }}
             />
           </div>
         ))}
@@ -112,7 +111,9 @@ useClickOutside(containerRef,setEditProfileModal);
       <button className='updateBtn' onClick={() => handleSubmit()}>
         Update
       </button>
-      <button className='updateBtn' onClick={()=>setEditProfileModal(false)}>Discard</button>
+      <button className='updateBtn' onClick={() => setEditProfileModal(false)}>
+        Discard
+      </button>
     </div>
   );
 };
