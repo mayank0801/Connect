@@ -88,7 +88,7 @@ export const isMediaFileLarge = (file) => {
   const fileSizeInBytes = file.size;
   const fileSizeInMB = fileSizeInBytes / (1024 * 1024); // Convert bytes to MB
   console.log(fileSizeInMB,"inmb")
-  if (fileSizeInMB > 2) {
+  if (fileSizeInMB > 5) {
     toast.error("File Should be less than 2 mb")
     return false; 
   }

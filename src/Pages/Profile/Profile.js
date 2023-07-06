@@ -69,6 +69,8 @@ export const Profile = () => {
     getProfileData();
   }, [userInfo,profileId]);
 
+  console.log(profileDetail,"hii")
+
   // useClickOutside(postRef,setEditProfileModal)
 
   return (
@@ -91,8 +93,10 @@ export const Profile = () => {
         <div className='profile-containerr'>
           <div className='profile-backGround'>
             <img
+            width={"100%"}
+            height={"100%"}
               src={
-                'https://img.freepik.com/free-vector/blue-curve-background_53876-113112.jpg?w=2000'
+                profileDetail?.backgroundImage
               }
               alt='backgroundimage'
             />

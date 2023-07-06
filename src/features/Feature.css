@@ -130,8 +130,8 @@
   position: absolute;
   top: 20%;
   left: 40%;
-  width: 300px;
-  padding: 1rem;
+  width: 400px;
+  padding: 0rem;
   z-index: 22;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -149,29 +149,56 @@
   height: 70px;
   width: 70px;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .edit-profile-image {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 12px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   position: relative;
 }
-.edit-profile-image > span > img {
+.user-profile-image{
+  position: absolute;
+  bottom: -25%;
+  left: 0%;
+  
+}
+.user-profile-image > img {
   height: 100px;
   width: 100px;
   border-radius: 50px;
 }
 
+.user-background-image{
+  width: 100%;
+  opacity: 0.9;
+}
+.user-background-image>img{
+  width: 100%;
+  height: 150px;
+}
+
 .camera-icon {
   position: absolute;
-  bottom: 16%;
-  left: 58%;
+  top: 35%;
+  left: 35%;
+  cursor: pointer;
+  /* bottom: 16%;
+  left: 58%; */
+}
+.camera-icon1{
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  cursor: pointer;
 }
 .editProfile-modal-input {
   display: flex;
   flex-direction: column;
+  margin-top:10% ;
 }
 
 .editProfile-modal-input > input {
@@ -179,6 +206,9 @@
   /* cursor: pointer; */
 }
 
+.edit-profile-avatar{
+  opacity: 0.9;
+}
 .updateBtn {
   text-align: right;
   margin-top: 0.5rem;
