@@ -307,3 +307,24 @@ export const cloudinaryImageFetcher = async (mediaNewPost) => {
 
   return urlToReturn;
 };
+
+
+export const cloudinaryVideoFetcher=async(mediaNewPost)=>{
+console.log(mediaNewPost,"video");
+const dataForCloudinary=new FormData();
+dataForCloudinary.append('file',mediaNewPost);
+dataForCloudinary.append('upload_preset','connect');
+dataForCloudinary.append('cloud_name','ditqnzlil');
+const urlToReturn=fetch(
+  'https://api.cloudinary.com/v1_1/ditqnzlil/video/upload',
+  {
+    method:'post',
+    body:dataForCloudinary,
+  }
+)
+.then((res)=>res.json())
+.then((data)=>data)
+.catch((e)=>console.log(e,"videoUrl"));
+
+return urlToReturn
+}

@@ -115,6 +115,15 @@ export const TweetCard = ({
               style={{ height: isPostDetail ? '500px' : null }}
             />
           )}
+          {
+            post?.postVideo&&<
+            video src={post?.postVideo}
+            className='postCard-image'
+            controls
+            >
+            Your Browser Doesnt Support This Video Type
+            </video>
+          }
         </div>
         <div className='postCard-actions'>
           <div className='postCard-actions-item'>
