@@ -4,19 +4,21 @@ import { AuthContext } from '../../context/AuthContext';
 import { MdPermMedia } from 'react-icons/md';
 import { BsEmojiSmile } from 'react-icons/bs';
 import { RxCrossCircled } from 'react-icons/rx';
+import {AiOutlineGif} from "react-icons/ai";
 import './CreatePost.css';
 import {
   cloudinaryImageFetcher,
   cloudinaryVideoFetcher,
   createPosthandler,
 } from '../../services/postServices';
+import GifPicker from 'gif-picker-react';
 import { CreatePostEmpty, isImage, isMediaFileLarge, isVideo } from '../../utlis/utlis';
 import EmojiPicker from 'emoji-picker-react';
 import { useClickOutside } from '../../hook/clickOutside';
 
 export default function CreatePost({ setCreatePostModal }) {
   const {
-    posts,
+    posts, 
     dispatch,
     state: { filterType, users },
     setLoading,
@@ -30,6 +32,7 @@ export default function CreatePost({ setCreatePostModal }) {
   });
   const [emojiModal, setEmojiModal] = useState(false);
   const [cloudinaryMedia, setcloudinaryMedia] = useState('');
+  const [gifModal,setGifModal]=useState(false);
 
   const inputRef = useRef(null);
 
@@ -90,8 +93,9 @@ export default function CreatePost({ setCreatePostModal }) {
     inputRef.current.click();
   };
   const emojiRef = useRef(null);
+  const gifRef=useRef(null);
   useClickOutside(emojiRef, setEmojiModal);
-
+  useClickOutside(gifRef,setGifModal)
   return (
     <div className='createPost'>
       <div className='profileImage'>
@@ -165,6 +169,8 @@ export default function CreatePost({ setCreatePostModal }) {
                 onChange={handleChange}
               />
             </span>
+
+           
             <span>
               <BsEmojiSmile
                 fill='white'
@@ -187,6 +193,21 @@ export default function CreatePost({ setCreatePostModal }) {
                 )}
               </div>
             </span>
+
+
+            <span>
+              <AiOutlineGif size={30} fill='white' stroke='white' onClick={()=>setGifModal(!gifModal)} />
+              <div className='gif-wrapper' ref={gifRef}>
+                {gifModal&&<GifPicker tenorApiKey={'AIzaSyC3f2te0YYy3yg9e-dEGdxou0J52mOWsgo'}
+                onGifClick={(TenorImage)=>
+                  {
+                    setpostContent({...postContent,postImage:TenorImage.url})
+                    setcloudinaryMedia(TenorImage.url)
+                  }}
+                />}
+              </div>
+            </span>
+
           </div>
           <button
             className='postbtn'

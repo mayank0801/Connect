@@ -64,3 +64,8 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.gif-wrapper{
+  position: absolute;
+}
+

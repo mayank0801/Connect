@@ -23,8 +23,6 @@ export const PostOption = ({ post, postUser }) => {
     ({ username }) => username === post.username
   );
   const followuserId = users.find(({ username }) => username === post.username);
-  console.log(followuserId);
-  console.log(users);
 
   return (
     <div className='userPost-optionConatiner'>

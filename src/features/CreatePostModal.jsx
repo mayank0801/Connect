@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react';
-
+import GifPicker from 'gif-picker-react';
 import { BsEmojiSmile } from 'react-icons/bs';
 import { GrGallery } from 'react-icons/gr';
 import { RxCrossCircled } from 'react-icons/rx';
-import { cloudinaryImageFetcher, editPost } from '../services/postServices';
+import { cloudinaryImageFetcher, cloudinaryVideoFetcher, editPost } from '../services/postServices';
 import { PostContext } from '../context/PostContext';
 import { AuthContext } from '../context/AuthContext';
 import EmojiPicker from 'emoji-picker-react';
 import { useRef } from 'react';
+import { AiOutlineGif } from 'react-icons/ai';
+import { useClickOutside } from '../hook/clickOutside';
+import { isMediaFileLarge, isVideo } from '../utlis/utlis';
 
 export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
   console.log(intialPostData, 'intial');
@@ -15,32 +18,65 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
   const { token, userInfo } = useContext(AuthContext);
   const { dispatch } = useContext(PostContext);
 
-  const [cloudnaryImage, setCloudnaryImage] = useState('');
+  const [cloudinaryMedia, setcloudinaryMedia] = useState('');
   const [emojiModal, setEmojiModal] = useState(false);
+  const [gifModal,setGifModal]=useState(false);
+  const gifRef=useRef(null);
   const emojiRef = useRef(null);
   const handleChange = (event) => {
-    event.stopPropagation();
+
+
     const { name, value } = event.target;
+    console.log(name,value,"event.target")
     if (name === 'postImage') {
-      setCloudnaryImage(event.target.files[0]);
-      setPostData({
-        ...postData,
-        postImage: URL.createObjectURL(event.target.files[0]),
-      });
+    if(!value){return ;}
+     else if(isVideo(event.target.files[0])){
+        console.log("Video","event.target");
+        if(!isMediaFileLarge(event.target.files[0])) 
+        {
+        return null;
+        }
+        else{
+        setPostData({
+          ...postData,
+          postVideo:URL.createObjectURL(event.target.files[0])
+        })
+        setcloudinaryMedia(event.target.files[0]);
+      }
+      }
+      else {
+        setPostData({
+          ...postData,
+          postImage: URL.createObjectURL(event.target.files[0]),
+        });
+        setcloudinaryMedia(event.target.files[0]);
+      }
+    
+      
     } else setPostData({ ...postData, [name]: value });
     event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
-  };
+
+
+
+
+
+      };
 
   const submitPostHandler = async () => {
     console.log(post?.id, 'pppp');
-    let profileAvatarUrl = '';
+    let postMedia = '';
     if (postData?.postImage)
-      profileAvatarUrl = await cloudinaryImageFetcher(cloudnaryImage);
-    console.log(profileAvatarUrl, 'pppp');
+    postMedia = await cloudinaryImageFetcher(cloudinaryMedia);
+    else if(postData?.postVideo){
+      postMedia=await cloudinaryVideoFetcher(cloudinaryMedia);
+    }
+      console.log(postMedia, 'pppp');
     await editPost(
       post?._id,
-      { ...postData, postImage: profileAvatarUrl.url },
+      { ...postData, 
+        postImage: postData.postImage ? postMedia?.url : '',
+        postVideo:postData.postVideo?postMedia?.url:''},
       token,
       dispatch
     );
@@ -51,6 +87,8 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
     e.stopPropagation();
     inputRef.current.click();
   };
+
+  useClickOutside(gifRef,setGifModal);
 
   return (
     <div className='create-modal'>
@@ -83,9 +121,10 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                 <RxCrossCircled
                   size={30}
                   color='red'
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setPostData({ ...postData, postImage: '' });
-                    setCloudnaryImage('');
+                    setcloudinaryMedia('');
                   }}
                 />
               </>
@@ -118,6 +157,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                 className='post-icons_item'
                 onClick={() => setEmojiModal(!emojiModal)}
               />
+             
               {emojiModal && (
                 <div
                   style={{ position: 'absolute', zIndex: '5' }}
@@ -127,6 +167,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                     theme='dark'
                     onEmojiClick={(emoji, event) => {
                       console.log(emoji.emoji);
+                      event.stopPropagation();
                       setPostData({
                         ...postData,
                         content: postData.content + emoji.emoji,
@@ -135,6 +176,20 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                   />
                 </div>
               )}
+            </label>
+
+            <label>
+            <AiOutlineGif size={30} fill='white' stroke='white' onClick={()=>setGifModal(!gifModal)} />
+              <div className='gif-wrapper-modal' ref={gifRef}>
+                {gifModal&&<GifPicker tenorApiKey={'AIzaSyC3f2te0YYy3yg9e-dEGdxou0J52mOWsgo'}
+                onGifClick={(TenorImage)=>
+                  {
+              
+                    setPostData({...postData,postImage:TenorImage.url})
+                    setcloudinaryMedia(TenorImage.url)
+                  }}
+                />}
+              </div>
             </label>
 
             <span>
