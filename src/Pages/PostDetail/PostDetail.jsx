@@ -1,29 +1,17 @@
-import React from 'react';
-import Aside from '../../Component/Aside/Aside';
-import { useNavigate, useParams } from 'react-router-dom';
-import { BiArrowBack } from 'react-icons/bi';
-import { useEffect } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
-import { PostOption } from '../../Component/TweetCard/features/PostOption';
-import { useContext } from 'react';
-import { PostContext } from '../../context/PostContext';
-import { getUserId, isBookMark, isLiked } from '../../utlis/utlis';
-import { IoMdMore } from 'react-icons/io';
-import {
-  bookmark,
-  dislikeHandler,
-  likePostHandler,
-  removeBookMark,
-} from '../../services/postServices';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
-import { AuthContext } from '../../context/AuthContext';
-import { Comment } from '../../features/Comment';
-import { CommentCard } from '../../Component/CommentCard/CommentCard';
+import React, { useContext, useEffect, useState } from 'react';
+import { BiArrowBack } from 'react-icons/bi';
+import { useNavigate, useParams } from 'react-router-dom';
+import Aside from '../../Component/Aside/Aside';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
-import './PostDetail.css';
+import { CommentCard } from '../../Component/CommentCard/CommentCard';
+import Loader from '../../Component/Loader/Loader';
 import { TweetCard } from '../../Component/TweetCard/TweetCard';
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
+import { Comment } from '../../features/Comment';
+import { getUserId } from '../../utlis/utlis';
+import './PostDetail.css';
 
 export const PostDetail = () => {
   const { postId } = useParams();
@@ -35,27 +23,35 @@ export const PostDetail = () => {
   const {
     state: { users, post },
   } = useContext(PostContext);
-  const { token, userBookMark, updateBookMark, userInfo } =
+  const { token,  userInfo } =
     useContext(AuthContext);
-  const { dispatch } = useContext(PostContext);
+  const { dispatch,setLoading,loading } = useContext(PostContext);
 
   const postUserId = getUserId(postDetail?.username, users);
 
   const getPostUser = async () => {
     try {
       const response = await axios.get(`/api/users/${postUserId}`);
+      setLoading(true)
       setPostUser(response.data.user);
       console.log(response.data.user, 'res');
     } catch (error) {
       console.log(error, 'res');
     }
+    finally{
+      setLoading(false);
+    }
   };
   const getPost = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`/api/posts/${postId}`);
       setPosDetail(response.data.post);
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -73,12 +69,19 @@ export const PostDetail = () => {
       <aside className='aside'>
         <Aside />
       </aside>
+
+      {
+
+      }
       <div className='main-content'>
+
+        
         <div className='page-Title page-TitleContainer'>
           <BiArrowBack onClick={() => navigate(-1)} />
           <h3 className='title'>Post</h3>
         </div>
-
+{loading?<Loader/>:
+<>
         <div className='post-detail-container'>
           {postDetail && postUser && (
             <TweetCard
@@ -103,6 +106,9 @@ export const PostDetail = () => {
             />
           ))}
         </div>
+    </>
+}
+
       </div>
 
       <div className='aside-right'>

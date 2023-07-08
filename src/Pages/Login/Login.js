@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
-import ConnectLogo from '../../asset/ConnectLogo1.png';
-import './Login.css';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import ConnectLogo from '../../asset/ConnectLogo1.png';
+import { AuthContext } from '../../context/AuthContext';
+import './Login.css';
 
 const Login = () => {
   const { loginHandler } = useContext(AuthContext);

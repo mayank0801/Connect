@@ -1,6 +1,7 @@
 .home-Container {
   display: flex;
   justify-content: center;
+  
 }
 .aside {
   width: 15%;
@@ -35,7 +36,7 @@
   padding: 1rem 0.5rem;
   border-bottom: 1px solid #2f3336;
   position: fixed;
-  width: 44.5%;
+  width: 44.2%;
   height: 70px;
   opacity: 0.9;
   background-color: #001527;

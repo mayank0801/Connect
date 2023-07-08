@@ -1,27 +1,20 @@
 import axios from 'axios';
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import { EditProfileModal } from '../../features/EditProfileModal';
-import { followUser, loaduserHandler, unfollow } from '../../services/postServices';
 import { FiLogOut } from 'react-icons/fi';
+import { useNavigate, useParams } from 'react-router-dom';
+import "../../App.css";
 import Aside from '../../Component/Aside/Aside';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
-import './Profile.css';
-import { getJoinedMonth, getUserId } from '../../utlis/utlis';
-import { useClickOutside } from '../../hook/clickOutside';
-import { useRef } from 'react';
-import { posts } from '../../backend/db/posts';
-import { getPostHandler } from '../../backend/controllers/PostController';
-import ProfilePost from '../../Component/ProfilePost/ProfilePost';
-import { PostContext } from '../../context/PostContext';
 import Loader from '../../Component/Loader/Loader';
+import ProfilePost from '../../Component/ProfilePost/ProfilePost';
 import ShowRelatedUser from '../../Component/ShowRelatedUserModal/ShowRelatedUser';
-import "../../App.css";
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
+import { EditProfileModal } from '../../features/EditProfileModal';
+import { followUser, loaduserHandler, unfollow } from '../../services/postServices';
+import { getJoinedMonth } from '../../utlis/utlis';
+import './Profile.css';
 
 
 export const Profile = () => {
