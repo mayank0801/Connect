@@ -79,7 +79,7 @@ export const PostDetail = () => {
           <h3 className='title'>Post</h3>
         </div>
 
-        <div>
+        <div className='post-detail-container'>
           {postDetail && postUser && (
             <TweetCard
               post={postDetail}
@@ -91,7 +91,7 @@ export const PostDetail = () => {
           )}
         </div>
         <div className='comment-section'>
-          <div>
+          <div style={{borderBottom:"1px solid #2f3336;"}}>
             <Comment post={postDetail} />
           </div>
           {postDetail?.comments?.map((comment) => (
@@ -99,6 +99,7 @@ export const PostDetail = () => {
               comment={comment}
               post={postDetail}
               dispatch={dispatch}
+             
             />
           ))}
         </div>

@@ -20,6 +20,7 @@ export const Explore = () => {
         <div className='page-Title'>
           <h3 className='title'>Explore</h3>
         </div>
+        <div style={{marginTop:"70px"}}>
         {posts.map((post) => (
           <TweetCard
             post={post}
@@ -28,6 +29,7 @@ export const Explore = () => {
             dispatch={dispatch}
           />
         ))}
+      </div>
       </div>
 
       <div className='aside-right'>

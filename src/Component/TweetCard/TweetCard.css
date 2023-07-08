@@ -13,8 +13,12 @@
   
 }
 .postCard-profileImage {
-  width: 10%;
+
+  width: 40px;
 }
+/* .postCard-profileImage{
+  width: 10%;
+} */
 
 .postCard-profileImage > img {
   cursor: pointer;
@@ -50,8 +54,8 @@
   color: #6e767d;
   line-height: normal;
 }
-.postCard-content {
-  width: 100%;
+.postCard-Content {
+  width: 90%;
   font-size: 1rem;
   font-weight: 400;
   line-height: normal;
@@ -95,6 +99,11 @@
   width: 100%;
 }
 
+/* .userPost-option>span{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
 .fullscreen-modal {
   position: absolute;
   top: 0;

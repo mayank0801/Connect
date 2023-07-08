@@ -24,8 +24,9 @@ export const AsideRight = () => {
 
   return (
     <div className='aside-Right'>
+      <div className='serachUser-container'>
       <SearchUser />
-
+      </div>
       {loading ? (
         <Loader />
       ) : (

@@ -9,7 +9,8 @@ import {
 } from '../../../services/postServices';
 import { AuthContext } from '../../../context/AuthContext';
 import { CreatePostModal } from '../../../features/CreatePostModal';
-
+import {BiEdit} from "react-icons/bi";
+import { AiFillDelete } from 'react-icons/ai';
 export const PostOption = ({ post, postUser }) => {
   const {
     state: { users },
@@ -29,18 +30,22 @@ export const PostOption = ({ post, postUser }) => {
       <div className='userPost-option'>
         {isUserPost && (
           <>
+          <span  onClick={() => setPostModal(!isPostModal)} >
+          <BiEdit/>
             <p
-              className='userPost-option-text'
-              onClick={() => setPostModal(!isPostModal)}
+              
+             
             >
               Edit
             </p>
+            </span>
+            <span onClick={() => deletePosthandler(post._id, token, dispatch)}>
+            <AiFillDelete/>
             <p
-              className='userPost-option-text'
-              onClick={() => deletePosthandler(post._id, token, dispatch)}
             >
               Delete
             </p>
+            </span>
 
             <div className='editModal'>
               {isPostModal && (

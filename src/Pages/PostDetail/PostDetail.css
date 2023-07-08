@@ -3,6 +3,10 @@
   align-items: center;
   gap: 10px;
 }
+.post-detail-container{
+  margin-top: 70px;
+  border-bottom:1px solid #2f3336; ;
+}
 .comment-userProfile {
   height: 40px;
   width: 40px;
