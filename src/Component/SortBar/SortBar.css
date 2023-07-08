@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding: 1rem 0;
   position: relative;
+  align-items: center;
 }
 .post-option {
   position: absolute;
@@ -12,3 +13,4 @@
   top: 50%;
   z-index: 9999;
 }
+

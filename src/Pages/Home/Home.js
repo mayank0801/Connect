@@ -42,7 +42,9 @@ export default function Home() {
         <div className='page-Title'>
           <h3 className='title'>Home</h3>
         </div>
+        <div className='home-createPost'> 
         <CreatePost />
+        </div>
         <div className='filter-Tweet'>
           <SortBar />
         </div>

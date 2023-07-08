@@ -9,7 +9,7 @@
   justify-content: space-between;
 }
 .aside-logo {
-  padding-left: 0.5rem;
+  padding-left: 1rem;
 }
 .aside-logo-image {
   height: 40px;
@@ -22,14 +22,21 @@
   gap: 8px;
 }
 .aside-link {
-  padding: 13px;
   display: flex;
   gap: 20px;
   align-items: center;
   border-radius: 50px;
 }
-.aside-link:hover {
-  background-color: red;
+.aside-link>span{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:20px;
+  padding: 1rem;
+  border-radius: 50px;
+}
+.aside-link>span:hover {
+  background-color: #001E39;
 }
 .aside-link-text {
   color: #d9d9d9;
@@ -50,7 +57,7 @@
   border: none;
 }
 .aside-footer {
-  width: 85%;
+  width: 100%;
   padding: 4px;
 }
 .aside-profile {

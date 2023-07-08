@@ -116,7 +116,6 @@ export default function CreatePost({ setCreatePostModal }) {
             <>
               <img
                 width={'100%'}
-                height={'100%'}
                 src={postContent?.postImage}
                 alt='postimage'
               />
