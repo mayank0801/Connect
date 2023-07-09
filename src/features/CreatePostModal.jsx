@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import GifPicker from 'gif-picker-react';
 import { BsEmojiSmile } from 'react-icons/bs';
-import { GrGallery } from 'react-icons/gr';
+import { MdPermMedia } from 'react-icons/md';
 import { RxCrossCircled } from 'react-icons/rx';
 import { cloudinaryImageFetcher, cloudinaryVideoFetcher, editPost } from '../services/postServices';
 import { PostContext } from '../context/PostContext';
@@ -63,6 +63,8 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
 
       };
 
+   
+
   const submitPostHandler = async () => {
     console.log(post?.id, 'pppp');
     let postMedia = '';
@@ -82,19 +84,33 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
     );
     setPostModal(false);
   };
-  const inputRef = useRef(null);
+  const inputRefFile = useRef(null);
+  const inputRef=useRef();
   const handleClick = (e) => {
     e.stopPropagation();
-    inputRef.current.click();
+    inputRefFile.current.click();
   };
 
-  useClickOutside(gifRef,setGifModal);
+  useClickOutside(inputRef,setGifModal);
+  useClickOutside(inputRef,setEmojiModal);
+  // useClickOutside(inputRef)
+  const textareaRef=useRef();
+  const adjustTextareaHeight = () => {
+    const textarea = textareaRef.current;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  };
+
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, []);
 
   return (
-    <div className='create-modal'>
+    <div className='create-modal' ref={inputRef}>
       <div className='' style={{ display: 'flex', gap: '5px' }}>
         <div>
           <img
+
             className='profileAvatar'
             src={userInfo?.profileAvatar}
             alt='profile'
@@ -106,6 +122,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
             value={postData?.content}
             name='content'
             rows='1'
+            ref={textareaRef}
             placeholder='What is Happening?!'
             onChange={(e) => handleChange(e)}
           />
@@ -113,14 +130,15 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
             {postData?.postImage && (
               <>
                 <img
-                  width={'100%'}
+                  className='edit-post-img'
                   src={postData?.postImage}
-                  height={'100%'}
+                  
                   alt='postimage'
                 />
                 <RxCrossCircled
                   size={30}
                   color='red'
+                  style={{position:'absolute',right:"3%",top:"30%"}}
                   onClick={(e) => {
                     e.stopPropagation();
                     setPostData({ ...postData, postImage: '' });
@@ -137,16 +155,20 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
               marginTop: '1rem',
             }}
           >
+            <div className='edit-options'>
             <label>
-              <GrGallery
+            <MdPermMedia
                 size={30}
-                //   onClick={handleClick}
+                fill='white'
+                className='icon'
+                onClick={handleClick}
               />
+              
               <input
                 type='file'
                 name='postImage'
                 style={{ display: 'none' }}
-                ref={inputRef}
+                ref={inputRefFile}
                 onChange={handleChange}
               />
             </label>
@@ -161,7 +183,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
               {emojiModal && (
                 <div
                   style={{ position: 'absolute', zIndex: '5' }}
-                  ref={emojiRef}
+                  ref={inputRef}
                 >
                   <EmojiPicker
                     theme='dark'
@@ -180,7 +202,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
 
             <label>
             <AiOutlineGif size={30} fill='white' stroke='white' onClick={()=>setGifModal(!gifModal)} />
-              <div className='gif-wrapper-modal' ref={gifRef}>
+              <div className='gif-wrapper-modal' ref={inputRef}>
                 {gifModal&&<GifPicker tenorApiKey={'AIzaSyC3f2te0YYy3yg9e-dEGdxou0J52mOWsgo'}
                 onGifClick={(TenorImage)=>
                   {
@@ -191,10 +213,11 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                 />}
               </div>
             </label>
-
+            </div>
+            
             <span>
-              <button onClick={() => setPostModal(false)}>Cancel</button>
-              <button onClick={() => submitPostHandler()}>Post</button>
+              <button className='btn btn-cancel' onClick={() => setPostModal(false)}>Cancel</button>
+              <button className="btn btn-Edit" onClick={() => submitPostHandler()}>Post</button>
             </span>
           </div>
         </div>

@@ -1,20 +1,20 @@
+import EmojiPicker from 'emoji-picker-react';
+import GifPicker from 'gif-picker-react';
 import { useContext, useRef, useState } from 'react';
-import { PostContext } from '../../context/PostContext';
-import { AuthContext } from '../../context/AuthContext';
-import { MdPermMedia } from 'react-icons/md';
+import { AiOutlineGif } from "react-icons/ai";
 import { BsEmojiSmile } from 'react-icons/bs';
+import { MdPermMedia } from 'react-icons/md';
 import { RxCrossCircled } from 'react-icons/rx';
-import {AiOutlineGif} from "react-icons/ai";
-import './CreatePost.css';
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
+import { useClickOutside } from '../../hook/clickOutside';
 import {
   cloudinaryImageFetcher,
   cloudinaryVideoFetcher,
   createPosthandler,
 } from '../../services/postServices';
-import GifPicker from 'gif-picker-react';
-import { CreatePostEmpty, isImage, isMediaFileLarge, isVideo } from '../../utlis/utlis';
-import EmojiPicker from 'emoji-picker-react';
-import { useClickOutside } from '../../hook/clickOutside';
+import { CreatePostEmpty, isMediaFileLarge, isVideo } from '../../utlis/utlis';
+import './CreatePost.css';
 
 export default function CreatePost({ setCreatePostModal }) {
   const {
@@ -69,6 +69,7 @@ export default function CreatePost({ setCreatePostModal }) {
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
   const postSubmitHandler = async () => {
+    console.log("CheckPoint")
     let postMedia = '';
     if (postContent.postImage)
       postMedia = await cloudinaryImageFetcher(cloudinaryMedia);
@@ -94,10 +95,11 @@ export default function CreatePost({ setCreatePostModal }) {
   };
   const emojiRef = useRef(null);
   const gifRef=useRef(null);
+  const refOutisde=useRef()
   useClickOutside(emojiRef, setEmojiModal);
-  useClickOutside(gifRef,setGifModal)
+  useClickOutside(gifRef,setGifModal);
   return (
-    <div className='createPost'>
+    <div className='createPost' ref={refOutisde}>
       <div className='profileImage'>
         <img className='profile' src={userInfo?.profileAvatar} alt='profile' />
       </div>

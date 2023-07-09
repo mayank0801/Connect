@@ -24,7 +24,7 @@ const Aside = () => {
   useClickOutside(postRef, setCreatePostModal);
 
   return (
-    <aside className='aside-container'>
+    <aside className='aside-container' ref={postRef}>
       <nav className='aside-nav'>
         <NavLink to='/' className='aside-logo'>
           <img
@@ -100,11 +100,15 @@ const Aside = () => {
         </div>
       </div>
 
-      <div className='createPostModal' ref={postRef}>
+      
         {createPostModal && (
-          <CreatePost setCreatePostModal={setCreatePostModal} />
+          <div className='Modal-wrapper' >
+          <div className='Modal'>
+          <CreatePost setCreatePostModal={setCreatePostModal}  />
+          </div>
+          </div>
         )}
-      </div>
+   
     </aside>
   );
 };
