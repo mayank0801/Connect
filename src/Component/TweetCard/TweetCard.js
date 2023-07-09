@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import {
   bookmark,
@@ -10,17 +10,16 @@ import {
 import { isBookMark, isLiked } from '../../utlis/utlis';
 import { PostOption } from './features/PostOption';
 
-import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
 import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
 import { FaRegComment } from 'react-icons/fa';
-import { EditCommentModal } from '../../features/EditCommentModal';
-import { PostContext } from '../../context/PostContext';
 import { FiShare } from 'react-icons/fi';
-import Modal from 'react-modal';
-import './TweetCard.css';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
+import { EditCommentModal } from '../../features/EditCommentModal';
 import { useClickOutside } from '../../hook/clickOutside';
+import './TweetCard.css';
 
 export const TweetCard = ({
   post,
@@ -89,7 +88,9 @@ export const TweetCard = ({
             )}
             <div className='postCard-postOptions'>
               {isOpenModal && !isPostDetail && (
+                
                 <PostOption post={post} userInfo={userInfo} />
+         
               )}
             </div>
           </div>
@@ -115,6 +116,15 @@ export const TweetCard = ({
               style={{ height: isPostDetail ? '500px' : null }}
             />
           )}
+          {
+            post?.postVideo&&<
+            video src={post?.postVideo}
+            className='postCard-image'
+            controls
+            >
+            Your Browser Doesnt Support This Video Type
+            </video>
+          }
         </div>
         <div className='postCard-actions'>
           <div className='postCard-actions-item'>
@@ -158,23 +168,23 @@ export const TweetCard = ({
                 />
               )}
             </span>
-            <span>36</span>
+            
           </div>
-          <div className='postCard-actions-item'>
-            <span>
-              <FiShare size={20} />
-            </span>
-          </div>
+          
         </div>
       </div>
 
       {isOpenComment && (
-        <EditCommentModal
+        <div className='Modal-wrapper'>
+          <div className='Modal'>
+            <EditCommentModal
           post={post}
           initalCommentData={''}
           setOpenComment={setOpenComment}
           addCommentModal={true}
         />
+        </div>
+        </div>
       )}
     </div>
   );

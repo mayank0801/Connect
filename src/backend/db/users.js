@@ -15,6 +15,7 @@ export const users = [
     bio: 'Hey, Aadrash Here',
     website: 'https://twiiter.com',
     profileAvatar: 'https://picsum.photos/id/1012/150',
+    backgroundImage:"https://png.pngtree.com/thumb_back/fh260/background/20210803/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg",
     likes: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -45,6 +46,7 @@ export const users = [
     bio: 'Hey, Mayank Here',
     website: 'https://google.com',
     profileAvatar: 'https://picsum.photos/id/1009/150',
+    backgroundImage:"https://png.pngtree.com/thumb_back/fh260/background/20210803/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [
@@ -80,6 +82,7 @@ export const users = [
     bio: 'Hey,Yuvraj Here',
     website: 'https://facebook.com',
     profileAvatar: 'https://picsum.photos/id/100/150',
+    backgroundImage:"https://png.pngtree.com/thumb_back/fh260/background/20210803/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     followers: [
@@ -121,6 +124,7 @@ export const users = [
     bio: 'Hey, Ram Here',
     website: 'https://microsoft.com',
     profileAvatar: 'https://picsum.photos/id/1005/150',
+    backgroundImage:"https://png.pngtree.com/thumb_back/fh260/background/20210803/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [

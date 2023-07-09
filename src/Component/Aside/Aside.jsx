@@ -24,7 +24,7 @@ const Aside = () => {
   useClickOutside(postRef, setCreatePostModal);
 
   return (
-    <aside className='aside-container'>
+    <aside className='aside-container' ref={postRef}>
       <nav className='aside-nav'>
         <NavLink to='/' className='aside-logo'>
           <img
@@ -34,34 +34,44 @@ const Aside = () => {
           />
         </NavLink>
         <NavLink to='/' className='aside-link'>
+         <span>
           <span className='aside-icon'>
             <AiOutlineHome color='white' size={25} />
           </span>
           <span className='aside-link-text'>Home</span>
+          </span>
         </NavLink>
         <NavLink to='/explore' className='aside-link'>
+        <span>
           <span className='aside-icon'>
             <BsSearch color='white' size={25} />
           </span>
           <span className='aside-link-text'>Explore</span>
+          </span>
         </NavLink>
         <NavLink to='/bookmark' className='aside-link'>
+          <span>
           <span className='aside-icon'>
             <BsBookmarkDash color='white' size={25} />
           </span>
           <span className='aside-link-text'>Bookmarks</span>
+          </span>
         </NavLink>
         <NavLink to={`/profile/${userInfo?.username}`} className='aside-link'>
+          <span>
           <span className='aside-icon'>
             <MdOutlineAccountCircle color='white' size={25} />
           </span>
           <span className='aside-link-text'>Profile</span>
+          </span>
         </NavLink>
         <NavLink onClick={() => logoutHandler()} className='aside-link'>
+          <span>
           <span className='aside-icon'>
             <BiLogOut color='white' size={25} />
           </span>
           <span className='aside-link-text'>Logout</span>
+          </span>
         </NavLink>
       </nav>
       <div>
@@ -90,11 +100,15 @@ const Aside = () => {
         </div>
       </div>
 
-      <div className='createPostModal' ref={postRef}>
+      
         {createPostModal && (
-          <CreatePost setCreatePostModal={setCreatePostModal} />
+          <div className='Modal-wrapper' >
+          <div className='Modal'>
+          <CreatePost setCreatePostModal={setCreatePostModal}  />
+          </div>
+          </div>
         )}
-      </div>
+   
     </aside>
   );
 };

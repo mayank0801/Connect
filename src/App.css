@@ -74,3 +74,43 @@ a {
   border-radius: 50%;
   object-fit: fill;
 }
+
+
+.modal-wrapper{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.Modal-wrapper {
+  position: fixed !important;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(1px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999 !important;
+  display: flex;
+  justify-content: center;
+align-items: center;
+  /* top: 40%; */
+  border: 1px solid red;
+
+}
+.Modal{
+width: 50%;
+
+  background-color: #001527;
+   position: relative;
+   right: 5%;
+   top: 5%;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+ 
+}

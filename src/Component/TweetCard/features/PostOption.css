@@ -6,9 +6,24 @@
   right: 0%;
 }
 
-.userPost-option {
+
+.userPost-option >span{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+
+  /* margin: 0.5rem; */
+  /* margin-bottom:0.5rem; */
+
 }
-.userPost-option-text:hover {
+.userPost-option>span>p{
+  margin-left: 8px;
+}
+.userPost-option>span:first-child{
+  margin-bottom: 0.5rem;
+}
+.userPost-option-text>span>p:hover {
   color: red;
 }
 .editModal {

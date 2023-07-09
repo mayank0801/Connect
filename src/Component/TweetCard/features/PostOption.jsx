@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './PostOption.css';
 import { PostContext } from '../../../context/PostContext';
 import {
@@ -9,7 +9,9 @@ import {
 } from '../../../services/postServices';
 import { AuthContext } from '../../../context/AuthContext';
 import { CreatePostModal } from '../../../features/CreatePostModal';
-
+import {BiEdit} from "react-icons/bi";
+import { AiFillDelete } from 'react-icons/ai';
+import { useClickOutside } from '../../../hook/clickOutside';
 export const PostOption = ({ post, postUser }) => {
   const {
     state: { users },
@@ -18,44 +20,39 @@ export const PostOption = ({ post, postUser }) => {
   const { token, updateUser, userInfo } = useContext(AuthContext);
   const isUserPost = post.username === userInfo.username;
   const [isPostModal, setPostModal] = useState(false);
+  const inputRef=useRef();
 
   const isUserFollowing = userInfo.following.find(
     ({ username }) => username === post.username
   );
   const followuserId = users.find(({ username }) => username === post.username);
-  console.log(followuserId);
-  console.log(users);
 
+  useClickOutside(inputRef,setPostModal)
   return (
     <div className='userPost-optionConatiner'>
       <div className='userPost-option'>
         {isUserPost && (
           <>
+          <span  onClick={() => setPostModal(!isPostModal)} >
+          <BiEdit/>
             <p
-              className='userPost-option-text'
-              onClick={() => setPostModal(!isPostModal)}
+              
+             
             >
               Edit
             </p>
+            </span>
+            <span onClick={() => deletePosthandler(post._id, token, dispatch)}>
+            <AiFillDelete/>
             <p
-              className='userPost-option-text'
-              onClick={() => deletePosthandler(post._id, token, dispatch)}
             >
               Delete
             </p>
+            </span>
 
-            <div className='editModal'>
-              {isPostModal && (
-                <CreatePostModal
-                  setPostModal={setPostModal}
-                  intialPostData={{
-                    content: post.content,
-                    postImage: post.postImage,
-                  }}
-                  post={post}
-                />
-              )}
-            </div>
+           
+              
+            
           </>
         )}
 
@@ -81,6 +78,20 @@ export const PostOption = ({ post, postUser }) => {
           </p>
         )}
       </div>
+      {isPostModal && (
+                <div className='Modal-wrapper' >
+                  <div className='Modal' style={{width:"45%",marginTop:"-15%"}} ref={inputRef}>
+                <CreatePostModal
+                  setPostModal={setPostModal}
+                  intialPostData={{
+                    content: post.content,
+                    postImage: post.postImage,
+                  }}
+                  post={post}
+                />
+                </div>
+                </div>
+              )}
     </div>
   );
 };

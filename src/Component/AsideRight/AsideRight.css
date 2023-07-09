@@ -4,6 +4,9 @@
   flex-direction: column;
   gap: 10rem;
 }
+.serachUser-container{
+  width: 100%;
+}
 .user-container {
   padding: 0.4rem 0rem;
   background-color: #16181c;

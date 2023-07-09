@@ -21,7 +21,7 @@ export const SortBar = () => {
         className='pointer'
         onClick={() => setPostOption(!isOpenPostOptions)}
       >
-        <MdTune />
+        <MdTune size={18}/>
       </div>
       <div className='post-option' ref={postRef}>
         {isOpenPostOptions && <SortModal />}

@@ -1,3 +1,5 @@
+import { toast } from "react-hot-toast";
+
 export const isLiked = (likes, userNameToFind) => {
   return likes?.likedBy.find((user) => user.username === userNameToFind);
 };
@@ -68,3 +70,29 @@ export const getJoinedMonth = (datee) => {
 
 export const CreatePostEmpty = (PostContent) =>
   PostContent?.content?.length === 0 && !PostContent?.postImage;
+
+
+
+export const isVideo = file => {
+console.log(file,"event.target");
+    return file.type==='video/mp4';
+};
+
+export const isImage = url => {
+  console.log(url,typeof url,"event.target");
+    const extension = url.split('.').pop().toLowerCase();
+    return ['jpg', 'jpeg', 'png', 'gif'].includes(extension);
+};
+
+export const isMediaFileLarge = (file) => {
+  const fileSizeInBytes = file.size;
+  const fileSizeInMB = fileSizeInBytes / (1024 * 1024); // Convert bytes to MB
+  console.log(fileSizeInMB,"inmb")
+  if (fileSizeInMB > 5) {
+    toast.error("File Should be less than 2 mb")
+    return false; 
+  }
+
+  return true; 
+};
+

@@ -59,3 +59,8 @@
   color: white;
   cursor: pointer;
 }
+.page-header{
+  padding: 1rem 0rem;
+  display: flex;
+  gap: 12px;
+}

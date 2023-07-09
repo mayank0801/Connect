@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import Aside from '../../Component/Aside/Aside';
-import { useEffect } from 'react';
-import { bookmark } from '../../services/postServices';
-import { AuthContext } from '../../context/AuthContext';
-import { TweetCard } from '../../Component/TweetCard/TweetCard';
-import { PostContext } from '../../context/PostContext';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
+import { TweetCard } from '../../Component/TweetCard/TweetCard';
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
 
 export const BookMark = () => {
   const { userBookMark, userInfo, token } = useContext(AuthContext);
@@ -17,17 +15,17 @@ export const BookMark = () => {
   );
   console.log(userBookMarkPost, 'userBookMark');
 
-  useEffect(() => {}, [bookmark]);
+
   return (
-    <div className='home-Container'>
+    <div className='home-Container' style={{overflowY:"scroll"}}>
       <aside className='aside'>
         <Aside />
       </aside>
       <div className='main-content'>
-        <div className='page-Title'>
-          <h3 className='title'>BookMark</h3>
+        <div className='page-Title' style={{width:"44%"}}>
+          <p className='title'>BookMark</p>
         </div>
-
+<div style={{marginTop:"70px"}}>
         {userBookMark.length === 0 ? (
           <h3 className='mainTitle'>No BookMark Post</h3>
         ) : (
@@ -42,6 +40,7 @@ export const BookMark = () => {
           ))
         )}
       </div>
+</div>
       <div className='aside-right'>
         <AsideRight />
       </div>

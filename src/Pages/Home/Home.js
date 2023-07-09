@@ -1,23 +1,14 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import Aside from '../../Component/Aside/Aside';
-import { PostContext } from '../../context/PostContext';
-import { TweetCard } from '../../Component/TweetCard/TweetCard';
-import { AuthContext } from '../../context/AuthContext';
-import { GrGallery } from 'react-icons/gr';
-import { BsEmojiSmile } from 'react-icons/bs';
-import { RxCrossCircled } from 'react-icons/rx';
-import './Home.css';
-import {
-  cloudinaryImageFetcher,
-  createPosthandler,
-} from '../../services/postServices';
-import { SortBar } from '../../Component/SortBar/SortBar';
-import { userFeed, userFeedPost } from '../../utlis/utlis';
-import { SearchUser } from '../../Component/SearchUser/SearchUser';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
 import CreatePost from '../../Component/CreatePost/CreatePost';
-import { useEffect } from 'react';
 import Loader from '../../Component/Loader/Loader';
+import { SortBar } from '../../Component/SortBar/SortBar';
+import { TweetCard } from '../../Component/TweetCard/TweetCard';
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
+import { userFeedPost } from '../../utlis/utlis';
+import './Home.css';
 export default function Home() {
   const {
     posts,
@@ -42,7 +33,9 @@ export default function Home() {
         <div className='page-Title'>
           <h3 className='title'>Home</h3>
         </div>
+        <div className='home-createPost'> 
         <CreatePost />
+        </div>
         <div className='filter-Tweet'>
           <SortBar />
         </div>

@@ -114,6 +114,16 @@ export function makeServer({ environment = 'development' } = {}) {
       this.passthrough(
         'https://api.cloudinary.com/v1_1/ditqnzlil/image/upload'
       );
+      this.passthrough(
+        'https://api.cloudinary.com/v1_1/ditqnzlil/video/upload'
+      );
+      this.passthrough((request) => {
+        if (request.url.startsWith('https://tenor.googleapis.com/v2/')) {
+          return true;
+        }
+        return false;
+      });
+      
     },
   });
 }

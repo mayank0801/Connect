@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import Aside from '../../Component/Aside/Aside';
-import { PostContext } from '../../context/PostContext';
+import { AsideRight } from '../../Component/AsideRight/AsideRIght';
 import { TweetCard } from '../../Component/TweetCard/TweetCard';
 import { AuthContext } from '../../context/AuthContext';
-import { AsideRight } from '../../Component/AsideRight/AsideRIght';
+import { PostContext } from '../../context/PostContext';
 
 export const Explore = () => {
   const { posts, dispatch } = useContext(PostContext);
@@ -20,6 +20,7 @@ export const Explore = () => {
         <div className='page-Title'>
           <h3 className='title'>Explore</h3>
         </div>
+        <div style={{marginTop:"70px"}}>
         {posts.map((post) => (
           <TweetCard
             post={post}
@@ -28,6 +29,7 @@ export const Explore = () => {
             dispatch={dispatch}
           />
         ))}
+      </div>
       </div>
 
       <div className='aside-right'>

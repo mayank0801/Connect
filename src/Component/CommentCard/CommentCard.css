@@ -4,6 +4,7 @@
   gap: 5px;
   width: 100%;
   position: relative;
+  border-bottom: 1px solid #2f3336;;
 }
 .user-profile {
   height: 40px;
