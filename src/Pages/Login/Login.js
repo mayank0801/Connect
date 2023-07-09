@@ -26,7 +26,6 @@ const Login = () => {
       });
     } catch (error) {}
   };
-  console.log(loginInfo);
   return (
     <div className='login-page'>
       <div className='login-container'>

@@ -23,7 +23,7 @@ export const users = [
       {
         _id: 101,
         firstName: 'Mayank',
-        username: 'Mayanksingh0801@gmail.com',
+        username: 'mayank0801',
         profileAvatar: 'https://picsum.photos/id/1009/150',
       },
     ],
@@ -31,7 +31,7 @@ export const users = [
       {
         _id: 101,
         firstName: 'Mayank',
-        username: 'Mayanksingh0801@gmail.com',
+        username: 'mayank0801',
         profileAvatar: 'https://picsum.photos/id/1009/150',
       },
     ],
@@ -89,7 +89,7 @@ export const users = [
       {
         _id: 101,
         firstName: 'Mayank',
-        username: 'Mayanksingh0801@gmail.com',
+        username: 'mayank0801',
         profileAvatar: 'https://picsum.photos/id/1009/150',
       },
       {

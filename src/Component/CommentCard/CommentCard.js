@@ -1,13 +1,13 @@
-import React, { useContext, useRef } from 'react';
-import { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { FiMoreHorizontal } from 'react-icons/fi';
-import { AuthContext } from '../../context/AuthContext';
-import { deleteComment } from '../../services/postServices';
-import { EditCommentModal } from '../../features/EditCommentModal';
-import './CommentCard.css';
-import { useOutsideClick } from '@chakra-ui/react';
-import { useClickOutside } from '../../hook/clickOutside';
 import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext';
+import { EditCommentModal } from '../../features/EditCommentModal';
+import { useClickOutside } from '../../hook/clickOutside';
+import { deleteComment } from '../../services/postServices';
+import './CommentCard.css';
+
 export const CommentCard = ({ comment, post, dispatch }) => {
   const [isOpen, setOpen] = useState(false);
   const [isOpenComment, setOpenComment] = useState(false);

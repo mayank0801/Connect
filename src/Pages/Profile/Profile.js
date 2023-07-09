@@ -12,6 +12,7 @@ import ShowRelatedUser from '../../Component/ShowRelatedUserModal/ShowRelatedUse
 import { AuthContext } from '../../context/AuthContext';
 import { PostContext } from '../../context/PostContext';
 import { EditProfileModal } from '../../features/EditProfileModal';
+import { useClickOutside } from '../../hook/clickOutside';
 import { followUser, loaduserHandler, unfollow } from '../../services/postServices';
 import { getJoinedMonth } from '../../utlis/utlis';
 import './Profile.css';
@@ -45,10 +46,9 @@ export const Profile = () => {
     try {
       setLoading(true);
       const response = await axios.get(`/api/users/${profileId}`);
-      // console.log(response,"ProfilePage");
       setProfileDetail(response.data.user);
     } catch (error) {
-      console.log(error, 'ProfilePage');
+      console.log(error);
     }
     finally{
       setLoading(false);
@@ -62,9 +62,9 @@ export const Profile = () => {
     getProfileData();
   }, [userInfo,profileId]);
 
-  console.log(profileDetail,"hii")
 
-  // useClickOutside(postRef,setEditProfileModal)
+  useClickOutside(postRef,setEditProfileModal);
+  useClickOutside(postRef,setShowRelatedUserModal)
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -155,12 +155,15 @@ export const Profile = () => {
                 Joined in {getJoinedMonth(profileDetail?.createdAt)}
               </p>
               <div className='user-infoCount'>
-                <h5 onClick={()=>setShowRelatedUserModal({
+                <h5 
+                className='cursor'
+                onClick={()=>setShowRelatedUserModal({
                   show:true,
                   title:"Follower",
                   list:profileDetail?.followers
                 })}>{profileDetail?.followers?.length} Followers</h5>
                 <h5
+                className='cursor'
                 onClick={()=>setShowRelatedUserModal({
                   show:true,
                   title:"Following",
@@ -185,8 +188,10 @@ export const Profile = () => {
 
         {
           relatedUser.show?
-          <div className='modal-wrapper'>
+          <div className='Modal-wrapper'>
+            <div className='Modal' style={{width:"20%"}} ref={postRef}>
             <ShowRelatedUser relatedUser={relatedUser} setShowRelatedUserModal={setShowRelatedUserModal}/>
+            </div>
           </div>:null
         }
         <ProfilePost username={profileId} />

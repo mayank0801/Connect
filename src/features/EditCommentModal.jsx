@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { addComment, editComment } from '../services/postServices';
-import { useContext } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { PostContext } from '../context/PostContext';
-import { useRef } from 'react';
 import { useClickOutside } from '../hook/clickOutside';
+import { addComment, editComment } from '../services/postServices';
 
 export const EditCommentModal = ({
   post,
@@ -15,11 +13,8 @@ export const EditCommentModal = ({
 }) => {
   const { token, userInfo } = useContext(AuthContext);
   const { dispatch } = useContext(PostContext);
-
-  console.log(initalCommentData, post, addCommentModal, 'initail');
   const [commentData, setCommendata] = useState(initalCommentData);
   const submitHandler = async () => {
-    console.log(post?._id, addCommentModal, 'initail');
     addCommentModal
       ? await addComment(post?._id, commentData, token, dispatch)
       : await editComment(post._id, comment._id, commentData, token, dispatch);
@@ -29,7 +24,6 @@ export const EditCommentModal = ({
 
   const handleChange = (event) => {
     setCommendata(event.target.value);
-    // event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
 
@@ -49,7 +43,7 @@ export const EditCommentModal = ({
           value={commentData}
           name='content'
           row='1'
-          placeholder='What is Happening?!'
+          placeholder='Post a Comment'
           onChange={(e) => handleChange(e)}
         />
 

@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+
 import Aside from '../../Component/Aside/Aside';
 import { AsideRight } from '../../Component/AsideRight/AsideRIght';
 import CreatePost from '../../Component/CreatePost/CreatePost';
@@ -9,6 +10,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { PostContext } from '../../context/PostContext';
 import { userFeedPost } from '../../utlis/utlis';
 import './Home.css';
+
 export default function Home() {
   const {
     posts,
@@ -43,7 +45,11 @@ export default function Home() {
         {loading ? (
           <Loader />
         ) : (
-          <div style={{ width: '100%' }}>
+       
+        
+        <div style={{ width: '100%' }}>
+      {userFeed.length===0?<h3 style={{textAlign:"center",marginTop:"1rem"}}>Explore other Post in Explore Section</h3>:
+      <div>
             {userFeed.map((post) => (
               <TweetCard
                 key={post._id}
@@ -53,8 +59,16 @@ export default function Home() {
                 dispatch={dispatch}
               />
             ))}
+            </div>
+}
           </div>
-        )}
+        
+           
+        )
+        
+        }
+
+            
       </div>
 
       <div className='aside-right'>

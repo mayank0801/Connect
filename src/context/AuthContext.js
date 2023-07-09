@@ -15,13 +15,11 @@ export default function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   const updateUser = (updatedUser) => {
-    console.log('Clicked1', updateUser);
+
     localStorage.setItem('userInfo', JSON.stringify(updatedUser));
     setUserInfo(updatedUser);
-    console.log('checkpoint 2 user locally updated with', updateUser);
   };
   const updateBookMark = (updatedBookMark) => {
-    // localStorage.setItem("user", JSON.stringify();
     setuserBookMark(updatedBookMark);
   };
   const loginHandler = async (username, password) => {
@@ -30,7 +28,6 @@ export default function AuthContextProvider({ children }) {
         username,
         password,
       });
-      console.log(response);
       localStorage.setItem(
         'userToken',
         JSON.stringify(response.data.encodedToken)
@@ -75,10 +72,9 @@ export default function AuthContextProvider({ children }) {
       const response = await axios.get(`/api/users/bookmark`, {
         headers: { authorization: token },
       });
-      console.log(response, 'bookmark');
       setuserBookMark(response.data.bookmarks);
     } catch (error) {
-      console.log(error);
+      toast.error("Something Went Wrong");
     }
   };
 
@@ -93,8 +89,7 @@ export default function AuthContextProvider({ children }) {
 
   useEffect(() => {
     getBookmark();
-    console.log('User info updated:', userInfo);
-  }, []);
+  }, [userInfo]);
 
   return (
     <AuthContext.Provider

@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
+import { AiOutlineCamera } from 'react-icons/ai';
+import { AuthContext } from '../context/AuthContext';
+import { useClickOutside } from '../hook/clickOutside';
 import {
   cloudinaryImageFetcher,
-  cloudinaryVideoFetcher,
-  updateUserhandler,
+  updateUserhandler
 } from '../services/postServices';
-import { AuthContext } from '../context/AuthContext';
-import { AiOutlineCamera } from 'react-icons/ai';
-import { useClickOutside } from '../hook/clickOutside';
 
 const avatars = [
   'https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg',
@@ -39,7 +38,7 @@ export const EditProfileModal = ({ intialState, setEditProfileModal }) => {
   const handleSubmit = async () => {
     let profileAvatarUrl = await cloudinaryImageFetcher(cloudnaryImage);
     let backgroundImage=await cloudinaryImageFetcher(cloudnaryBackgroundImage);
-    console.log(backgroundImage,"url")
+
     if (!profileAvatarUrl) profileAvatarUrl = intialState?.profileAvatar;
     if(!backgroundImage) backgroundImage=intialState?.backgroundImage;
     updateUserhandler(

@@ -48,8 +48,16 @@ function App() {
           }
         />
 
-        <Route path='/post/:postId' element={<PostDetail />} />
-        <Route path='/profile/:profileId' element={<Profile />} />
+        <Route path='/post/:postId' element={
+        <RequireAuth>
+          <PostDetail />
+        </RequireAuth>
+        } />
+        <Route path='/profile/:profileId' element={
+          <RequireAuth>
+        <Profile />
+        </RequireAuth>
+        } />
         <Route path='/mockman' element={<Mockman />} />
       </Routes>
       <Toaster

@@ -1,20 +1,20 @@
 import React, { useRef, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
+import { FaRegComment } from 'react-icons/fa';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   bookmark,
   dislikeHandler,
   likePostHandler,
   removeBookMark,
 } from '../../services/postServices';
-import { isBookMark, isLiked } from '../../utlis/utlis';
+import { formatDate, isBookMark, isLiked } from '../../utlis/utlis';
 import { PostOption } from './features/PostOption';
 
-import { useContext } from 'react';
-import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
-import { FaRegComment } from 'react-icons/fa';
-import { FiShare } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { PostContext } from '../../context/PostContext';
 import { EditCommentModal } from '../../features/EditCommentModal';
@@ -28,7 +28,7 @@ export const TweetCard = ({
   dispatch,
   isPostDetail,
 }) => {
-  // console.log(post,userInfo,token,dispatch,"di");
+
   const { _id, content, createdAt, likes, username, profileAvatar, comments } =
     post;
 
@@ -75,8 +75,9 @@ export const TweetCard = ({
             onClick={() => navigate(`/profile/${postUser?.username}`)}
           >
             <p>{`${postUser?.firstName} ${postUser?.lastName}`}</p>
-            <p>@{username}</p>
+            <p>{formatDate(createdAt)}</p>
           </div>
+          
           <div style={{ position: 'relative' }}>
             {!isPostDetail && (
               <FiMoreHorizontal
@@ -95,7 +96,7 @@ export const TweetCard = ({
             </div>
           </div>
         </div>
-
+        <div className='date-text'>@{postUser?.username}</div>
         <p
           className='post-content-text'
           style={{ wordWrap: 'break-word' }}

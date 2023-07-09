@@ -1,10 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
-import { addComment } from '../services/postServices';
-import { useConst } from '@chakra-ui/react';
-import { useContext } from 'react';
-import { PostContext } from '../context/PostContext';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { PostContext } from '../context/PostContext';
+import { addComment } from '../services/postServices';
 import './Feature.css';
 
 export const Comment = ({ post }) => {
@@ -18,7 +15,6 @@ export const Comment = ({ post }) => {
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
   const handleSubmit = async () => {
-    console.log(post._id, commentContent, token, dispatch, 'check1');
     await addComment(post._id, commentContent, token, dispatch);
     setcommentContent('');
   };

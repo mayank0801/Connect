@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import { SearchUser } from '../SearchUser/SearchUser';
-import { PostContext } from '../../context/PostContext';
-import { AuthContext } from '../../context/AuthContext';
-import { suggestedUser } from '../../utlis/utlis';
-import { followUser, loaduserHandler } from '../../services/postServices';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { useEffect } from 'react';
-import './AsideRight.css';
 import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext';
+import { PostContext } from '../../context/PostContext';
+import { followUser, loaduserHandler } from '../../services/postServices';
+import { suggestedUser } from '../../utlis/utlis';
 import Loader from '../Loader/Loader';
+import { SearchUser } from '../SearchUser/SearchUser';
+import './AsideRight.css';
 
 export const AsideRight = () => {
   const {

@@ -31,15 +31,15 @@ export const likePostHandler = async (_id, encodedToken, dispatch) => {
     );
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
     toast.success('Post Liked');
-    console.log(response, 'likePostHandler');
+
   } catch (error) {
     toast.error('SomeThing Went Wrong');
-    console.error(error);
+
   }
 };
 
 export const dislikeHandler = async (postId, encodedToken, dispatch) => {
-  console.log(postId, encodedToken, dispatch, 'didlike');
+
   try {
     const response = await axios.post(
       `/api/posts/dislike/${postId}`,
@@ -83,7 +83,6 @@ export const deletePosthandler = async (postId, encodedToken, dispatch) => {
     const response = await axios.delete(`/api/posts/${postId}`, {
       headers: { authorization: encodedToken },
     });
-    console.log(response, 'delete');
     dispatch({ TYPE: 'UPDATE_POST', payLoad: response.data.posts });
     toast.success('Post Deleted');
   } catch (error) {
@@ -119,12 +118,12 @@ export const unfollow = async (
       {},
       { headers: { authorization: encodedToken } }
     );
-    console.log(response, 'Clicked1');
+
     updateUser(response.data.user);
     await loaduserHandler();
     toast.success('User Unfollowed');
   } catch (error) {
-    console.log(error);
+
     toast.error('SomeThing Went Wrong!.Try Again After Some Time');
   }
 };
@@ -164,7 +163,6 @@ export const removeBookMark = async (postId, encodedToken, updateBookMark) => {
 };
 
 export const editPost = async (postId, postData, encodedToken, dispatch) => {
-  console.log(postId, postData, encodedToken, dispatch, 'checkout');
   try {
     const response = await axios.post(
       `/api/posts/edit/${postId}`,
@@ -185,7 +183,6 @@ export const followUser = async (
   loaduserHandler,
   setLoading
 ) => {
-  console.log(followUserId, encodedToken, updateUser, loaduserHandler);
   try {
     setLoading(true);
     const response = await axios.post(
@@ -229,7 +226,6 @@ export const deleteComment = async (
   encodedToken,
   dispatch
 ) => {
-  console.log(postId, commentId, encodedToken, 'check2');
   try {
     const response = await axios.post(
       `/api/comments/delete/${postId}/${commentId}`,
@@ -250,14 +246,6 @@ export const editComment = async (
   encodedToken,
   dispatch
 ) => {
-  console.log(
-    postId,
-    commentId,
-    commentData,
-    encodedToken,
-    dispatch,
-    'editComment'
-  );
   try {
     const response = await axios.post(
       `/api/comments/edit/${postId}/${commentId}`,
@@ -272,7 +260,6 @@ export const editComment = async (
 };
 
 export const updateUserhandler = async (userData, encodedToken, updateUser) => {
-  console.log(userData, encodedToken, updateUser, 'consoel');
   try {
     const response = await axios.post(
       `/api/users/edit`,
@@ -289,7 +276,6 @@ export const updateUserhandler = async (userData, encodedToken, updateUser) => {
 };
 
 export const cloudinaryImageFetcher = async (mediaNewPost) => {
-  console.log(mediaNewPost, 'mediapoat');
   const dataForCloudinary = new FormData();
   dataForCloudinary.append('file', mediaNewPost);
   dataForCloudinary.append('upload_preset', 'connect');
@@ -310,7 +296,6 @@ export const cloudinaryImageFetcher = async (mediaNewPost) => {
 
 
 export const cloudinaryVideoFetcher=async(mediaNewPost)=>{
-console.log(mediaNewPost,"video");
 const dataForCloudinary=new FormData();
 dataForCloudinary.append('file',mediaNewPost);
 dataForCloudinary.append('upload_preset','connect');

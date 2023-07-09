@@ -9,11 +9,11 @@ export const BookMark = () => {
   const { userBookMark, userInfo, token } = useContext(AuthContext);
   const { dispatch, posts } = useContext(PostContext);
 
-  console.log(posts, userBookMark, 'userBookMark');
+ 
   const userBookMarkPost = posts.filter(({ _id }) =>
     userBookMark.includes(_id)
   );
-  console.log(userBookMarkPost, 'userBookMark');
+
 
 
   return (

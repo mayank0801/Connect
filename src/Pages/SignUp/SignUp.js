@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import '../Login/Login.css';
 import ConnectLogo from '../../asset/ConnectLogo1.png';
+import { AuthContext } from '../../context/AuthContext';
+import '../Login/Login.css';
 const SignUp = () => {
   const { signupHandler } = useContext(AuthContext);
   const [confirmPassWord, setConfirmPassWord] = useState('');
@@ -13,13 +13,15 @@ const SignUp = () => {
     password: '',
     profileAvatar:
       'https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg',
+      backgroundImage:"https://png.pngtree.com/thumb_back/fh260/background/20210803/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg",
+      bio: 'Hey,there i am using Connect Here',
+      website: 'https://www.google.com/',
   });
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     try {
       e.preventDefault();
       const response = await signupHandler(signUpInfo);
-      console.log(response);
       navigate('/');
     } catch {}
   };

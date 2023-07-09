@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react';
-import './SortModal.css';
+import React, { useContext } from 'react';
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { FiTrendingUp } from "react-icons/fi";
 import { PostContext } from '../../../context/PostContext';
-import { useRef } from 'react';
-import {FiTrendingUp} from "react-icons/fi";
-import {AiFillCaretDown} from "react-icons/ai";
-import {AiFillCaretUp} from "react-icons/ai"
+import './SortModal.css';
 const SortModal = () => {
   const { state, dispatch } = useContext(PostContext);
   return (

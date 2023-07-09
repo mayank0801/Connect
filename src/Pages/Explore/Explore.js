@@ -7,7 +7,6 @@ import { PostContext } from '../../context/PostContext';
 
 export const Explore = () => {
   const { posts, dispatch } = useContext(PostContext);
-  console.log(posts, 'post');
   const { userInfo, token } = useContext(AuthContext);
 
   useEffect(() => {}, [posts]);

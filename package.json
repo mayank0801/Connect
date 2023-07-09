@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "prettier": "2.8.8"
   }
 }

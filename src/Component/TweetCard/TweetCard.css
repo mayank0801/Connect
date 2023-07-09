@@ -16,9 +16,8 @@
 
   width: 40px;
 }
-/* .postCard-profileImage{
-  width: 10%;
-} */
+
+
 
 .postCard-profileImage > img {
   cursor: pointer;
@@ -42,6 +41,7 @@
 .postCard-userInfo {
   display: flex;
   justify-content: start;
+  align-items: center;
 }
 .postCard-userInfo p:first-child {
   font-weight: 700;
@@ -49,10 +49,11 @@
 }
 
 .postCard-userInfo p:nth-child(2) {
-  font-weight: 400;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: #6e767d;
   line-height: normal;
+  padding-left: 4px;
 }
 .postCard-Content {
   width: 90%;
@@ -78,7 +79,6 @@
   width: 25%;
   padding: 0.5rem;
   display: flex;
-  /* align-items: center; */
 }
 .postCard-actions-item > span {
   cursor: pointer;
@@ -90,20 +90,12 @@
 .postCard-actions-item:hover span {
   color: white;
 }
-/* .postCard-actions-item:hover span:nth-child(1) {
-    background-color:gray;
-    padding: 0.2rem 0.2rem;
-    border-radius: 50%;
-  } */
+
+
 .post-content-text {
   width: 100%;
 }
 
-/* .userPost-option>span{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
 .fullscreen-modal {
   position: absolute;
   top: 0;
@@ -116,4 +108,13 @@
   background-color: transparent;
   outline: none;
   border: none;
+}
+.date-text{
+  margin-top: -8px;
+  font-size: 0.9rem;
+  padding-bottom: 0.2rem;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #6e767d;
+  line-height: normal;
 }

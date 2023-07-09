@@ -34,7 +34,7 @@ export const PostDetail = () => {
       const response = await axios.get(`/api/users/${postUserId}`);
       setLoading(true)
       setPostUser(response.data.user);
-      console.log(response.data.user, 'res');
+
     } catch (error) {
       console.log(error, 'res');
     }
@@ -61,8 +61,6 @@ export const PostDetail = () => {
   useEffect(() => {
     getPostUser();
   }, [postUserId]);
-
-  console.log(postUser, 'postUser');
 
   return (
     <div className='home-Container'>

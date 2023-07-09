@@ -11,11 +11,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
-
-  /* margin: 0.5rem; */
-  /* margin-bottom:0.5rem; */
-
 }
 .userPost-option>span>p{
   margin-left: 8px;
@@ -31,8 +26,4 @@
   top: 20%;
   left: 17%;
   width: 70%;
-}
-.userPost-option-text {
-}
-.userPost {
 }

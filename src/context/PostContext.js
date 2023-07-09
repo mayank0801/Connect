@@ -5,10 +5,11 @@ import {
   useReducer,
   useState,
 } from 'react';
+import { toast } from 'react-hot-toast';
+
 import reducer, { IntialState } from '../Reducer/postReducer';
 import { loadPostHandler, loaduserHandler } from '../services/postServices';
 import { AuthContext } from './AuthContext';
-import { toast } from 'react-hot-toast';
 
 export const PostContext = createContext();
 export default function PostContextProvider({ children }) {
@@ -16,7 +17,7 @@ export default function PostContextProvider({ children }) {
   const { userInfo } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
-  // const {userInfo}=useContext(AuthContext)
+
 
   async function fetchData() {
     try {
