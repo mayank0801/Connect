@@ -96,3 +96,19 @@ export const isMediaFileLarge = (file) => {
   return true; 
 };
 
+
+export function formatDate(dateString) {
+  const date = new Date(dateString);
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const currentDate = new Date();
+
+  if (date.getFullYear() < currentDate.getFullYear()) {
+    options.year = 'numeric';
+  } else {
+    delete options.year;
+  }
+
+  return date.toLocaleDateString('en-US', options);
+}
+
+

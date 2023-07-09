@@ -42,6 +42,7 @@
 .postCard-userInfo {
   display: flex;
   justify-content: start;
+  align-items: center;
 }
 .postCard-userInfo p:first-child {
   font-weight: 700;
@@ -49,10 +50,11 @@
 }
 
 .postCard-userInfo p:nth-child(2) {
-  font-weight: 400;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: #6e767d;
   line-height: normal;
+  padding-left: 4px;
 }
 .postCard-Content {
   width: 90%;
@@ -116,4 +118,13 @@
   background-color: transparent;
   outline: none;
   border: none;
+}
+.date-text{
+  margin-top: -8px;
+  font-size: 0.9rem;
+  padding-bottom: 0.2rem;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #6e767d;
+  line-height: normal;
 }

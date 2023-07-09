@@ -7,7 +7,7 @@ import {
   likePostHandler,
   removeBookMark,
 } from '../../services/postServices';
-import { isBookMark, isLiked } from '../../utlis/utlis';
+import { formatDate, isBookMark, isLiked } from '../../utlis/utlis';
 import { PostOption } from './features/PostOption';
 
 import { useContext } from 'react';
@@ -75,8 +75,9 @@ export const TweetCard = ({
             onClick={() => navigate(`/profile/${postUser?.username}`)}
           >
             <p>{`${postUser?.firstName} ${postUser?.lastName}`}</p>
-            <p>@{username}</p>
+            <p>{formatDate(createdAt)}</p>
           </div>
+          
           <div style={{ position: 'relative' }}>
             {!isPostDetail && (
               <FiMoreHorizontal
@@ -95,7 +96,7 @@ export const TweetCard = ({
             </div>
           </div>
         </div>
-
+        <div className='date-text'>@{postUser?.username}</div>
         <p
           className='post-content-text'
           style={{ wordWrap: 'break-word' }}
