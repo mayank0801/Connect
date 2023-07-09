@@ -1,19 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import EmojiPicker from 'emoji-picker-react';
 import GifPicker from 'gif-picker-react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AiOutlineGif } from 'react-icons/ai';
 import { BsEmojiSmile } from 'react-icons/bs';
 import { MdPermMedia } from 'react-icons/md';
 import { RxCrossCircled } from 'react-icons/rx';
-import { cloudinaryImageFetcher, cloudinaryVideoFetcher, editPost } from '../services/postServices';
-import { PostContext } from '../context/PostContext';
 import { AuthContext } from '../context/AuthContext';
-import EmojiPicker from 'emoji-picker-react';
-import { useRef } from 'react';
-import { AiOutlineGif } from 'react-icons/ai';
+import { PostContext } from '../context/PostContext';
 import { useClickOutside } from '../hook/clickOutside';
+import { cloudinaryImageFetcher, cloudinaryVideoFetcher, editPost } from '../services/postServices';
 import { isMediaFileLarge, isVideo } from '../utlis/utlis';
 
 export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
-  console.log(intialPostData, 'intial');
+
   const [postData, setPostData] = useState(intialPostData);
   const { token, userInfo } = useContext(AuthContext);
   const { dispatch } = useContext(PostContext);
@@ -27,11 +26,10 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
 
 
     const { name, value } = event.target;
-    console.log(name,value,"event.target")
+
     if (name === 'postImage') {
     if(!value){return ;}
      else if(isVideo(event.target.files[0])){
-        console.log("Video","event.target");
         if(!isMediaFileLarge(event.target.files[0])) 
         {
         return null;
@@ -58,22 +56,18 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
     event.target.style.height = `${event.target.scrollHeight}px`;
 
 
-
-
-
       };
 
    
 
   const submitPostHandler = async () => {
-    console.log(post?.id, 'pppp');
+
     let postMedia = '';
     if (postData?.postImage)
     postMedia = await cloudinaryImageFetcher(cloudinaryMedia);
     else if(postData?.postVideo){
       postMedia=await cloudinaryVideoFetcher(cloudinaryMedia);
     }
-      console.log(postMedia, 'pppp');
     await editPost(
       post?._id,
       { ...postData, 
@@ -93,7 +87,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
 
   useClickOutside(inputRef,setGifModal);
   useClickOutside(inputRef,setEmojiModal);
-  // useClickOutside(inputRef)
+
   const textareaRef=useRef();
   const adjustTextareaHeight = () => {
     const textarea = textareaRef.current;
@@ -188,7 +182,7 @@ export const CreatePostModal = ({ setPostModal, intialPostData, post }) => {
                   <EmojiPicker
                     theme='dark'
                     onEmojiClick={(emoji, event) => {
-                      console.log(emoji.emoji);
+
                       event.stopPropagation();
                       setPostData({
                         ...postData,

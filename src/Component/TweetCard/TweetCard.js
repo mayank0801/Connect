@@ -1,6 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
+import { FaRegComment } from 'react-icons/fa';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   bookmark,
   dislikeHandler,
@@ -10,11 +15,6 @@ import {
 import { formatDate, isBookMark, isLiked } from '../../utlis/utlis';
 import { PostOption } from './features/PostOption';
 
-import { useContext } from 'react';
-import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
-import { FaRegComment } from 'react-icons/fa';
-import { FiShare } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { PostContext } from '../../context/PostContext';
 import { EditCommentModal } from '../../features/EditCommentModal';
@@ -28,7 +28,7 @@ export const TweetCard = ({
   dispatch,
   isPostDetail,
 }) => {
-  // console.log(post,userInfo,token,dispatch,"di");
+
   const { _id, content, createdAt, likes, username, profileAvatar, comments } =
     post;
 

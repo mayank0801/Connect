@@ -1,13 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
-import { getAllUserPostsHandler } from '../../backend/controllers/PostController';
-import { TweetCard } from '../TweetCard/TweetCard';
-import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
+
+import { AuthContext } from '../../context/AuthContext';
 import { PostContext } from '../../context/PostContext';
+import { TweetCard } from '../TweetCard/TweetCard';
 
 export default function ProfilePost({ username }) {
-  console.log(username, 'username');
-
   const [userPost, setUserPost] = useState([]);
   const { token, userInfo } = useContext(AuthContext);
   const { posts, dispatch } = useContext(PostContext);
@@ -15,10 +14,9 @@ export default function ProfilePost({ username }) {
   const getUserPost = async () => {
     try {
       const response = await axios.get(`/api/posts/user/${username}`);
-      console.log(response.data);
       setUserPost(response.data.posts);
     } catch (error) {
-      console.error(error);
+      toast.error("Something Went Wrong")
     }
   };
 

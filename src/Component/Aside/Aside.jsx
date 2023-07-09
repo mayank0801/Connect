@@ -1,20 +1,16 @@
-import React, { useContext } from 'react';
-import './Aside.css';
-import ConnectLogo from '../../asset/ConnectLogo1.png';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
+import React, { useContext, useRef, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
-import { BsSearch } from 'react-icons/bs';
-import { BsBookmarkDash } from 'react-icons/bs';
-import { MdOutlineAccountCircle } from 'react-icons/md';
-import { FiMoreHorizontal } from 'react-icons/fi';
-import { LuVerified } from 'react-icons/lu';
 import { BiLogOut } from 'react-icons/bi';
-import { useState } from 'react';
-import { CreatePostModal } from '../../features/CreatePostModal';
-import CreatePost from '../CreatePost/CreatePost';
+import { BsBookmarkDash, BsSearch } from 'react-icons/bs';
+import { FiMoreHorizontal } from 'react-icons/fi';
+import { MdOutlineAccountCircle } from 'react-icons/md';
+import { NavLink, useNavigate } from 'react-router-dom';\
+
+import ConnectLogo from '../../asset/ConnectLogo1.png';
+import { AuthContext } from '../../context/AuthContext';
 import { useClickOutside } from '../../hook/clickOutside';
-import { useRef } from 'react';
+import CreatePost from '../CreatePost/CreatePost';
+import './Aside.css';
 
 const Aside = () => {
   const { userInfo, logoutHandler } = useContext(AuthContext);

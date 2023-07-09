@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useState } from 'react';
 import { MdTune } from 'react-icons/md';
-import './SortBar.css';
-import SortModal from './Modal/SortModal';
 import { PostContext } from '../../context/PostContext';
 import { useClickOutside } from '../../hook/clickOutside';
+import SortModal from './Modal/SortModal';
+import './SortBar.css';
 export const SortBar = () => {
   // const [sortType,setSortType]=use
   const {

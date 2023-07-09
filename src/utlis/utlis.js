@@ -40,7 +40,6 @@ export const getUserId = (usernameToFind, users) => {
 
 export const searchUser = (users, searchedUser) => {
   if (searchedUser.length == 0) {
-    // console.log("hii",searchedUser.length);
     return [];
   }
   return users.filter(
@@ -63,8 +62,6 @@ export const suggestedUser = (users, userInfo) => {
 export const getJoinedMonth = (datee) => {
   const month = datee?.toLocaleString('default', { month: 'long' });
   const year = new Date(datee)?.getFullYear();
-
-  // console.log(typeof month,year,"hibi");
   return ` ${year}`;
 };
 
@@ -74,12 +71,10 @@ export const CreatePostEmpty = (PostContent) =>
 
 
 export const isVideo = file => {
-console.log(file,"event.target");
     return file.type==='video/mp4';
 };
 
 export const isImage = url => {
-  console.log(url,typeof url,"event.target");
     const extension = url.split('.').pop().toLowerCase();
     return ['jpg', 'jpeg', 'png', 'gif'].includes(extension);
 };
@@ -87,7 +82,6 @@ export const isImage = url => {
 export const isMediaFileLarge = (file) => {
   const fileSizeInBytes = file.size;
   const fileSizeInMB = fileSizeInBytes / (1024 * 1024); // Convert bytes to MB
-  console.log(fileSizeInMB,"inmb")
   if (fileSizeInMB > 5) {
     toast.error("File Should be less than 2 mb")
     return false; 

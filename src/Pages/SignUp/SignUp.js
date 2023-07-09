@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import '../Login/Login.css';
 import ConnectLogo from '../../asset/ConnectLogo1.png';
+import { AuthContext } from '../../context/AuthContext';
+import '../Login/Login.css';
 const SignUp = () => {
   const { signupHandler } = useContext(AuthContext);
   const [confirmPassWord, setConfirmPassWord] = useState('');
@@ -22,7 +22,6 @@ const SignUp = () => {
     try {
       e.preventDefault();
       const response = await signupHandler(signUpInfo);
-      console.log(response);
       navigate('/');
     } catch {}
   };

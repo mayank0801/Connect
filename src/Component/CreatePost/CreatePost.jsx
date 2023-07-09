@@ -5,6 +5,7 @@ import { AiOutlineGif } from "react-icons/ai";
 import { BsEmojiSmile } from 'react-icons/bs';
 import { MdPermMedia } from 'react-icons/md';
 import { RxCrossCircled } from 'react-icons/rx';
+
 import { AuthContext } from '../../context/AuthContext';
 import { PostContext } from '../../context/PostContext';
 import { useClickOutside } from '../../hook/clickOutside';
@@ -38,11 +39,10 @@ export default function CreatePost({ setCreatePostModal }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name,value,"event.target")
+  
     if (name === 'postImage') {
     if(!value){return ;}
      else if(isVideo(event.target.files[0])){
-        console.log("Video","event.target");
         if(!isMediaFileLarge(event.target.files[0])) 
         {
         return null;
@@ -69,7 +69,6 @@ export default function CreatePost({ setCreatePostModal }) {
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
   const postSubmitHandler = async () => {
-    console.log("CheckPoint")
     let postMedia = '';
     if (postContent.postImage)
       postMedia = await cloudinaryImageFetcher(cloudinaryMedia);
@@ -85,7 +84,6 @@ export default function CreatePost({ setCreatePostModal }) {
       dispatch,
       setLoading
     );
-    console.log(postMedia,"videoUrl")
     setpostContent({ content: '', postImage: '',postVideo:"" });
     setCreatePostModal && setCreatePostModal(false);
   };
@@ -184,7 +182,6 @@ export default function CreatePost({ setCreatePostModal }) {
                   <EmojiPicker
                     theme='dark'
                     onEmojiClick={(emoji, event) => {
-                      console.log(emoji.emoji);
                       setpostContent({
                         ...postContent,
                         content: postContent.content + emoji.emoji,

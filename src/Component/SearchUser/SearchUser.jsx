@@ -1,10 +1,10 @@
-import React, { useContext, useRef } from 'react';
-import { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 import { PostContext } from '../../context/PostContext';
+import { useClickOutside } from '../../hook/clickOutside';
 import { searchUser } from '../../utlis/utlis';
 import './SearchUser.css';
-import { useNavigate } from 'react-router-dom';
-import { useClickOutside } from '../../hook/clickOutside';
 export const SearchUser = () => {
   const {
     state: { users },

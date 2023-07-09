@@ -6,8 +6,7 @@
   border-bottom: 1px solid #2f3336;
   gap: 5px;
 }
-.comment-userProfile {
-}
+
 .comment-userProfile > img {
   height: 40px;
   width: 40px;
@@ -50,10 +49,10 @@
 
 /* Edit Comment */
 .comment-modal-container {
-  /* position: absolute; */
+
   top: 50%;
   left: 30%;
-  /* width: 50%; */
+
   display: flex;
   gap: 5px;
   background-color: rgb(59, 57, 57);
@@ -75,8 +74,7 @@
   resize: none;
   overflow: hidden;
 }
-.user-profile {
-}
+
 .button-container {
   display: flex;
   justify-content: end;
@@ -88,10 +86,6 @@
   font-weight: 700;
   background-color: blue;
   color: white;
-}
-.cancel-button {
-}
-.save-button {
 }
 
 
@@ -163,7 +157,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 12px;
-  /* margin-top: 10px; */
+
   position: relative;
 }
 .user-profile-image{
@@ -192,8 +186,7 @@
   top: 35%;
   left: 35%;
   cursor: pointer;
-  /* bottom: 16%;
-  left: 58%; */
+
 }
 .camera-icon1{
   position: absolute;
@@ -236,6 +229,7 @@
   color: white;
   background-color: blue;
   font-weight: 600;
+  cursor: pointer;
 }
 .btn-Edit{
   padding-left: 0.75rem;

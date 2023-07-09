@@ -101,7 +101,7 @@ a {
   justify-content: center;
 align-items: center;
   /* top: 40%; */
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
 }
 .Modal{
@@ -113,4 +113,7 @@ width: 50%;
    top: 5%;
    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
  
+}
+.cursor{
+  cursor: pointer;
 }
