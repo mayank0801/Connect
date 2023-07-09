@@ -13,6 +13,9 @@ const SignUp = () => {
     password: '',
     profileAvatar:
       'https://png.pngtree.com/png-clipart/20210619/ourlarge/pngtree-instagram-social-media-men-round-glasses-avatar-png-image_3483988.jpg',
+      backgroundImage:"https://png.pngtree.com/thumb_back/fh260/background/20210803/pngtree-modern-simple-elegant-dark-blue-landing-page-website-background-image_756950.jpg",
+      bio: 'Hey,there i am using Connect Here',
+      website: 'https://www.google.com/',
   });
   const navigate = useNavigate();
   const submitHandler = async (e) => {
