@@ -4,7 +4,7 @@ import { BiLogOut } from 'react-icons/bi';
 import { BsBookmarkDash, BsSearch } from 'react-icons/bs';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { MdOutlineAccountCircle } from 'react-icons/md';
-import { NavLink, useNavigate } from 'react-router-dom';\
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import ConnectLogo from '../../asset/ConnectLogo1.png';
 import { AuthContext } from '../../context/AuthContext';
