@@ -63,8 +63,8 @@ export const Profile = () => {
   }, [userInfo,profileId]);
 
 
-  useClickOutside(postRef,setEditProfileModal);
-  useClickOutside(postRef,setShowRelatedUserModal)
+  // useClickOutside(postRef,setEditProfileModal);
+  // useClickOutside(postRef,setShowRelatedUserModal)
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
