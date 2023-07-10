@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="[https://res.cloudinary.com/yuvraj1905/image/upload/v1687950275/4AkZWfEkCu4ni6c01hsTTDvGy96qVDllWpSg1i_EGln5nF9sbHs8X5mXBVWtjaQWfKab_h482bi.png](https://res.cloudinary.com/ditqnzlil/image/upload/v1688965612/kwegxasumsq350syg0om.png)" height="100" width="100" alt="logo"/>
+  <img src="https://res.cloudinary.com/ditqnzlil/image/upload/v1688965612/kwegxasumsq350syg0om.png" height="100" width="100" alt="logo"/>
   <h1>Connect</h1>
     <p>Connect is a Social Media where users can share events, activities, memories and more in the form of posts. It features most of the latest and unique features of any social media app. </p>
  </div>
@@ -44,4 +44,4 @@
 
 ## Live Link
 
-[Yolo](https://connect-neogcamp.netlify.app/)
+[Connect](https://connect-neogcamp.netlify.app/)
